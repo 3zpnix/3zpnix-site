@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minimalistic Blog</title>
+    <title>EZPNIX - Official Website</title>
+    <link rel="icon" type="image/png" href="images/ezpnix.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome CSS -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,9 +17,25 @@
             text-align: center; /* Center align content */
         }
         header {
-            background-color: #333;
+            background-color: #333; /* Remove this line as we are using background image */
             color: white;
             padding: 10px;
+            position: relative; /* Ensure relative positioning */
+            background-image: url("images/bg.jpg"); /* Replace 'your-background-image.jpg' with the actual name of your image file */
+            background-size: cover; /* Make the background image cover the header area */
+        }
+        .site-logo {
+            position: absolute; /* Position logo relative to header */
+            top: 20px; /* Adjust vertical position of the logo */
+            left: 50%; /* Center the logo horizontally */
+            transform: translateX(-50%); /* Center the logo horizontally */
+            width: 100px; /* Adjust the width of the logo */
+            height: 100px; /* Set height equal to width for a circular shape */
+    border-radius: 50%; /* Create a circular border */
+        }
+        h1 {
+            margin-top: 120px; /* Add margin to the title to prevent overlap */
+            color: black;
         }
         nav {
             background-color: #333;
@@ -42,6 +60,7 @@
             padding: 10px;
             background-color: black; /* Change background color to black */
             border-radius: 5px;
+            position: relative; /* Ensure relative positioning */
         }
         article {
             margin-bottom: 20px;
@@ -57,12 +76,35 @@
         h2, p {
             color: white;
         }
+        .social-icons {
+            margin-top: 20px;
+        }
+        .social-icons a {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            margin: 0 10px;
+        }
+        .email {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        .copyright {
+            font-size: 14px;
+            margin-top: 20px;
+        }
+        .text-sentence {
+            margin-top: 10px; /* Add margin to the text sentence */
+            font-size: 16px; /* Set the font size of the text */
+            color: black; /* Change the text sentence color to black */
+        }
     </style>
 </head>
 <body>
-    <img src="images/eye.gif" alt="GIF" style="display: block; margin: 0 auto; width: 200px; height: auto;">
     <header>
+        <img src="images/eye.gif" alt="Logo" class="site-logo"> <!-- Site Logo here -->
         <h1>EZPNIX</h1>
+        <p class="text-sentence">❝ the unknown is your ally and enemy ❞</p> <!-- Text sentence below the title -->
     </header>
     <nav>
         <a href="#home">Home</a>
@@ -83,6 +125,20 @@
             <h2>Blog Post Title 3</h2>
             <p>Here's another sample blog post. Click to read more...</p>
         </article>
+        
+        <div class="email">
+            <p>ezphoenixyt@gmail.com</p>
+        </div>
+        
+        <div class="social-icons">
+            <a href="https://www.youtube.com"><i class="fab fa-youtube"></i></a> <!-- YouTube Icon -->
+            <a href="https://www.twitter.com"><i class="fab fa-twitter"></i></a> <!-- Twitter Icon -->
+            <a href="https://www.facebook.com"><i class="fab fa-facebook"></i></a> <!-- Facebook Icon -->
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2024 EZPNIX. All Rights Reserved.</p>
+        </div>
     </main>
 </body>
 </html>
