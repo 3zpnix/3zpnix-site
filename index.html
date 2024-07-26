@@ -107,11 +107,13 @@
             margin-top: 10px; 
             font-size: 16px; 
         }
-        .slider-navigation {
+        .navigation-slider {
             margin-top: 20px;
+            display: flex;
+            justify-content: center;
         }
 
-        .slider-btn {
+        .navigation-slide {
             cursor: pointer;
             padding: 10px 20px;
             background-color: #333;
@@ -180,9 +182,10 @@
                 </article>
             </div>
         </div>
-        <div class="slider-navigation">
-            <button class="slider-btn" onclick="previousSlide()">Previous</button>
-            <button class="slider-btn" onclick="nextSlide()">Next</button>
+        <div class="navigation-slider">
+            <button class="navigation-slide" onclick="goToSlide(0)">1</button>
+            <button class="navigation-slide" onclick="goToSlide(1)">2</button>
+            <button class="navigation-slide" onclick="goToSlide(2)">3</button>
         </div>
         <div class="email">
             <p>ezphoenixyt@gmail.com</p>
@@ -201,45 +204,10 @@
         let currentSlide = 0;
         const slideWidth = document.querySelector('.slide').offsetWidth;
 
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % document.querySelectorAll('.slide').length;
-            sliderContainer.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+        function goToSlide(slideIndex) {
+            sliderContainer.style.transform = `translateX(-${slideIndex * slideWidth}px)`;
+            currentSlide = slideIndex;
         }
-
-        function previousSlide() {
-            currentSlide = (currentSlide - 1 + document.querySelectorAll('.slide').length) % document.querySelectorAll('.slide').length;
-            sliderContainer.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
-        }
-
-        // Add event listeners for sliding (you can use touch events for mobile)
-        sliderContainer.addEventListener('touchstart', (event) => {
-            const touchStartX = event.touches[0].clientX;
-            let touchEndX;
-
-            sliderContainer.addEventListener('touchmove', (event) => {
-                event.preventDefault();
-                touchEndX = event.touches[0].clientX;
-            });
-
-            sliderContainer.addEventListener('touchend', () => {
-                if (touchEndX > touchStartX) {
-                    previousSlide();
-                } else if (touchEndX < touchStartX) {
-                    nextSlide();
-                }
-            });
-        });
-
-        const prevBtn = document.querySelector('.slider-btn:nth-of-type(1)');
-        const nextBtn = document.querySelector('.slider-btn:nth-of-type(2)');
-
-        prevBtn.addEventListener('click', () => {
-            previousSlide();
-        });
-
-        nextBtn.addEventListener('click', () => {
-            nextSlide();
-        });
     </script>
 </body>
 </html>
