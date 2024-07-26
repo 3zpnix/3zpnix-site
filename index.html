@@ -1,4 +1,4 @@
-so I got the text sentence to appear but the h1 didnt. here's the updated code: <!DOCTYPE html>
+Hello, I want to darken the bg.jpg in the background, heres the code: <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -20,16 +20,8 @@ so I got the text sentence to appear but the h1 didnt. here's the updated code: 
             color: black;
             padding: 10px;
             position: relative; /* Ensure relative positioning */
-        }
-        .background-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
             background-image: url("images/bg.jpg"); /* Replace 'your-background-image.jpg' with the actual name of your image file */
-            background-size: cover; /* Make the background image cover the div */
-            filter: brightness(0.5); /* Adjust the brightness value to darken the image */
+            background-size: cover; /* Make the background image cover the header area */
         }
         .site-logo {
             position: absolute; /* Position logo relative to header */
@@ -40,21 +32,8 @@ so I got the text sentence to appear but the h1 didnt. here's the updated code: 
             height: 100px; /* Set height equal to width for a circular shape */
     border-radius: 50%; /* Create a circular border */
         }
-        }
-        h1.name-sentence {
-            padding: 10px;
-            position: relative; /* Ensure relative positioning */
+        h1 {
             margin-top: 120px; /* Add margin to the title to prevent overlap */
-            /* Add z-index to bring the text to the front */
-            z-index: 1; 
-        }
-        p.text-sentence {
-            padding: 10px;
-            position: relative; /* Ensure relative positioning */
-            margin-top: 10px; /* Add margin to the text sentence */
-            font-size: 16px; /* Set the font size of the text */
-            /* Add z-index to bring the text to the front */
-            z-index: 1; 
         }
         nav {
             background-color: #333;
@@ -112,10 +91,6 @@ so I got the text sentence to appear but the h1 didnt. here's the updated code: 
             font-size: 14px;
             margin-top: 20px;
         }
-        .name-sentence {
-            margin-top: 10px; /* Add margin to the text sentence */
-            font-size: 16px; /* Set the font size of the text */
-        }
         .text-sentence {
             margin-top: 10px; /* Add margin to the text sentence */
             font-size: 16px; /* Set the font size of the text */
@@ -124,9 +99,8 @@ so I got the text sentence to appear but the h1 didnt. here's the updated code: 
 </head>
 <body>
     <header>
-        <div class="background-image"></div> <!-- Div for the background image -->
         <img src="images/eye.gif" alt="Logo" class="site-logo"> <!-- Site Logo here -->
-        <h1 class="name-sentence">EZPNIX</h1>
+        <h1>EZPNIX</h1>
         <p class="text-sentence">❝ the unknown is your ally and enemy ❞</p> <!-- Text sentence below the title -->
     </header>
     <nav>
