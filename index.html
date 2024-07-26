@@ -59,13 +59,14 @@
             background-color: black;
             border-radius: 5px;
             position: relative;
+            overflow-x: auto; /* Enable horizontal scrolling */
         }
         .slider-container {
-            display: flex;
-            white-space: nowrap;
+            display: flex; /* Use flexbox for horizontal layout */
+            white-space: nowrap; /* Prevent wrapping */
         }
         .slide {
-            flex: 0 0 33.33%;
+            flex: 0 0 33.33%; /* Adjust for the number of articles per slide */
             text-align: center;
             padding: 10px;
         }
@@ -83,11 +84,17 @@
         h2, p {
             color: white;
         }
-        .email {
-            font-size: 18px;
+        .social-icons {
             margin-top: 20px;
         }
-        .social-icons {
+        .social-icons a {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            margin: 0 10px;
+        }
+        .email {
+            font-size: 18px;
             margin-top: 20px;
         }
         .copyright {
@@ -98,9 +105,9 @@
             margin-top: 10px; 
             font-size: 16px; 
         }
-        .extra-info {
-            margin-top: 50px;
+        .footer-info {
             text-align: center;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -163,7 +170,7 @@
             </div>
         </div>
     </main>
-    <div class="extra-info">
+    <div class="footer-info">
         <div class="email">
             <p>ezphoenixyt@gmail.com</p>
         </div>
