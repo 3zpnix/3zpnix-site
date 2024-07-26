@@ -38,10 +38,66 @@
             transform: translateX(-50%); /* Center the logo horizontally */
             width: 100px; /* Adjust the width of the logo */
             height: 100px; /* Set height equal to width for a circular shape */
-            border-radius: 50%; /* Create a circular border */
+    border-radius: 50%; /* Create a circular border */
         }
         h1 {
             margin-top: 120px; /* Add margin to the title to prevent overlap */
+        }
+        nav {
+            background-color: #333;
+            text-align: center;
+            padding: 10px 0;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0 15px;
+            font-size: 16px; /* Set initial font size */
+            transition: transform 0.3s, color 0.3s, font-size 0.3s;
+        }
+        nav a:hover {
+            transform: scale(1.05);
+            color: #ffcc00; /* Change text color on hover */
+            font-size: 18px; /* Change font size on hover */
+        }
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: black; /* Change background color to black */
+            border-radius: 5px;
+            position: relative; /* Ensure relative positioning */
+        }
+        article {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        article:hover {
+            transform: scale(1.05);
+        }
+        h2, p {
+            color: white;
+        }
+        .social-icons {
+            margin-top: 20px;
+        }
+        .social-icons a {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            margin: 0 10px;
+        }
+        .email {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        .copyright {
+            font-size: 14px;
+            margin-top: 20px;
         }
         .text-sentence {
             margin-top: 10px; /* Add margin to the text sentence */
@@ -56,5 +112,39 @@
         <h1>EZPNIX</h1>
         <p class="text-sentence">❝ the unknown is your ally and enemy ❞</p> <!-- Text sentence below the title -->
     </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="archive.html">Archive</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    <main>
+        <article onclick="window.location.href='article1.html'">
+            <h2>Blog Post Title 1</h2>
+            <p>This is a sample blog post. Click to read more...</p>
+        </article>
+        <article onclick="window.location.href='article2.html'">
+            <h2>Blog Post Title 2</h2>
+            <p>Here's another sample blog post. Click to read more...</p>
+        </article>
+        <article onclick="window.location.href='article3.html'">
+            <h2>Blog Post Title 3</h2>
+            <p>Here's another sample blog post. Click to read more...</p>
+        </article>
+        
+        <div class="email">
+            <p>ezphoenixyt@gmail.com</p>
+        </div>
+        
+        <div class="social-icons">
+            <a href="https://www.youtube.com"><i class="fab fa-youtube"></i></a> <!-- YouTube Icon -->
+            <a href="https://www.twitter.com"><i class="fab fa-twitter"></i></a> <!-- Twitter Icon -->
+            <a href="https://www.facebook.com"><i class="fab fa-facebook"></i></a> <!-- Facebook Icon -->
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2024 EZPNIX. All Rights Reserved.</p>
+        </div>
+    </main>
 </body>
 </html> 
