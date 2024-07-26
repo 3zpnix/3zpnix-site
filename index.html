@@ -59,14 +59,13 @@
             background-color: black;
             border-radius: 5px;
             position: relative;
-            overflow-x: auto; /* Enable horizontal scrolling */
         }
         .slider-container {
-            display: flex; /* Use flexbox for horizontal layout */
-            white-space: nowrap; /* Prevent wrapping */
+            display: flex;
+            white-space: nowrap;
         }
         .slide {
-            flex: 0 0 33.33%; /* Adjust for the number of articles per slide */
+            flex: 0 0 33.33%;
             text-align: center;
             padding: 10px;
         }
@@ -85,34 +84,23 @@
             color: white;
         }
         .email {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 10px;
-            background-color: black;
+            font-size: 18px;
+            margin-top: 20px;
         }
         .social-icons {
-            position: fixed;
-            bottom: 50px;
-            right: 10px;
-        }
-        .social-icons a {
-            color: white;
-            text-decoration: none;
-            font-size: 24px;
-            margin: 0 10px;
+            margin-top: 20px;
         }
         .copyright {
-            position: fixed;
-            bottom: 0;
-            right: 0;
-            padding: 10px;
-            background-color: black;
+            font-size: 14px;
+            margin-top: 20px;
         }
         .text-sentence {
             margin-top: 10px; 
             font-size: 16px; 
+        }
+        .extra-info {
+            margin-top: 50px;
+            text-align: center;
         }
     </style>
 </head>
@@ -175,16 +163,18 @@
             </div>
         </div>
     </main>
-    <div class="email">
-        <p>ezphoenixyt@gmail.com</p>
-    </div>
-    <div class="social-icons">
-        <a href="https://www.youtube.com"><i class="fab fa-youtube"></i></a>
-        <a href="https://www.twitter.com"><i class="fab fa-twitter"></i></a>
-        <a href="https://www.facebook.com"><i class="fab fa-facebook"></i></a>
-    </div>
-    <div class="copyright">
-        <p>&copy; 2024 EZPNIX. All Rights Reserved.</p>
+    <div class="extra-info">
+        <div class="email">
+            <p>ezphoenixyt@gmail.com</p>
+        </div>
+        <div class="social-icons">
+            <a href="https://www.youtube.com"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.twitter.com"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.facebook.com"><i class="fab fa-facebook"></i></a>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 EZPNIX. All Rights Reserved.</p>
+        </div>
     </div>
 </body>
 </html>
