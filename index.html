@@ -67,9 +67,10 @@
             overflow-x: auto; /* Enable horizontal scrolling */
         }
         .slide {
-            flex: 0 0 33.33%; /* Adjust for the number of articles per slide */
+            flex: 0 0 100%; /* Make each slide take up the full width */
             text-align: center;
             padding: 10px;
+            min-width: 100%; /* Ensure each slide takes up the full width */
         }
         article {
             margin-bottom: 20px;
@@ -132,10 +133,14 @@
                     <h2>Blog Post Title 1</h2>
                     <p>This is a sample blog post. Click to read more...</p>
                 </article>
+            </div>
+            <div class="slide">
                 <article onclick="window.location.href='article2.html'">
                     <h2>Blog Post Title 2</h2>
                     <p>Here's another sample blog post. Click to read more...</p>
                 </article>
+            </div>
+            <div class="slide">
                 <article onclick="window.location.href='article3.html'">
                     <h2>Blog Post Title 3</h2>
                     <p>Here's another sample blog post. Click to read more...</p>
@@ -146,10 +151,14 @@
                     <h2>Blog Post Title 4</h2>
                     <p>This is a sample blog post. Click to read more...</p>
                 </article>
+            </div>
+            <div class="slide">
                 <article onclick="window.location.href='article5.html'">
                     <h2>Blog Post Title 5</h2>
                     <p>Here's another sample blog post. Click to read more...</p>
                 </article>
+            </div>
+            <div class="slide">
                 <article onclick="window.location.href='article6.html'">
                     <h2>Blog Post Title 6</h2>
                     <p>Here's another sample blog post. Click to read more...</p>
@@ -160,10 +169,14 @@
                     <h2>Blog Post Title 7</h2>
                     <p>This is a sample blog post. Click to read more...</p>
                 </article>
+            </div>
+            <div class="slide">
                 <article onclick="window.location.href='article8.html'">
                     <h2>Blog Post Title 8</h2>
                     <p>Here's another sample blog post. Click to read more...</p>
                 </article>
+            </div>
+            <div class="slide">
                 <article onclick="window.location.href='article9.html'">
                     <h2>Blog Post Title 9</h2>
                     <p>Here's another sample blog post. Click to read more...</p>
@@ -184,35 +197,5 @@
             <p>&copy; 2024 EZPNIX. All Rights Reserved.</p>
         </div>
     </div>
-    <script>
-        // JavaScript to handle the carousel effect
-        const sliderContainer = document.querySelector('.slider-container');
-        let currentSlide = 0;
-
-        // Function to move to the next slide
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % sliderContainer.children.length;
-            sliderContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
-        }
-
-        // Function to move to the previous slide
-        function previousSlide() {
-            currentSlide = (currentSlide - 1 + sliderContainer.children.length) % sliderContainer.children.length;
-            sliderContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
-        }
-
-        // Add event listeners for scrolling
-        sliderContainer.addEventListener('scroll', () => {
-            const scrollPosition = sliderContainer.scrollLeft;
-            if (scrollPosition > sliderContainer.offsetWidth * 0.66) {
-                nextSlide();
-            } else if (scrollPosition < sliderContainer.offsetWidth * 0.33) {
-                previousSlide();
-            }
-        });
-
-        // Initial setup (start at the first slide)
-        sliderContainer.style.transform = 'translateX(0)';
-    </script>
 </body>
 </html>
