@@ -62,14 +62,13 @@
         }
         .slider-container {
             overflow: hidden;
-            width: 100%; /* Adjust as needed */
-            white-space: nowrap; /* Prevent wrapping */
-            display: inline-block; /* Allow horizontal scrolling */
-            transition: transform 0.5s ease; /* Adding transition for smooth sliding */
+            width: 100%; 
+            white-space: nowrap; 
+            display: inline-block; 
         }
         .slide {
-            display: inline-block; /* Allow inline-block elements to be positioned next to each other */
-            width: 33.33%; /* Adjust for the number of articles per slide */
+            display: inline-block; 
+            width: 33.33%; 
             text-align: center;
             padding: 10px;
         }
@@ -107,6 +106,19 @@
         .text-sentence {
             margin-top: 10px; 
             font-size: 16px; 
+        }
+        .slider-navigation {
+            margin-top: 20px;
+        }
+
+        .slider-btn {
+            cursor: pointer;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
         }
     </style>
 </head>
@@ -168,6 +180,10 @@
                 </article>
             </div>
         </div>
+        <div class="slider-navigation">
+            <button class="slider-btn" onclick="previousSlide()">Previous</button>
+            <button class="slider-btn" onclick="nextSlide()">Next</button>
+        </div>
         <div class="email">
             <p>ezphoenixyt@gmail.com</p>
         </div>
@@ -183,29 +199,47 @@
     <script>
         const sliderContainer = document.querySelector('.slider-container');
         let currentSlide = 0;
-        const slideWidth = document.querySelector('.slide').offsetWidth * 3; // Adjusted for three articles
-        let autoSlideInterval; // Variable to store the interval for auto-sliding
+        const slideWidth = document.querySelector('.slide').offsetWidth;
 
         function nextSlide() {
-            currentSlide = (currentSlide + 1) % (document.querySelectorAll('.slide').length - 2); // Subtract 2 for 3 articles per slide
+            currentSlide = (currentSlide + 1) % document.querySelectorAll('.slide').length;
             sliderContainer.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
         }
 
-        function startAutoSlide() {
-            autoSlideInterval = setInterval(() => {
-                nextSlide();
-            }, 5000); // Adjust the interval duration (in milliseconds) as needed
+        function previousSlide() {
+            currentSlide = (currentSlide - 1 + document.querySelectorAll('.slide').length) % document.querySelectorAll('.slide').length;
+            sliderContainer.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
         }
 
-        function stopAutoSlide() {
-            clearInterval(autoSlideInterval);
-        }
+        // Add event listeners for sliding (you can use touch events for mobile)
+        sliderContainer.addEventListener('touchstart', (event) => {
+            const touchStartX = event.touches[0].clientX;
+            let touchEndX;
 
-        startAutoSlide(); // Start auto-sliding when the page loads
+            sliderContainer.addEventListener('touchmove', (event) => {
+                event.preventDefault();
+                touchEndX = event.touches[0].clientX;
+            });
 
-        // Add event listeners for pausing auto-slide on user interaction
-        sliderContainer.addEventListener('mouseover', stopAutoSlide);
-        sliderContainer.addEventListener('mouseout', startAutoSlide);
+            sliderContainer.addEventListener('touchend', () => {
+                if (touchEndX > touchStartX) {
+                    previousSlide();
+                } else if (touchEndX < touchStartX) {
+                    nextSlide();
+                }
+            });
+        });
+
+        const prevBtn = document.querySelector('.slider-btn:nth-of-type(1)');
+        const nextBtn = document.querySelector('.slider-btn:nth-of-type(2)');
+
+        prevBtn.addEventListener('click', () => {
+            previousSlide();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            nextSlide();
+        });
     </script>
 </body>
 </html>
