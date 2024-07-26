@@ -82,6 +82,20 @@
     transition: transform 0.3s;
     width: 500px; /* Adjust the width of the article */
 }
+
+/* Styles for smaller screens (example for screens smaller than 768px) */
+@media (max-width: 768px) {
+    article {
+        width: 90%; /* Make the article take up 90% of the screen width */
+    }
+}
+
+/* Styles for even smaller screens (example for screens smaller than 480px) */
+@media (max-width: 480px) {
+    article {
+        width: 95%; /* Make the article take up 95% of the screen width */
+    }
+}
         article:hover {
             transform: scale(1.05);
         }
