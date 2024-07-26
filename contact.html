@@ -18,6 +18,23 @@
             padding: 10px;
             text-align: center;
         }
+        nav {
+            background-color: #333;
+            text-align: center;
+            padding: 10px 0;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0 15px;
+            font-size: 16px; /* Set initial font size */
+            transition: transform 0.3s, color 0.3s, font-size 0.3s;
+        }
+        nav a:hover {
+            transform: scale(1.05);
+            color: #ffcc00; /* Change text color on hover */
+            font-size: 18px; /* Change font size on hover */
+        }
         h1 {
             margin: 0;
             padding: 20px 0;
@@ -35,6 +52,12 @@
 <body>
     <header>
         <h1>Welcome to Your Website</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="archive.html">Archive</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
     </header>
     <div class="container">
         <p>This is a sample dark and elegant homepage design. Feel free to customize it further to suit your preferences.</p>
