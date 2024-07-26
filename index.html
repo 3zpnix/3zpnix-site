@@ -81,6 +81,7 @@
             cursor: pointer;
             transition: transform 0.3s;
             width: 450px; /* Adjust the width of the article */
+            overflow: hidden; /* Prevent text from overflowing */
 }
 
 /* Styles for smaller screens (example for screens smaller than 768px) */
@@ -101,6 +102,9 @@
         }
         h2, p {
             color: white;
+            overflow: hidden; /* Prevent text from overflowing */
+            text-overflow: ellipsis; /* Add an ellipsis (...) if text overflows */
+            white-space: nowrap; /* Prevent text from wrapping */
         }
         .social-icons {
             margin-top: 20px;
