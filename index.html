@@ -59,16 +59,14 @@
             background-color: black;
             border-radius: 5px;
             position: relative;
+            overflow-x: auto; /* Enable horizontal scrolling */
         }
         .slider-container {
-            overflow: hidden;
-            width: 100%; 
-            white-space: nowrap; 
-            display: inline-block; 
+            display: flex; /* Use flexbox for horizontal layout */
+            white-space: nowrap; /* Prevent wrapping */
         }
         .slide {
-            display: inline-block; 
-            width: 33.33%; 
+            flex: 0 0 33.33%; /* Adjust for the number of articles per slide */
             text-align: center;
             padding: 10px;
         }
@@ -106,21 +104,6 @@
         .text-sentence {
             margin-top: 10px; 
             font-size: 16px; 
-        }
-        .navigation-slider {
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-        }
-
-        .navigation-slide {
-            cursor: pointer;
-            padding: 10px 20px;
-            background-color: #333;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            margin-right: 10px;
         }
     </style>
 </head>
@@ -182,11 +165,6 @@
                 </article>
             </div>
         </div>
-        <div class="navigation-slider">
-            <button class="navigation-slide" onclick="goToSlide(0)">1</button>
-            <button class="navigation-slide" onclick="goToSlide(1)">2</button>
-            <button class="navigation-slide" onclick="goToSlide(2)">3</button>
-        </div>
         <div class="email">
             <p>ezphoenixyt@gmail.com</p>
         </div>
@@ -199,15 +177,5 @@
             <p>&copy; 2024 EZPNIX. All Rights Reserved.</p>
         </div>
     </main>
-    <script>
-        const sliderContainer = document.querySelector('.slider-container');
-        let currentSlide = 0;
-        const slideWidth = document.querySelector('.slide').offsetWidth;
-
-        function goToSlide(slideIndex) {
-            sliderContainer.style.transform = `translateX(-${slideIndex * slideWidth}px)`;
-            currentSlide = slideIndex;
-        }
-    </script>
 </body>
 </html>
