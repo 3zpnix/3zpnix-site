@@ -183,35 +183,28 @@
         const sliderContainer = document.querySelector('.slider-container');
         let currentSlide = 0;
         const slideWidth = document.querySelector('.slide').offsetWidth;
+        let autoSlideInterval; // Variable to store the interval for auto-sliding
 
         function nextSlide() {
             currentSlide = (currentSlide + 1) % document.querySelectorAll('.slide').length;
             sliderContainer.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
         }
 
-        function previousSlide() {
-            currentSlide = (currentSlide - 1 + document.querySelectorAll('.slide').length) % document.querySelectorAll('.slide').length;
-            sliderContainer.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(() => {
+                nextSlide();
+            }, 5000); // Adjust the interval duration (in milliseconds) as needed
         }
 
-        // Add event listeners for sliding (you can use touch events for mobile)
-        sliderContainer.addEventListener('touchstart', (event) => {
-            const touchStartX = event.touches[0].clientX;
-            let touchEndX;
+        function stopAutoSlide() {
+            clearInterval(autoSlideInterval);
+        }
 
-            sliderContainer.addEventListener('touchmove', (event) => {
-                event.preventDefault();
-                touchEndX = event.touches[0].clientX;
-            });
+        startAutoSlide(); // Start auto-sliding when the page loads
 
-            sliderContainer.addEventListener('touchend', () => {
-                if (touchEndX > touchStartX) {
-                    previousSlide();
-                } else if (touchEndX < touchStartX) {
-                    nextSlide();
-                }
-            });
-        });
+        // Add event listeners for pausing auto-slide on user interaction
+        sliderContainer.addEventListener('mouseover', stopAutoSlide);
+        sliderContainer.addEventListener('mouseout', startAutoSlide);
     </script>
 </body>
 </html>
