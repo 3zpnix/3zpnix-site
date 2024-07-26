@@ -1,0 +1,7 @@
+.swiper-slide {
+    display: none; /* Initially hide all slides */
+}
+
+.swiper-slide.active {
+    display: block; /* Show the active slide */
+}
