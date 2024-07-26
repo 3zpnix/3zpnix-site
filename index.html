@@ -64,6 +64,7 @@
         .slider-container {
             display: flex; /* Use flexbox for horizontal layout */
             white-space: nowrap; /* Prevent wrapping */
+            overflow-x: auto; /* Enable horizontal scrolling */
         }
         .slide {
             flex: 0 0 33.33%; /* Adjust for the number of articles per slide */
@@ -183,5 +184,35 @@
             <p>&copy; 2024 EZPNIX. All Rights Reserved.</p>
         </div>
     </div>
+    <script>
+        // JavaScript to handle the carousel effect
+        const sliderContainer = document.querySelector('.slider-container');
+        let currentSlide = 0;
+
+        // Function to move to the next slide
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % sliderContainer.children.length;
+            sliderContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        // Function to move to the previous slide
+        function previousSlide() {
+            currentSlide = (currentSlide - 1 + sliderContainer.children.length) % sliderContainer.children.length;
+            sliderContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        // Add event listeners for scrolling
+        sliderContainer.addEventListener('scroll', () => {
+            const scrollPosition = sliderContainer.scrollLeft;
+            if (scrollPosition > sliderContainer.offsetWidth * 0.66) {
+                nextSlide();
+            } else if (scrollPosition < sliderContainer.offsetWidth * 0.33) {
+                previousSlide();
+            }
+        });
+
+        // Initial setup (start at the first slide)
+        sliderContainer.style.transform = 'translateX(0)';
+    </script>
 </body>
 </html>
