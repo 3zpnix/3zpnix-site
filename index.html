@@ -182,11 +182,11 @@
     <script>
         const sliderContainer = document.querySelector('.slider-container');
         let currentSlide = 0;
-        const slideWidth = document.querySelector('.slide').offsetWidth;
+        const slideWidth = document.querySelector('.slide').offsetWidth * 3; // Adjusted for three articles
         let autoSlideInterval; // Variable to store the interval for auto-sliding
 
         function nextSlide() {
-            currentSlide = (currentSlide + 1) % document.querySelectorAll('.slide').length;
+            currentSlide = (currentSlide + 1) % (document.querySelectorAll('.slide').length - 2); // Subtract 2 for 3 articles per slide
             sliderContainer.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
         }
 
