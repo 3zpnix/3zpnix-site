@@ -30,6 +30,11 @@
             background-image: url("images/bg.jpg"); /* Replace 'your-background-image.jpg' with the actual name of your image file */
             background-size: cover; /* Make the background image cover the div */
             filter: brightness(0.5); /* Adjust the brightness value to darken the image */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; /* Center content vertically and horizontally */
+            text-align: center;
         }
         .site-logo {
             position: absolute; /* Position logo relative to header */
@@ -38,23 +43,20 @@
             transform: translateX(-50%); /* Center the logo horizontally */
             width: 100px; /* Adjust the width of the logo */
             height: 100px; /* Set height equal to width for a circular shape */
-    border-radius: 50%; /* Create a circular border */
+            border-radius: 50%; /* Create a circular border */
         }
-        }
-        h1.name {
-            padding: 10px;
-            position: relative; /* Ensure relative positioning */
+        h1 {
             margin-top: 120px; /* Add margin to the title to prevent overlap */
             /* Add z-index to bring the text to the front */
-            z-index: 1; 
+            z-index: 1;
+            color: white; /* Set text color to white */
         }
         p.text-sentence {
-            padding: 10px;
-            position: relative; /* Ensure relative positioning */
             margin-top: 10px; /* Add margin to the text sentence */
             font-size: 16px; /* Set the font size of the text */
             /* Add z-index to bring the text to the front */
-            z-index: 1; 
+            z-index: 1;
+            color: white; /* Set text color to white */
         }
         nav {
             background-color: #333;
@@ -120,10 +122,11 @@
 </head>
 <body>
     <header>
-        <div class="background-image"></div> <!-- Div for the background image -->
-        <img src="images/eye.gif" alt="Logo" class="site-logo"> <!-- Site Logo here -->
-        <h1 class="name">EZPNIX</h1>
-        <p class="text-sentence">❝ the unknown is your ally and enemy ❞</p> <!-- Text sentence below the title -->
+        <div class="background-image">
+            <img src="images/eye.gif" alt="Logo" class="site-logo"> <!-- Site Logo here -->
+            <h1>EZPNIX</h1>
+            <p class="text-sentence">❝ the unknown is your ally and enemy ❞</p> <!-- Text sentence below the title -->
+        </div>
     </header>
     <nav>
         <a href="index.html">Home</a>
@@ -160,4 +163,4 @@
         </div>
     </main>
 </body>
-</html> 
+</html>
