@@ -6,36 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EZPNIX - Official Website</title>
     <link rel="icon" type="image/png" href="images/ezpnix.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> 
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: black; /* Change background color to black */
-            color: white; /* Change text color to white */
-            text-align: center; /* Center align content */
+            background-color: black;
+            color: white;
+            text-align: center;
         }
         header {
             color: black;
             padding: 10px;
-            position: relative; /* Ensure relative positioning */
-            background-image: url("images/bg.jpg"); /* Replace 'your-background-image.jpg' with the actual name of your image file */
-            background-size: cover; /* Make the background image cover the header area */
+            position: relative;
+            background-image: url("images/bg.jpg");
+            background-size: cover;
         }
         .site-logo {
-            position: absolute; /* Position logo relative to header */
-            top: 20px; /* Adjust vertical position of the logo */
-            left: 50%; /* Center the logo horizontally */
-            transform: translateX(-50%); /* Center the logo horizontally */
-            width: 100px; /* Adjust the width of the logo */
-            height: 100px; /* Set height equal to width for a circular shape */
-    border-radius: 50%; /* Create a circular border */
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
         }
         h1 {
-            margin-top: 120px; /* Add margin to the title to prevent overlap */
+            margin-top: 120px;
         }
         nav {
             background-color: #333;
@@ -46,21 +44,33 @@
             color: white;
             text-decoration: none;
             padding: 0 15px;
-            font-size: 16px; /* Set initial font size */
+            font-size: 16px;
             transition: transform 0.3s, color 0.3s, font-size 0.3s;
         }
         nav a:hover {
             transform: scale(1.05);
-            color: #ffcc00; /* Change text color on hover */
-            font-size: 18px; /* Change font size on hover */
+            color: #ffcc00;
+            font-size: 18px;
         }
         main {
             max-width: 800px;
             margin: 20px auto;
             padding: 10px;
-            background-color: black; /* Change background color to black */
+            background-color: black;
             border-radius: 5px;
-            position: relative; /* Ensure relative positioning */
+            position: relative;
+        }
+        .slider-container {
+            overflow: hidden;
+            width: 100%; /* Adjust as needed */
+            white-space: nowrap; /* Prevent wrapping */
+            display: inline-block; /* Allow horizontal scrolling */
+        }
+        .slide {
+            display: inline-block; /* Allow inline-block elements to be positioned next to each other */
+            width: 33.33%; /* Adjust for the number of articles per slide */
+            text-align: center;
+            padding: 10px;
         }
         article {
             margin-bottom: 20px;
@@ -94,16 +104,17 @@
             margin-top: 20px;
         }
         .text-sentence {
-            margin-top: 10px; /* Add margin to the text sentence */
-            font-size: 16px; /* Set the font size of the text */
+            margin-top: 10px; 
+            font-size: 16px; 
         }
     </style>
 </head>
 <body>
     <header>
-        <img src="images/eye.gif" alt="Logo" class="site-logo"> <!-- Site Logo here -->
+        <img src="images/eye.gif" alt="Logo" class="site-logo">
         <h1>EZPNIX</h1>
-        <p class="text-sentence">❝ embrace uncertainty⫘discover potential ❞</p> <!-- Text sentence below the title -->
+        <p class="text-sentence">❝ embrace uncertainty 
+            discover potential ❞</p>
     </header>
     <nav>
         <a href="index.html">Home</a>
@@ -112,9 +123,8 @@
         <a href="contact.html">Contact</a>
     </nav>
     <main>
-    <div class="swiper-container">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide active">
+        <div class="slider-container">
+            <div class="slide">
                 <article onclick="window.location.href='article1.html'">
                     <h2>Blog Post Title 1</h2>
                     <p>This is a sample blog post. Click to read more...</p>
@@ -128,10 +138,10 @@
                     <p>Here's another sample blog post. Click to read more...</p>
                 </article>
             </div>
-            <div class="swiper-slide">
+            <div class="slide">
                 <article onclick="window.location.href='article4.html'">
                     <h2>Blog Post Title 4</h2>
-                    <p>Here's another sample blog post. Click to read more...</p>
+                    <p>This is a sample blog post. Click to read more...</p>
                 </article>
                 <article onclick="window.location.href='article5.html'">
                     <h2>Blog Post Title 5</h2>
@@ -142,10 +152,10 @@
                     <p>Here's another sample blog post. Click to read more...</p>
                 </article>
             </div>
-            <div class="swiper-slide">
+            <div class="slide">
                 <article onclick="window.location.href='article7.html'">
                     <h2>Blog Post Title 7</h2>
-                    <p>Here's another sample blog post. Click to read more...</p>
+                    <p>This is a sample blog post. Click to read more...</p>
                 </article>
                 <article onclick="window.location.href='article8.html'">
                     <h2>Blog Post Title 8</h2>
@@ -157,22 +167,51 @@
                 </article>
             </div>
         </div>
-    </div>
-</main>
-    <main>
         <div class="email">
             <p>ezphoenixyt@gmail.com</p>
         </div>
-        
         <div class="social-icons">
-            <a href="https://www.youtube.com"><i class="fab fa-youtube"></i></a> <!-- YouTube Icon -->
-            <a href="https://www.twitter.com"><i class="fab fa-twitter"></i></a> <!-- Twitter Icon -->
-            <a href="https://www.facebook.com"><i class="fab fa-facebook"></i></a> <!-- Facebook Icon -->
+            <a href="https://www.youtube.com"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.twitter.com"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.facebook.com"><i class="fab fa-facebook"></i></a>
         </div>
-        
         <div class="copyright">
             <p>&copy; 2024 EZPNIX. All Rights Reserved.</p>
         </div>
     </main>
+    <script>
+        const sliderContainer = document.querySelector('.slider-container');
+        let currentSlide = 0;
+        const slideWidth = document.querySelector('.slide').offsetWidth;
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % document.querySelectorAll('.slide').length;
+            sliderContainer.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+        }
+
+        function previousSlide() {
+            currentSlide = (currentSlide - 1 + document.querySelectorAll('.slide').length) % document.querySelectorAll('.slide').length;
+            sliderContainer.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+        }
+
+        // Add event listeners for sliding (you can use touch events for mobile)
+        sliderContainer.addEventListener('touchstart', (event) => {
+            const touchStartX = event.touches[0].clientX;
+            let touchEndX;
+
+            sliderContainer.addEventListener('touchmove', (event) => {
+                event.preventDefault();
+                touchEndX = event.touches[0].clientX;
+            });
+
+            sliderContainer.addEventListener('touchend', () => {
+                if (touchEndX > touchStartX) {
+                    previousSlide();
+                } else if (touchEndX < touchStartX) {
+                    nextSlide();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
