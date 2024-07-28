@@ -12,39 +12,44 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            perspective: 1000px; /* Add perspective for 3D effect */
         }
+
         header {
             background-color: #222;
             padding: 10px;
             text-align: center;
+            position: relative; /* Position header for animation */
         }
+
+        h1 {
+            margin: 0;
+            padding: 20px 0;
+            transform-style: preserve-3d; /* Enable 3D transformations */
+            transition: transform 1s ease-in-out; /* Add transition for smooth animation */
+        }
+
+        h1.flip-left {
+            transform: rotateY(90deg); /* Initially rotate the title 90 degrees */
+        }
+
+        h1.flip-left.active {
+            transform: rotateY(0deg); /* Rotate back to 0 degrees on animation */
+        }
+
         .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
         }
-        h1 {
-            margin: 0;
-            padding: 20px 0;
-            opacity: 0; /* Initially hide the text */
-            animation: textReveal 3s forwards; /* Add animation */
-        }
-        @keyframes textReveal {
-            0% {
-                opacity: 0;
-                transform: translateX(-50px); /* Move text offscreen */
-            }
-            100% {
-                opacity: 1;
-                transform: translateX(0); /* Move text back to position */
-            }
-        }
+
         nav {
             background-color: #333;
             text-align: center;
             padding: 10px 0;
             border-radius: 15px;
         }
+
         nav a {
             color: white;
             text-decoration: none;
@@ -52,14 +57,17 @@
             font-size: 16px; /* Set initial font size */
             transition: transform 0.3s, color 0.3s, font-size 0.3s;
         }
+
         nav a:hover {
             transform: scale(1.05);
             color: #ffcc00; /* Change text color on hover */
             font-size: 18px; /* Change font size on hover */
         }
+
         p {
             line-height: 1.6;
         }
+
         a {
             color: #fff;
             text-decoration: underline;
@@ -68,13 +76,13 @@
 </head>
 <body>
     <header>
-        <h1>Archive Page</h1>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="archive.html">Archive</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-    </nav>
+        <h1 class="flip-left">Archive Page</h1> 
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="archive.html">Archive</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
     </header>
     <div class="container">
         <p>Welcome to our Archive Page. Here are some useful links:</p>
@@ -84,5 +92,14 @@
             <li><a href="https://www.example.com/archive3">Archive Link 3</a></li>
         </ul>
     </div>
+
+    <script>
+        // Add class 'active' to the h1 element after a short delay
+        window.onload = function() {
+            setTimeout(function() {
+                document.querySelector('h1').classList.add('active');
+            }, 100); 
+        };
+    </script>
 </body>
 </html>
