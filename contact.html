@@ -12,17 +12,28 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            perspective: 1000px; /* Add perspective for 3D effect */
         }
         header {
             background-color: #222;
             padding: 10px;
             text-align: center;
+            position: relative; /* Position header for animation */
+            overflow: hidden; /* Hide content that overflows */
         }
         nav {
             background-color: #333;
             text-align: center;
             padding: 10px 0;
             border-radius: 15px; /* Rounded border edges */
+            transform-style: preserve-3d; /* Enable 3D transformations */
+            transition: transform 1s ease-in-out; /* Add transition for smooth animation */
+        }
+        nav.flip-left {
+            transform: rotateY(90deg); /* Initially rotate the title 90 degrees */
+        }
+        nav.flip-left.active {
+            transform: rotateY(0deg); /* Rotate back to 0 degrees on animation */
         }
         nav a {
             color: white;
@@ -39,6 +50,13 @@
         h1 {
             margin: 0;
             padding: 20px 0;
+            opacity: 0; /* Initially hide the heading */
+            transform: translateY(20px); /* Move heading up by 20px */
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Add transition for smooth animation */
+        }
+        h1.active {
+            opacity: 1; /* Show the heading on animation */
+            transform: translateY(0); /* Move heading back to its original position */
         }
         .container {
             max-width: 1200px;
@@ -62,12 +80,12 @@
 <body>
     <header>
         <h1>Contact Me</h1>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="archive.html">Archive</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-    </nav>
+        <nav class="flip-left">
+            <a href="index.html">Home</a>
+            <a href="archive.html">Archive</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
     </header>
     <div class="container">
         </ul>
@@ -79,5 +97,15 @@
         <h2>For Business Inquiries:</h2>
         <p>ezphoenixyt@gmail.com</p>
     </div>
+
+    <script>
+        // Add class 'active' to the h1 element after a short delay
+        window.onload = function() {
+            setTimeout(function() {
+                document.querySelector('nav').classList.add('active');
+                document.querySelector('h1').classList.add('active');
+            }, 100); 
+        };
+    </script>
 </body>
 </html>
