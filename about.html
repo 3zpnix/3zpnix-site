@@ -22,17 +22,16 @@
             overflow: hidden; /* Hide content that overflows */
         }
         .container {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
             text-align: center; /* Center align all content within the container */
             opacity: 0; /* Initially hide the container */
-            transform: translateY(20px); /* Move container up by 20px */
-            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Add transition for smooth animation */
+            transition: opacity 1s ease-in; /* Add transition for fade-in effect */
         }
         .container.active {
             opacity: 1; /* Show the container on animation */
-            transform: translateY(0); /* Move container back to its original position */
+
         }
         h1 {
             margin: 0;
