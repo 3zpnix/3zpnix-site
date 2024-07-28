@@ -92,10 +92,11 @@
             border: 1px solid #ddd;
             border-radius: 5px;
             cursor: pointer;
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s; /* Add box-shadow transition */
             width: 450px; /* Adjust the width of the article */
             overflow: hidden; /* Prevent text from overflowing */
-}
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add initial shadow */
+        }
 
 /* Styles for smaller screens (example for screens smaller than 768px) */
 @media (max-width: 450px) {
@@ -112,6 +113,9 @@
 }
         article:hover {
             transform: scale(1.05);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4); /* Increase shadow on hover */
+            background-color: rgba(255, 255, 255, 0.1); /* Change background to white on hover */
+            color: black; /* Change text color to black on hover */
         }
         h2, p {
             color: white;
@@ -246,9 +250,9 @@
             <p>ezphoenixyt@gmail.com</p>
         </div>
         <div class="social-icons">
-            <a href="https://www.youtube.com"><i class="fab fa-youtube"></i></a>
-            <a href="https://www.twitter.com"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.facebook.com"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.youtube.com/@ezpnix"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.twitter.com/@ezpnix"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.facebook.com/@ezpnix"><i class="fab fa-facebook"></i></a>
         </div>
         <div class="copyright">
             <p>&copy; 2024 EZPNIX. All Rights Reserved.</p>
