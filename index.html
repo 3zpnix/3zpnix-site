@@ -34,6 +34,19 @@
         }
         h1 {
             margin-top: 120px;
+            font-size: 40px; /* Adjust font size for the initial state */
+            opacity: 0; /* Initially hidden */
+        }
+        h1.animated {
+            opacity: 1; /* Make visible after animation */
+        }
+        h1 span {
+            display: inline-block;
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Add transitions */
+            opacity: 0; /* Initially hidden */
+        }
+        h1 span.animated {
+            opacity: 1; /* Make visible after animation */
         }
         nav {
             background-color: #333;
@@ -130,6 +143,28 @@
             font-size: 14px;
             margin-top: 20px;
         }
+        .shining-text {
+            font-size: 16px;
+            color: white;
+            position: relative;
+            animation: shine 3s infinite; /* Set the animation properties */
+            margin-top: -20px;
+            margin-bottom: 5px;
+        }
+        @keyframes shine {
+            0% {
+                color: white; /* Start with white color */
+                text-shadow: 0 0 10px white; /* Add a white shadow */
+            }
+            50% {
+                color: #ffcc00; /* Change color to a shining yellow */
+                text-shadow: 0 0 20px #ffcc00; /* Increase shadow size */
+            }
+            100% {
+                color: white; /* Return to white color */
+                text-shadow: 0 0 10px white; /* Decrease shadow size */
+            }
+        }
         .text-sentence {
             margin-top: 10px; 
             font-size: 16px; 
@@ -143,9 +178,16 @@
 <body>
     <header>
         <img src="images/eye.gif" alt="Logo" class="site-logo">
-        <h1>EZPNIX</h1>
-        <p class="text-sentence">❝ embrace uncertainty 
-            discover potential ❞</p>
+        <h1 id="animated-title">
+            <span>E</span>
+            <span>Z</span>
+            <span>P</span>
+            <span>N</span>
+            <span>I</span>
+            <span>X</span>
+        </h1>
+        <p class="shining-text">❝ embrace uncertainty discover potential ❞</p>
+    </header>
     </header>
     <nav>
         <a href="index.html">Home</a>
@@ -204,13 +246,30 @@
             <p>ezphoenixyt@gmail.com</p>
         </div>
         <div class="social-icons">
-            <a href="https://www.youtube.com/@ezpnix"><i class="fab fa-youtube"></i></a>
-            <a href="https://www.twitter.com/@ezpnix"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.facebook.com/@ezpnix"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.youtube.com"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.twitter.com"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.facebook.com"><i class="fab fa-facebook"></i></a>
         </div>
         <div class="copyright">
             <p>&copy; 2024 EZPNIX. All Rights Reserved.</p>
         </div>
     </div>
+
+    <script>
+        const title = document.getElementById('animated-title');
+        const spans = title.querySelectorAll('span');
+
+        function animateTitle() {
+            title.classList.add('animated');
+            spans.forEach((span, index) => {
+                setTimeout(() => {
+                    span.classList.add('animated');
+                    span.style.transform = 'scale(1.2)'; // Increase size
+                }, index * 100); // Adjust delay for each letter
+            });
+        }
+
+        window.addEventListener('load', animateTitle); // Start animation on page load
+    </script>
 </body>
 </html>
