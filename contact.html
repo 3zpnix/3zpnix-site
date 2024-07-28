@@ -63,6 +63,11 @@
             margin: 0 auto;
             padding: 20px;
             text-align: center; /* Center align all content within the container */
+            opacity: 0; /* Initially hide the container */
+            transition: opacity 1s ease-in; /* Add transition for fade-in effect */
+        }
+        .container.active {
+            opacity: 1; /* Show the container on animation */
         }
         p {
             line-height: 1.6;
@@ -104,6 +109,7 @@
             setTimeout(function() {
                 document.querySelector('nav').classList.add('active');
                 document.querySelector('h1').classList.add('active');
+                document.querySelector('.container').classList.add('active');
             }, 100); 
         };
     </script>
