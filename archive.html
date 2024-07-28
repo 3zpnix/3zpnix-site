@@ -26,6 +26,18 @@
         h1 {
             margin: 0;
             padding: 20px 0;
+            opacity: 0; /* Initially hide the text */
+            animation: textReveal 3s forwards; /* Add animation */
+        }
+        @keyframes textReveal {
+            0% {
+                opacity: 0;
+                transform: translateX(-50px); /* Move text offscreen */
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0); /* Move text back to position */
+            }
         }
         nav {
             background-color: #333;
