@@ -23,14 +23,27 @@
             background-image: url("images/bg.jpg");
             background-size: cover;
         }
+        /* Apply the animation to the site logo */
         .site-logo {
             position: absolute;
             top: 20px;
-            left: 50%;
+            left: 46%;
             transform: translateX(-50%);
             width: 100px;
             height: 100px;
             border-radius: 50%;
+            animation: pulseLogo 1.5s ease-in-out infinite; /* Apply the pulse animation */
+        }
+        @keyframes pulseLogo {
+            0% {
+                transform: scale(1); /* Start at normal size */
+            }
+            50% {
+                transform: scale(1.1); /* Expand slightly */
+            }
+            100% {
+                transform: scale(1); /* Return to normal size */
+            }
         }
         h1 {
             margin-top: 120px;
