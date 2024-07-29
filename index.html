@@ -186,36 +186,6 @@
                 opacity: 1;
             }
         }
-        /* Pop-up announcement styles */
-        .announcement-popup {
-        position: fixed;
-        top: 65%;
-        left: 10%;
-        transform: translate(-50%, -50%);
-        background-color: #fff;
-        padding: 20px; /* Adjust padding to increase space inside the box */
-        max-width: 25%; /* Adjust the width of the box */
-        height: 400px; /* Adjust the height of the box */
-        border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-        z-index: 1000;
-        display: none;
-        animation: fadeIn 0.5s ease-in-out;
-        }
-        .announcement-popup h2 {
-            margin-bottom: 10px;
-        }
-        .announcement-popup p {
-            margin-bottom: 15px;
-        }
-        .close-button {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            cursor: pointer;
-            font-size: 20px;
-            color: #333;
-        }
     </style>
 </head>
 <body>
@@ -298,12 +268,6 @@
         </div>
     </div>
 
-    <div class="announcement-popup">
-        <span class="close-button" onclick="closePopup()">&times;</span>
-        <h2>Announcement</h2>
-        <p>This is a sample announcement. You can customize the content here.</p>
-    </div>
-
     <script>
         const title = document.getElementById('animated-title');
         const spans = title.querySelectorAll('span');
@@ -316,17 +280,6 @@
                     span.style.transform = 'scale(1.2)'; // Increase size
                 }, index * 100); // Adjust delay for each letter
             });
-        }
-
-        // Show the popup after a delay (replace with your trigger logic)
-        setTimeout(showPopup, 20); 
-
-        function showPopup() {
-            document.querySelector('.announcement-popup').style.display = 'block';
-        }
-
-        function closePopup() {
-            document.querySelector('.announcement-popup').style.display = 'none';
         }
 
         window.addEventListener('load', animateTitle); // Start animation on page load
