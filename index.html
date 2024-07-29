@@ -211,6 +211,12 @@
     .fade-out {
         animation: fadeOut 2s infinite;
     }
+    @media (max-width: 768px) {
+        .fade-in,
+        .fade-out {
+            animation: none;
+        }
+    }
     </style>
 </head>
 <body>
@@ -306,7 +312,7 @@
     grid-template-columns: repeat(3, 100px); 
     grid-template-rows: repeat(3, 100px); 
     gap: 10px; 
-    position: absolute; left: 50px; top: 50px;
+    position: absolute; left: 50px; top: 20px;
     border-radius: 10px;">
         <div style="background-color: #3498db;" class="fade-in"></div>
         <div style="background-color: #f39c12;" class="fade-out"></div>
