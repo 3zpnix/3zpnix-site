@@ -1,3 +1,3 @@
 # personal-website-by-ezpnix
 
-<h1>Yes</h1>
+<p>Yes</p>
