@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EZPNIX - About Us</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
     <style>
         body {
             background-color: #333;
@@ -33,7 +33,6 @@
         }
         .container.active {
             opacity: 1; /* Show the container on animation */
-
         }
         h1 {
             margin: 0;
@@ -76,14 +75,13 @@
         p {
             line-height: 1.6;
             text-align: center; /* Center align paragraphs */
-            }
+        }
         .justified {
-        text-align: justify;
-    }
-
+            text-align: justify;
+        }
         .centered {
-        text-align: center;
-    }
+            text-align: center;
+        }
         .social-icons {
             margin-top: 20px;
         }
@@ -138,21 +136,21 @@
         <p class="justified">Ezpnix is a content creator and game developer known for their work in the Minecraft community. They have a presence on various platforms, including YouTube, Mcpedl, Planet Minecraft, Itch.io, Modbay, and other more.</p>
         <h2>What We Have</h2>
         <p class="justified">Ezpnix is known for creating minecraft shaders such as "ENBS Shader" and "PEYN Shader". He also creates visual novels, particularly "Haunted with Freedom," which features a character-driven story with multiple endings. They are also active on social media and welcome feedback and suggestions from their audience.</p>
+    <hr>
     </div>
-      <div class="footer-info">
+    <div class="footer-info">
         <div class="email">
             <p>ezphoenixyt@gmail.com</p>
         </div>
         <div class="social-icons">
-            <a href="https://www.youtube.com/@ezpnix"><i class="fab fa-youtube"></i></a>
-            <a href="https://www.twitter.com/@ezpnix"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.facebook.com/@ezpnix"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.youtube.com/ezpnix" class="fab fa-youtube"></i></a>
+            <a href="https://www.twitter.com/ezpnix" class="fab fa-twitter"></i></a>
+            <a href="https://www.facebook.com/ezpnix" class="fab fa-facebook"></i></a>
         </div>
         <div class="copyright">
             <p>&copy; 2024 EZPNIX. All Rights Reserved.</p>
         </div>
     </div>
-
     <script>
         // Add class 'active' to the h1 and container elements after a short delay
         window.onload = function() {
@@ -160,7 +158,7 @@
                 document.querySelector('nav').classList.add('active');
                 document.querySelector('h1').classList.add('active');
                 document.querySelector('.container').classList.add('active');
-            }, 100); 
+            }, 100);
         };
     </script>
 </body>
