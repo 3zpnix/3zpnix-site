@@ -13,35 +13,35 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            perspective: 1000px; /* Add perspective for 3D effect */
+            perspective: 1000px;
             background-image: url("images/bg1.jpg");
         }
         header {
-            background: linear-gradient(to bottom, #3f3e3e, #131313); /* Adjust the colors as needed */
+            background: linear-gradient(to bottom, #3f3e3e, #131313);
             padding: 10px;
             text-align: center;
-            position: relative; /* Position header for animation */
-            overflow: hidden; /* Hide content that overflows */
+            position: relative;
+            overflow: hidden;
         }
         nav {
             background-color: #333;
             text-align: center;
             padding: 10px 0;
-            border-radius: 15px; /* Rounded border edges */
-            transform-style: preserve-3d; /* Enable 3D transformations */
-            transition: transform 1s ease-in-out; /* Add transition for smooth animation */
+            border-radius: 15px;
+            transform-style: preserve-3d;
+            transition: transform 1s ease-in-out;
         }
         nav.flip-left {
-            transform: rotateY(90deg); /* Initially rotate the title 90 degrees */
+            transform: rotateY(90deg);
         }
         nav.flip-left.active {
-            transform: rotateY(0deg); /* Rotate back to 0 degrees on animation */
+            transform: rotateY(0deg);
         }
         nav a {
             color: white;
             text-decoration: none;
             padding: 0 15px;
-            font-size: 16px; /* Set initial font size */
+            font-size: 16px;
             transition: transform 0.3s, color 0.3s, font-size 0.3s;
         }
         nav a:hover {
@@ -52,34 +52,34 @@
         h1 {
             margin: 0;
             padding: 20px 0;
-            opacity: 0; /* Initially hide the heading */
-            transform: translateY(20px); /* Move heading up by 20px */
-            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Add transition for smooth animation */
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
         }
         h1.active {
-            opacity: 1; /* Show the heading on animation */
-            transform: translateY(0); /* Move heading back to its original position */
+            opacity: 1;
+            transform: translateY(0);
         }
         .container {
             max-width: 700px;
             margin: 0 auto;
             padding: 20px;
-            text-align: center; /* Center align all content within the container */
-            opacity: 0; /* Initially hide the container */
-            transition: opacity 1s ease-in; /* Add transition for fade-in effect */
+            text-align: center;
+            opacity: 0;
+            transition: opacity 1s ease-in;
         }
         .container.active {
-            opacity: 1; /* Show the container on animation */
+            opacity: 1;
         }
         p {
             line-height: 1.6;
-            text-align: center; /* Center align paragraphs */
+            text-align: center;
         }
         .justified {
-        text-align: justify;
-    }
+            text-align: justify;
+        }
         .centered {
-        text-align: center;
+            text-align: center;
         }
         img {
             display: block;
@@ -92,7 +92,7 @@
             text-align: center;
             margin-top: 20px;
             .social-icons {
-            margin-top: 20px;
+                margin-top: 20px;
             }
         }
         .social-icons a {
@@ -100,12 +100,12 @@
             text-decoration: none;
             font-size: 24px;
             margin: 0 10px;
-            transition: transform 0.3s, color 0.3s, font-size 0.3s; /* Add transition */
+            transition: transform 0.3s, color 0.3s, font-size 0.3s;
         }
         .social-icons a:hover {
-            transform: scale(1.05); /* Add scale on hover */
-            color: #ffcc00; /* Change color on hover */
-            font-size: 26px; /* Increase font size on hover */
+            transform: scale(1.05);
+            color: #ffcc00;
+            font-size: 26px;
         }
         .email {
             font-size: 18px;
@@ -149,7 +149,6 @@
     </div>
 
     <script>
-        // Add class 'active' to the h1 element after a short delay
         window.onload = function() {
             setTimeout(function() {
                 document.querySelector('nav').classList.add('active');
