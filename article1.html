@@ -35,6 +35,14 @@
             text-align: center;
             margin-top: 20px;
         }
+        .back-button a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
@@ -44,8 +52,23 @@
     <main>
         <article>
             <h2>Article 1 Title</h2>
-            <p>This is the content of Article 1. Here you can focus on paragraphs and additional details.</p>
-            <p>Feel free to add more paragraphs as needed to expand on the topic.</p>
+            <p>Explanation:
+ 
+1. Form Action: The  action  attribute of the  form  element is initially left blank ( action="" ). This is because we'll dynamically set the action when the user enters a valid URL.
+2. JavaScript Event Listener: We add an  input  event listener to the search bar ( searchBar ). This listener will trigger every time the user types something in the bar.
+3. URL Check: Inside the event listener, we check if the input value starts with  http://  or  https:// . If it does, we assume it's a URL.
+4. Redirect: If a valid URL is detected, we set the  action  attribute of the form to the entered URL and then submit the form. This will redirect the user to the entered URL.
+ 
+How it Works:
+ 
+- When the user types a URL (starting with  http://  or  https:// ) into the search bar, the JavaScript code will detect it.
+- The code will then update the form's action to the entered URL and submit the form.
+- This will cause the browser to navigate to the entered URL instead of performing a search.
+ 
+Important Note:
+ 
+- This code assumes that the user will enter a valid URL. You might want to add additional validation to ensure that the entered text is a valid URL before redirecting.
+- You can customize the code further to handle different URL formats or to add error handling for invalid URLs.</p>
         </article>
         <div class="back-button">
             <a href="index.html">Back to Main Section</a>
