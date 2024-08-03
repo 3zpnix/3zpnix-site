@@ -10,10 +10,10 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
+            background-color: black; /* Changed background color to black */
         }
         header {
-            background: linear-gradient(to bottom, #3f3e3e, #131313); /* Adjust the colors as needed */
+            background: linear-gradient(to bottom, #3f3e3e, #131313);
             color: white;
             text-align: center;
             padding: 10px;
@@ -23,7 +23,7 @@
             margin: 20px auto;
             padding: 10px;
             background-color: white;
-            border-radius: 5px;
+            border-radius: 20px;
         }
         article {
             margin-bottom: 20px;
@@ -40,8 +40,8 @@
             background-color: #333;
             color: white;
             border: none;
-            border-radius: 5px;
-            margin: 0 10px;
+            border-radius: 20px;
+            margin: 0 5px;
             cursor: pointer;
             position: relative;
         }
@@ -54,6 +54,8 @@
             height: 0;
             border-top: 6px solid transparent;
             border-bottom: 6px solid transparent;
+            margin-left: -5px;
+            margin-right: -5px;
         }
         #prevButton::before {
             border-right: 8px solid white;
@@ -89,25 +91,31 @@
         <article>
             <h2>Read Eromanga Sensei</h2>
             <p>Explanation:
-
-1. Form Action: The  action  attribute of the  form  element is initially left blank ( action="" ). This is because we'll dynamically set the action when the user enters a valid URL.
-2. JavaScript Event Listener: We add an  input  event listener to the search bar ( searchBar ). This listener will trigger every time the user types something in the bar.
-3. URL Check: Inside the event listener, we check if the input value starts with  http://  or  https:// . If it does, we assume it's a URL.
-4. Redirect: If a valid URL is detected, we set the  action  attribute of the form to the entered URL and then submit the form. This will redirect the user to the entered URL.
-
-How it Works:
-
-- When the user types a URL (starting with  http://  or  https:// ) into the search bar, the JavaScript code will detect it.
-- The code will then update the form's action to the entered URL and submit the form.
-- This will cause the browser to navigate to the entered URL instead of performing a search.
-
-Important Note:
-
-- This code assumes that the user will enter a valid URL. You might want to add additional validation to ensure that the entered text is a valid URL before redirecting.
-- You can customize the code further to handle different URL formats or to add error handling for invalid URLs.</p>
+                1. Form Action: The action attribute of the form element is initially left blank (action=""). This is
+                because we'll dynamically set the action when the user enters a valid URL.
+                2. JavaScript Event Listener: We add an input event listener to the search bar (searchBar). This listener
+                will trigger every time the user types something in the bar.
+                3. URL Check: Inside the event listener, we check if the input value starts with http:// or  If it
+                does, we assume it's a URL.
+                4. Redirect: If a valid URL is detected, we set the action attribute of the form to the entered URL and then
+                submit the form. This will redirect the user to the entered URL.
+                How it Works:
+                - When the user types a URL (starting with http:// or  into the search bar, the JavaScript code
+                will detect it.
+                - The code will then update the form's action to the entered URL and submit the form.
+                - This will cause the browser to navigate to the entered URL instead of performing a search.
+                Important Note:
+                - This code assumes that the user will enter a valid URL. You might want to add additional validation to
+                ensure that the entered text is a valid URL before redirecting.
+                - You can customize the code further to handle different URL formats or to add error handling for invalid
+                URLs.</p>
         </article>
         <div class="back-button">
             <a href="index.html">Back to Main Section</a>
+        </div>
+        <div class="navigation-buttons">
+            <button id="prevButton">Back Article</button>
+            <button id="nextButton">Next Article</button>
         </div>
     </main>
 </body>
