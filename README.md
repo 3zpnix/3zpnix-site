@@ -8,7 +8,7 @@
 
 
 # Personal Site - by Ezpnix
-**ERROR 404**
+- ERROR 404
 
 
 --- 
