@@ -86,7 +86,7 @@
             margin-top: 1.5rem;
         }
         .slider-nav {
-            position: absolute;
+            position: fixed;
             top: 50%;
             transform: translateY(-50%);
             background-color: rgba(31, 41, 55, 0.7);
@@ -107,10 +107,18 @@
             transform: translateY(-50%) scale(1.1);
         }
         .slider-nav-left {
-            left: 0.5rem;
+            left: calc(50% - 650px + 1rem); /* Adjust to align with main container (max-w-5xl = 1280px) */
         }
         .slider-nav-right {
-            right: 0.5rem;
+            right: calc(50% - 650px + 1rem); /* Adjust to align with main container */
+        }
+        @media (max-width: 1280px) {
+            .slider-nav-left {
+                left: 1rem;
+            }
+            .slider-nav-right {
+                right: 1rem;
+            }
         }
         @media (hover: none) {
             .slider-nav {
@@ -253,7 +261,7 @@
                 const slideWidth = slides[0].getBoundingClientRect().width;
                 const currentScroll = slider.scrollLeft;
                 const targetScroll = currentScroll + direction * slideWidth;
-                
+
                 // Snap to the nearest slide
                 slider.scrollTo({
                     left: Math.round(targetScroll / slideWidth) * slideWidth,
@@ -264,3 +272,4 @@
     </script>
 </body>
 </html>
+
