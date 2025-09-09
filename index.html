@@ -8,185 +8,189 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body {
-            background-image: url("images/bg1.jpg");
-            background-size: cover;
-            background-attachment: fixed;
-            color: white;
-        }
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-        }
-        .fade-in.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .letter {
-            display: inline-block;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-        }
-        .letter.active {
-            opacity: 1;
-            transform: scale(1.1);
-        }
-        .nav-link {
-            transition: color 0.3s ease, transform 0.3s ease;
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-        }
-        .nav-link:hover {
-            color: #facc15;
-            transform: scale(1.05);
-        }
-        .social-icon {
-            transition: color 0.3s ease, transform 0.3s ease;
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-        }
-        .social-icon:hover {
-            color: #facc15;
-            transform: scale(1.1);
-        }
-        .article-card {
-            transition: transform 0.5s ease, box-shadow 0.5s ease;
-            position: relative;
-            padding: 1.5rem;
-            height: 180px; /* Fixed height */
-            max-width: 280px;
-            margin: 0 auto;
-            background: linear-gradient(135deg, rgba(55, 65, 81, 0.9), rgba(31, 41, 55, 0.9));
-            border-radius: 0.5rem;
-            display: flex;
-            flex-direction: column;
-        }
-        .article-card:hover {
-            transform: scale(1.05) translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-        }
+    body {
+        background-image: url("images/bg1.jpg");
+        background-size: cover;
+        background-attachment: fixed;
+        color: white;
+    }
+    .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    }
+    .fade-in.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .letter {
+        display: inline-block;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .letter.active {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+    .nav-link {
+        transition: color 0.3s ease, transform 0.3s ease;
+        text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    }
+    .nav-link:hover {
+        color: #facc15;
+        transform: scale(1.05);
+    }
+    .social-icon {
+        transition: color 0.3s ease, transform 0.3s ease;
+        text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    }
+    .social-icon:hover {
+        color: #facc15;
+        transform: scale(1.1);
+    }
+    .article-card {
+        transition: transform 0.5s ease, box-shadow 0.5s ease;
+        position: relative;
+        padding: 1.5rem;
+        height: 180px; /* Fixed height */
+        max-width: 280px;
+        margin: 0 auto;
+        background: linear-gradient(135deg, rgba(55, 65, 81, 0.9), rgba(31, 41, 55, 0.9));
+        border-radius: 0.5rem;
+        display: flex;
+        flex-direction: column;
+    }
+    .article-card:hover {
+        transform: scale(1.05) translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+    .slider-container {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        position: relative;
+        width: 100%;
+        max-width: 1040px;
+        margin: 0 auto;
+        overflow-x: hidden;
+        touch-action: pan-y;
+        padding: 1.5rem 0.5rem;
+    }
+    .slider-container::-webkit-scrollbar {
+        display: none;
+    }
+    .slider-wrapper {
+        display: flex;
+        padding: 0 0.25rem;
+    }
+    .slide {
+        transition: transform 0.5s ease, box-shadow 0.5s ease;
+        margin: 0 0.25rem;
+    }
+    .slide-active .article-card {
+        transform: scale(1.08) translateY(-5px);
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4), 0 0 15px rgba(250, 204, 21, 0.7);
+    }
+    .shining-text {
+        animation: shine 3s infinite;
+        text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    }
+    @keyframes shine {
+        0%, 100% { text-shadow: 0 0 10px white, 0 0 5px rgba(0, 0, 0, 0.5); }
+        50% { color: #facc15; text-shadow: 0 0 20px #facc15, 0 0 5px rgba(0, 0, 0, 0.5); }
+    }
+    .announcement-label {
+        position: absolute;
+        top: 0.5rem;
+        left: 0.5rem;
+        background-color: #facc15;
+        color: #1f2937;
+        font-size: 0.75rem;
+        font-weight: bold;
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+        z-index: 10;
+    }
+    .article-card h2 {
+        margin-top: 1.5rem; /* Reduced from 1.75rem */
+        font-size: 1.25rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .article-card p {
+        margin-top: 0.5rem;
+        font-size: 0.875rem;
+        line-height: 1.4;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* Limit to 3 lines */
+        -webkit-box-orient: vertical;
+    }
+    .header-divider {
+        border-top: 1px solid #374151;
+        margin: 0.25rem auto; /* Reduced from 0.5rem */
+        width: 100%;
+        max-width: 5xl;
+    }
+    .main-container {
+        padding-top: 1rem; /* Reduced from 6rem */
+    }
+    @media (max-width: 640px) {
         .slider-container {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-            position: relative;
-            width: 100%;
-            max-width: 1040px;
-            margin: 0 auto;
-            overflow-x: hidden;
-            touch-action: pan-y;
-            padding: 1.5rem 0.5rem;
-        }
-        .slider-container::-webkit-scrollbar {
-            display: none;
+            padding: 1.25rem 0.25rem;
+            max-width: 100%;
         }
         .slider-wrapper {
-            display: flex;
-            padding: 0 0.25rem;
+            padding: 0 0.125rem;
         }
         .slide {
-            transition: transform 0.5s ease, box-shadow 0.5s ease;
-            margin: 0 0.25rem;
+            width: 100% !important;
+            max-width: 200px;
+            padding: 0.125rem;
+            margin: 0 0.125rem;
         }
-        .slide-active .article-card {
-            transform: scale(1.08) translateY(-5px);
-            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4), 0 0 15px rgba(250, 204, 21, 0.7);
-        }
-        .shining-text {
-            animation: shine 3s infinite;
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-        }
-        @keyframes shine {
-            0%, 100% { text-shadow: 0 0 10px white, 0 0 5px rgba(0, 0, 0, 0.5); }
-            50% { color: #facc15; text-shadow: 0 0 20px #facc15, 0 0 5px rgba(0, 0, 0, 0.5); }
-        }
-        .announcement-label {
-            position: absolute;
-            top: 0.5rem;
-            left: 0.5rem;
-            background-color: #facc15;
-            color: #1f2937;
-            font-size: 0.75rem;
-            font-weight: bold;
-            padding: 0.25rem 0.5rem;
-            border-radius: 0.25rem;
-            z-index: 10;
+        .article-card {
+            padding: 1rem;
+            max-width: 200px;
+            height: 160px; /* Fixed height for mobile */
         }
         .article-card h2 {
-            margin-top: 1.5rem; /* Reduced from 1.75rem */
-            font-size: 1.25rem;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
+            margin-top: 1.25rem; /* Reduced from 1.5rem */
+            font-size: 1.125rem;
         }
-        .article-card p {
-            margin-top: 0.5rem;
-            font-size: 0.875rem;
-            line-height: 1.4;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 3; /* Limit to 3 lines */
-            -webkit-box-orient: vertical;
+        .main-container {
+            padding-left: 0;
+            padding-right: 0;
+            padding-top: 1rem; /* Ensure consistency on mobile */
         }
-        .header-divider {
-            border-top: 1px solid #374151;
-            margin: 0.5rem auto;
-            width: 100%;
-            max-width: 5xl;
+        .slide-active .article-card {
+            transform: scale(1.03) translateY(-3px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3), 0 0 10px rgba(250, 204, 21, 0.5);
         }
-        @media (max-width: 640px) {
-            .slider-container {
-                padding: 1.25rem 0.25rem;
-                max-width: 100%;
-            }
-            .slider-wrapper {
-                padding: 0 0.125rem;
-            }
-            .slide {
-                width: 100% !important;
-                max-width: 200px;
-                padding: 0.125rem;
-                margin: 0 0.125rem;
-            }
-            .article-card {
-                padding: 1rem;
-                max-width: 200px;
-                height: 160px; /* Fixed height for mobile */
-            }
-            .article-card h2 {
-                margin-top: 1.25rem; /* Reduced from 1.5rem */
-                font-size: 1.125rem;
-            }
-            .main-container {
-                padding-left: 0;
-                padding-right: 0;
-            }
-            .slide-active .article-card {
-                transform: scale(1.03) translateY(-3px);
-                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3), 0 0 10px rgba(250, 204, 21, 0.5);
-            }
+    }
+    @media (min-width: 641px) and (max-width: 1023px) {
+        .slide {
+            width: 50% !important;
+            max-width: 260px;
+            padding: 0.5rem;
+            margin: 0 0.25rem;
         }
-        @media (min-width: 641px) and (max-width: 1023px) {
-            .slide {
-                width: 50% !important;
-                max-width: 260px;
-                padding: 0.5rem;
-                margin: 0 0.25rem;
-            }
-            .article-card {
-                max-width: 260px;
-            }
+        .article-card {
+            max-width: 260px;
         }
-        @media (min-width: 1024px) {
-            .slide {
-                width: 33.33% !important;
-                max-width: 280px;
-                padding: 0.75rem;
-                margin: 0 0.25rem;
-            }
-            .article-card {
-                max-width: 280px;
-            }
+    }
+    @media (min-width: 1024px) {
+        .slide {
+            width: 33.33% !important;
+            max-width: 280px;
+            padding: 0.75rem;
+            margin: 0 0.25rem;
         }
-    </style>
+        .article-card {
+            max-width: 280px;
+        }
+    }
+</style>
 </head>
 <body class="font-sans min-h-screen">
     <header class="relative py-6">
@@ -455,4 +459,5 @@
     </script>
 </body>
 </html>
+
 
