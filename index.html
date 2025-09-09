@@ -8,26 +8,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        :root {
-            --bg-image: url("images/bg1.jpg");
-            --card-bg: rgba(31, 41, 55, 0.9);
-            --text-color: white;
-            --shadow-color: rgba(0, 0, 0, 0.5);
-            --card-gradient: linear-gradient(135deg, rgba(55, 65, 81, 0.9), rgba(31, 41, 55, 0.9));
-        }
-        [data-theme="light"] {
-            --bg-image: url("images/bg-light.jpg");
-            --card-bg: rgba(255, 255, 255, 0.9);
-            --text-color: #1f2937;
-            --shadow-color: rgba(0, 0, 0, 0.2);
-            --card-gradient: linear-gradient(135deg, rgba(229, 231, 235, 0.9), rgba(209, 213, 219, 0.9));
-        }
         body {
-            background-image: var(--bg-image);
+            background-image: url("images/bg1.jpg");
             background-size: cover;
             background-attachment: fixed;
-            color: var(--text-color);
-            transition: background-image 0.3s ease, color 0.3s ease;
+            color: white;
         }
         .fade-in {
             opacity: 0;
@@ -48,7 +33,7 @@
         }
         .nav-link {
             transition: color 0.3s ease, transform 0.3s ease;
-            text-shadow: 0 0 5px var(--shadow-color);
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
         }
         .nav-link:hover {
             color: #facc15;
@@ -56,7 +41,7 @@
         }
         .social-icon {
             transition: color 0.3s ease, transform 0.3s ease;
-            text-shadow: 0 0 5px var(--shadow-color);
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
         }
         .social-icon:hover {
             color: #facc15;
@@ -69,12 +54,12 @@
             min-height: 140px;
             max-width: 300px;
             margin: 0 auto;
-            background: var(--card-gradient);
+            background: linear-gradient(135deg, rgba(55, 65, 81, 0.9), rgba(31, 41, 55, 0.9));
             border-radius: 0.5rem;
         }
         .article-card:hover {
             transform: scale(1.05);
-            box-shadow: 0 10px 20px var(--shadow-color);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
         .slider-container {
             -ms-overflow-style: none;
@@ -89,13 +74,17 @@
         .slider-container::-webkit-scrollbar {
             display: none;
         }
+        .slider-wrapper {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
         .shining-text {
             animation: shine 3s infinite;
-            text-shadow: 0 0 5px var(--shadow-color);
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
         }
         @keyframes shine {
-            0%, 100% { text-shadow: 0 0 10px var(--text-color), 0 0 5px var(--shadow-color); }
-            50% { color: #facc15; text-shadow: 0 0 20px #facc15, 0 0 5px var(--shadow-color); }
+            0%, 100% { text-shadow: 0 0 10px white, 0 0 5px rgba(0, 0, 0, 0.5); }
+            50% { color: #facc15; text-shadow: 0 0 20px #facc15, 0 0 5px rgba(0, 0, 0, 0.5); }
         }
         .announcement-label {
             position: absolute;
@@ -146,27 +135,6 @@
         .slider-nav-right {
             right: -1.5rem;
         }
-        .theme-toggle {
-            position: fixed;
-            top: 1rem;
-            right: 1rem;
-            background-color: rgba(31, 41, 55, 0.8);
-            color: var(--text-color);
-            border: none;
-            border-radius: 50%;
-            width: 2.5rem;
-            height: 2.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-        .theme-toggle:hover {
-            background-color: #facc15;
-            color: #1f2937;
-            transform: scale(1.1);
-        }
         @media (max-width: 640px) {
             .slider-nav-left {
                 left: 0;
@@ -197,10 +165,6 @@
                 padding-left: 0;
                 padding-right: 0;
             }
-            .theme-toggle {
-                width: 2rem;
-                height: 2rem;
-            }
         }
         @media (min-width: 641px) and (max-width: 1023px) {
             .slide {
@@ -230,9 +194,6 @@
     </style>
 </head>
 <body class="font-sans min-h-screen">
-    <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">
-        <i class="fas fa-moon"></i>
-    </button>
     <header class="relative py-8">
         <img src="images/eye.gif" alt="Logo" class="mx-auto w-24 h-24 rounded-full fade-in" loading="lazy">
         <h1 id="animated-title" class="text-5xl font-bold text-center mt-8 fade-in">
@@ -259,69 +220,71 @@
             <div class="slider-nav slider-nav-right" onclick="scrollSlider(1)">
                 <i class="fas fa-chevron-right"></i>
             </div>
-            <div class="slider-container flex overflow-x-auto snap-x snap-mandatory fade-in">
-                <div class="slide flex-none snap-center">
-                    <article class="article-card rounded-lg cursor-pointer" onclick="window.location.href='section/a1.html'">
-                        <span class="announcement-label">Announcement</span>
-                        <h2 class="text-xl font-semibold">Blog Post Title 1</h2>
-                        <p class="text-ellipsis overflow-hidden">Finally finished reading the manga and here's my review</p>
-                    </article>
-                </div>
-                <div class="slide flex-none snap-center">
-                    <article class="article-card rounded-lg cursor-pointer" onclick="window.location.href='article2.html'">
-                        <span class="announcement-label">Announcement</span>
-                        <h2 class="text-xl font-semibold">Blog Post Title 2</h2>
-                        <p class="text-ellipsis overflow-hidden">Here's another sample blog post. Click to read more...</p>
-                    </article>
-                </div>
-                <div class="slide flex-none snap-center">
-                    <article class="article-card rounded-lg cursor-pointer" onclick="window.location.href='article3.html'">
-                        <span class="announcement-label">Announcement</span>
-                        <h2 class="text-xl font-semibold">Blog Post Title 3</h2>
-                        <p class="text-ellipsis overflow-hidden">Here's another sample blog post. Click to read more...</p>
-                    </article>
-                </div>
-                <div class="slide flex-none snap-center">
-                    <article class="article-card rounded-lg cursor-pointer" onclick="window.location.href='article4.html'">
-                        <span class="announcement-label">Announcement</span>
-                        <h2 class="text-xl font-semibold">Blog Post Title 4</h2>
-                        <p class="text-ellipsis overflow-hidden">This is a sample blog post. Click to read more...</p>
-                    </article>
-                </div>
-                <div class="slide flex-none snap-center">
-                    <article class="article-card rounded-lg cursor-pointer" onclick="window.location.href='article5.html'">
-                        <span class="announcement-label">Announcement</span>
-                        <h2 class="text-xl font-semibold">Blog Post Title 5</h2>
-                        <p class="text-ellipsis overflow-hidden">Here's another sample blog post. Click to read more...</p>
-                    </article>
-                </div>
-                <div class="slide flex-none snap-center">
-                    <article class="article-card rounded-lg cursor-pointer" onclick="window.location.href='article6.html'">
-                        <span class="announcement-label">Announcement</span>
-                        <h2 class="text-xl font-semibold">Blog Post Title 6</h2>
-                        <p class="text-ellipsis overflow-hidden">Here's another sample blog post. Click to read more...</p>
-                    </article>
-                </div>
-                <div class="slide flex-none snap-center">
-                    <article class="article-card rounded-lg cursor-pointer" onclick="window.location.href='article7.html'">
-                        <span class="announcement-label">Announcement</span>
-                        <h2 class="text-xl font-semibold">Blog Post Title 7</h2>
-                        <p class="text-ellipsis overflow-hidden">This is a sample blog post. Click to read more...</p>
-                    </article>
-                </div>
-                <div class="slide flex-none snap-center">
-                    <article class="article-card rounded-lg cursor-pointer" onclick="window.location.href='article8.html'">
-                        <span class="announcement-label">Announcement</span>
-                        <h2 class="text-xl font-semibold">Blog Post Title 8</h2>
-                        <p class="text-ellipsis overflow-hidden">Here's another sample blog post. Click to read more...</p>
-                    </article>
-                </div>
-                <div class="slide flex-none snap-center">
-                    <article class="article-card rounded-lg cursor-pointer" onclick="window.location.href='article9.html'">
-                        <span class="announcement-label">Announcement</span>
-                        <h2 class="text-xl font-semibold">Blog Post Title 9</h2>
-                        <p class="text-ellipsis overflow-hidden">Here's another sample blog post. Click to read more...</p>
-                    </article>
+            <div class="slider-container flex overflow-x-hidden snap-x snap-mandatory fade-in">
+                <div class="slider-wrapper flex">
+                    <div class="slide flex-none snap-center">
+                        <article class="article-card rounded-lg cursor-pointer" onclick="window.location.href='section/a1.html'">
+                            <span class="announcement-label">Announcement</span>
+                            <h2 class="text-xl font-semibold">Blog Post Title 1</h2>
+                            <p class="text-ellipsis overflow-hidden">Finally finished reading the manga and here's my review</p>
+                        </article>
+                    </div>
+                    <div class="slide flex-none snap-center">
+                        <article class="article-card rounded-lg cursor-pointer" onclick="window.location.href='article2.html'">
+                            <span class="announcement-label">Announcement</span>
+                            <h2 class="text-xl font-semibold">Blog Post Title 2</h2>
+                            <p class="text-ellipsis overflow-hidden">Here's another sample blog post. Click to read more...</p>
+                        </article>
+                    </div>
+                    <div class="slide flex-none snap-center">
+                        <article class="article-card rounded-lg cursor-pointer" onclick="window.location.href='article3.html'">
+                            <span class="announcement-label">Announcement</span>
+                            <h2 class="text-xl font-semibold">Blog Post Title 3</h2>
+                            <p class="text-ellipsis overflow-hidden">Here's another sample blog post. Click to read more...</p>
+                        </article>
+                    </div>
+                    <div class="slide flex-none snap-center">
+                        <article class="article-card rounded-lg cursor-pointer" onclick="window.location.href='article4.html'">
+                            <span class="announcement-label">Announcement</span>
+                            <h2 class="text-xl font-semibold">Blog Post Title 4</h2>
+                            <p class="text-ellipsis overflow-hidden">This is a sample blog post. Click to read more...</p>
+                        </article>
+                    </div>
+                    <div class="slide flex-none snap-center">
+                        <article class="article-card rounded-lg cursor-pointer" onclick="window.location.href='article5.html'">
+                            <span class="announcement-label">Announcement</span>
+                            <h2 class="text-xl font-semibold">Blog Post Title 5</h2>
+                            <p class="text-ellipsis overflow-hidden">Here's another sample blog post. Click to read more...</p>
+                        </article>
+                    </div>
+                    <div class="slide flex-none snap-center">
+                        <article class="article-card rounded-lg cursor-pointer" onclick="window.location.href='article6.html'">
+                            <span class="announcement-label">Announcement</span>
+                            <h2 class="text-xl font-semibold">Blog Post Title 6</h2>
+                            <p class="text-ellipsis overflow-hidden">Here's another sample blog post. Click to read more...</p>
+                        </article>
+                    </div>
+                    <div class="slide flex-none snap-center">
+                        <article class="article-card rounded-lg cursor-pointer" onclick="window.location.href='article7.html'">
+                            <span class="announcement-label">Announcement</span>
+                            <h2 class="text-xl font-semibold">Blog Post Title 7</h2>
+                            <p class="text-ellipsis overflow-hidden">This is a sample blog post. Click to read more...</p>
+                        </article>
+                    </div>
+                    <div class="slide flex-none snap-center">
+                        <article class="article-card rounded-lg cursor-pointer" onclick="window.location.href='article8.html'">
+                            <span class="announcement-label">Announcement</span>
+                            <h2 class="text-xl font-semibold">Blog Post Title 8</h2>
+                            <p class="text-ellipsis overflow-hidden">Here's another sample blog post. Click to read more...</p>
+                        </article>
+                    </div>
+                    <div class="slide flex-none snap-center">
+                        <article class="article-card rounded-lg cursor-pointer" onclick="window.location.href='article9.html'">
+                            <span class="announcement-label">Announcement</span>
+                            <h2 class="text-xl font-semibold">Blog Post Title 9</h2>
+                            <p class="text-ellipsis overflow-hidden">Here's another sample blog post. Click to read more...</p>
+                        </article>
+                    </div>
                 </div>
             </div>
         </div>
@@ -346,21 +309,12 @@
             const letters = title.querySelectorAll('.letter');
             const elements = document.querySelectorAll('.fade-in');
             const slider = document.querySelector('.slider-container');
+            const wrapper = document.querySelector('.slider-wrapper');
+            const slides = wrapper.querySelectorAll('.slide');
             let isDragging = false;
             let startX, scrollLeft, velocity = 0, lastX;
-
-            // Theme toggle
-            const toggleTheme = () => {
-                const currentTheme = document.body.dataset.theme === 'light' ? 'dark' : 'light';
-                document.body.dataset.theme = currentTheme;
-                localStorage.setItem('theme', currentTheme);
-                document.querySelector('.theme-toggle i').className = currentTheme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
-            };
-
-            // Load saved theme
-            const savedTheme = localStorage.getItem('theme') || 'dark';
-            document.body.dataset.theme = savedTheme;
-            document.querySelector('.theme-toggle i').className = savedTheme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+            let currentIndex = 0;
+            let autoScrollInterval;
 
             // Animation for title and fade-in elements
             letters.forEach((letter, index) => {
@@ -374,33 +328,77 @@
                 }, index * 200);
             });
 
-            // Slider navigation
-            window.scrollSlider = (direction) => {
-                const slides = slider.querySelectorAll('.slide');
-                const slideWidth = slides[0].getBoundingClientRect().width;
-                const currentScroll = slider.scrollLeft;
-                const targetScroll = currentScroll + direction * slideWidth;
-                smoothScroll(slider, Math.round(targetScroll / slideWidth) * slideWidth);
-            };
+            // Clone slides for infinite looping
+            const originalSlides = Array.from(slides);
+            originalSlides.forEach(slide => {
+                const clone = slide.cloneNode(true);
+                wrapper.appendChild(clone);
+            });
+            const allSlides = wrapper.querySelectorAll('.slide');
+            const slideWidth = slides[0].getBoundingClientRect().width;
 
             // Smooth scroll animation
-            const smoothScroll = (element, target) => {
-                const start = element.scrollLeft;
+            const smoothScroll = (targetIndex) => {
+                const target = targetIndex * slideWidth;
+                const start = wrapper.scrollLeft || 0;
                 const startTime = performance.now();
-                const duration = 300;
+                const duration = 500;
 
                 const animate = (currentTime) => {
                     const elapsed = currentTime - startTime;
                     const progress = Math.min(elapsed / duration, 1);
                     const ease = 0.5 - Math.cos(progress * Math.PI) / 2;
-                    element.scrollLeft = start + (target - start) * ease;
-                    if (progress < 1) requestAnimationFrame(animate);
+                    slider.scrollLeft = start + (target - start) * ease;
+                    if (progress < 1) {
+                        requestAnimationFrame(animate);
+                    } else {
+                        // Handle looping
+                        if (targetIndex >= originalSlides.length) {
+                            wrapper.style.transition = 'none';
+                            slider.scrollLeft = targetIndex % originalSlides.length * slideWidth;
+                            wrapper.style.transform = `translateX(0)`;
+                        }
+                    }
                 };
+                wrapper.style.transition = 'transform 0.5s ease';
+                wrapper.style.transform = `translateX(-${target * slider.scrollWidth / slider.clientWidth}px)`;
                 requestAnimationFrame(animate);
+            };
+
+            // Auto-scrolling
+            const startAutoScroll = () => {
+                autoScrollInterval = setInterval(() => {
+                    currentIndex = (currentIndex + 1) % originalSlides.length;
+                    smoothScroll(currentIndex);
+                    if (currentIndex === 0) {
+                        setTimeout(() => {
+                            wrapper.style.transition = 'none';
+                            slider.scrollLeft = 0;
+                            wrapper.style.transform = `translateX(0)`;
+                        }, 500);
+                    }
+                }, 3000);
+            };
+
+            // Stop auto-scroll on interaction
+            const stopAutoScroll = () => {
+                clearInterval(autoScrollInterval);
+            };
+
+            // Start auto-scrolling
+            startAutoScroll();
+
+            // Slider navigation
+            window.scrollSlider = (direction) => {
+                stopAutoScroll();
+                currentIndex = (currentIndex + direction + originalSlides.length) % originalSlides.length;
+                smoothScroll(currentIndex);
+                setTimeout(startAutoScroll, 5000); // Resume auto-scroll after 5s
             };
 
             // Touch and drag support
             slider.addEventListener('touchstart', (e) => {
+                stopAutoScroll();
                 isDragging = true;
                 startX = e.touches[0].pageX;
                 scrollLeft = slider.scrollLeft;
@@ -421,15 +419,15 @@
             slider.addEventListener('touchend', () => {
                 if (!isDragging) return;
                 isDragging = false;
-                const slides = slider.querySelectorAll('.slide');
-                const slideWidth = slides[0].getBoundingClientRect().width;
                 const currentScroll = slider.scrollLeft;
-                const targetScroll = Math.round((currentScroll + velocity * 5) / slideWidth) * slideWidth;
-                smoothScroll(slider, targetScroll);
+                currentIndex = Math.round((currentScroll + velocity * 5) / slideWidth) % originalSlides.length;
+                smoothScroll(currentIndex);
+                setTimeout(startAutoScroll, 5000);
             });
 
             // Mouse drag support
             slider.addEventListener('mousedown', (e) => {
+                stopAutoScroll();
                 isDragging = true;
                 startX = e.pageX;
                 scrollLeft = slider.scrollLeft;
@@ -452,22 +450,22 @@
                 if (!isDragging) return;
                 isDragging = false;
                 slider.style.cursor = 'grab';
-                const slides = slider.querySelectorAll('.slide');
-                const slideWidth = slides[0].getBoundingClientRect().width;
                 const currentScroll = slider.scrollLeft;
-                const targetScroll = Math.round((currentScroll + velocity * 5) / slideWidth) * slideWidth;
-                smoothScroll(slider, targetScroll);
+                currentIndex = Math.round((currentScroll + velocity * 5) / slideWidth) % originalSlides.length;
+                smoothScroll(currentIndex);
+                setTimeout(startAutoScroll, 5000);
             });
 
             slider.addEventListener('mouseleave', () => {
                 if (isDragging) {
                     isDragging = false;
                     slider.style.cursor = 'grab';
+                    const currentScroll = slider.scrollLeft;
+                    currentIndex = Math.round((currentScroll + velocity * 5) / slideWidth) % originalSlides.length;
+                    smoothScroll(currentIndex);
+                    setTimeout(startAutoScroll, 5000);
                 }
             });
-
-            // Expose toggleTheme globally
-            window.toggleTheme = toggleTheme;
         });
     </script>
 </body>
