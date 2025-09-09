@@ -47,9 +47,9 @@
         .article-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
-            padding: 1rem;
-            min-height: 120px;
-            max-width: 240px;
+            padding: 1.5rem;
+            min-height: 140px;
+            max-width: 300px;
             margin: 0 auto;
         }
         .article-card:hover {
@@ -62,7 +62,7 @@
             scrollbar-width: none;
             position: relative;
             width: 100%;
-            max-width: 260px;
+            max-width: 960px;
             margin: 0 auto;
             overflow-x: hidden;
         }
@@ -89,11 +89,13 @@
             z-index: 10;
         }
         .article-card h2 {
-            margin-top: 1.25rem;
-            font-size: 1.125rem;
+            margin-top: 1.75rem;
+            font-size: 1.25rem;
         }
         .article-card p {
+            margin-top: 0.5rem;
             font-size: 0.875rem;
+            line-height: 1.4;
         }
         .slider-nav {
             position: absolute;
@@ -117,10 +119,10 @@
             transform: translateY(-50%) scale(1.1);
         }
         .slider-nav-left {
-            left: -1.25rem;
+            left: -1.5rem;
         }
         .slider-nav-right {
-            right: -1.25rem;
+            right: -1.5rem;
         }
         @media (max-width: 640px) {
             .slider-nav-left {
@@ -135,8 +137,13 @@
                 padding: 0.25rem;
             }
             .article-card {
-                padding: 0.5rem;
+                padding: 1rem;
                 max-width: 220px;
+                min-height: 120px;
+            }
+            .article-card h2 {
+                margin-top: 1.5rem;
+                font-size: 1.125rem;
             }
             .slider-container {
                 padding: 0;
@@ -151,15 +158,21 @@
         @media (min-width: 641px) and (max-width: 1023px) {
             .slide {
                 width: 50% !important;
-                max-width: 240px;
+                max-width: 280px;
                 padding: 0.5rem;
+            }
+            .article-card {
+                max-width: 280px;
             }
         }
         @media (min-width: 1024px) {
             .slide {
                 width: 33.33% !important;
-                max-width: 240px;
-                padding: 0.5rem;
+                max-width: 300px;
+                padding: 0.75rem;
+            }
+            .article-card {
+                max-width: 300px;
             }
         }
         @media (hover: none) {
