@@ -51,11 +51,13 @@
             transition: transform 0.5s ease, box-shadow 0.5s ease;
             position: relative;
             padding: 1.5rem;
-            min-height: 140px;
+            height: 180px; /* Fixed height */
             max-width: 280px;
             margin: 0 auto;
             background: linear-gradient(135deg, rgba(55, 65, 81, 0.9), rgba(31, 41, 55, 0.9));
             border-radius: 0.5rem;
+            display: flex;
+            flex-direction: column;
         }
         .article-card:hover {
             transform: scale(1.05) translateY(-5px);
@@ -70,18 +72,18 @@
             margin: 0 auto;
             overflow-x: hidden;
             touch-action: pan-y;
-            padding: 1.5rem 0.5rem; /* Reduced side padding */
+            padding: 1.5rem 0.5rem;
         }
         .slider-container::-webkit-scrollbar {
             display: none;
         }
         .slider-wrapper {
             display: flex;
-            padding: 0 0.25rem; /* Reduced padding */
+            padding: 0 0.25rem;
         }
         .slide {
             transition: transform 0.5s ease, box-shadow 0.5s ease;
-            margin: 0 0.25rem; /* Reduced margin */
+            margin: 0 0.25rem;
         }
         .slide-active .article-card {
             transform: scale(1.08) translateY(-5px);
@@ -108,41 +110,49 @@
             z-index: 10;
         }
         .article-card h2 {
-            margin-top: 1.75rem;
+            margin-top: 1.5rem; /* Reduced from 1.75rem */
             font-size: 1.25rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
         .article-card p {
             margin-top: 0.5rem;
             font-size: 0.875rem;
             line-height: 1.4;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3; /* Limit to 3 lines */
+            -webkit-box-orient: vertical;
         }
         .header-divider {
-            border-top: 1px solid #374151; /* Matches border-gray-700 */
-            margin: 0.5rem auto; /* Reduced margin */
+            border-top: 1px solid #374151;
+            margin: 0.5rem auto;
             width: 100%;
             max-width: 5xl;
         }
         @media (max-width: 640px) {
             .slider-container {
-                padding: 1.25rem 0.25rem; /* Reduced side padding for mobile */
-                max-width: 100%; /* Full width on mobile */
+                padding: 1.25rem 0.25rem;
+                max-width: 100%;
             }
             .slider-wrapper {
-                padding: 0 0.125rem; /* Reduced padding */
+                padding: 0 0.125rem;
             }
             .slide {
                 width: 100% !important;
                 max-width: 200px;
                 padding: 0.125rem;
-                margin: 0 0.125rem; /* Reduced margin */
+                margin: 0 0.125rem;
             }
             .article-card {
                 padding: 1rem;
                 max-width: 200px;
-                min-height: 120px;
+                height: 160px; /* Fixed height for mobile */
             }
             .article-card h2 {
-                margin-top: 1.5rem;
+                margin-top: 1.25rem; /* Reduced from 1.5rem */
                 font-size: 1.125rem;
             }
             .main-container {
@@ -159,7 +169,7 @@
                 width: 50% !important;
                 max-width: 260px;
                 padding: 0.5rem;
-                margin: 0 0.25rem; /* Reduced margin */
+                margin: 0 0.25rem;
             }
             .article-card {
                 max-width: 260px;
@@ -170,7 +180,7 @@
                 width: 33.33% !important;
                 max-width: 280px;
                 padding: 0.75rem;
-                margin: 0 0.25rem; /* Reduced margin */
+                margin: 0 0.25rem;
             }
             .article-card {
                 max-width: 280px;
@@ -179,7 +189,7 @@
     </style>
 </head>
 <body class="font-sans min-h-screen">
-    <header class="relative py-6"> <!-- Reduced from py-8 -->
+    <header class="relative py-6">
         <img src="images/eye.gif" alt="Logo" class="mx-auto w-24 h-24 rounded-full fade-in" loading="lazy">
         <h1 id="animated-title" class="text-5xl font-bold text-center mt-8 fade-in">
             <span class="letter">E</span>
@@ -196,9 +206,9 @@
             <a href="about.html" class="nav-link text-lg">About</a>
             <a href="contact.html" class="nav-link text-lg">Contact</a>
         </nav>
-        <hr class="header-divider"> <!-- Added divider -->
+        <hr class="header-divider">
     </header>
-    <main class="container mx-auto px-4 py-6 max-w-5xl main-container"> <!-- Reduced from py-8 -->
+    <main class="container mx-auto px-4 py-6 max-w-5xl main-container">
         <div class="relative">
             <div class="slider-container flex overflow-x-hidden snap-x snap-mandatory fade-in">
                 <div class="slider-wrapper flex">
@@ -212,8 +222,8 @@
                     <div class="slide flex-none snap-center">
                         <article class="article-card rounded-lg cursor-pointer" onclick="window.location.href='article2.html'">
                             <span class="announcement-label">Announcement</span>
-                            <h2 class="text-xl font-semibold">Blog Post Title 2</h2>
-                            <p class="text-ellipsis overflow-hidden">Here's another sample blog post. Click to read more...</p>
+                            <h2 class="text-xl font-semibold">Blog Post Title 2 with a Very Long Title That Needs Truncation</h2>
+                            <p class="text-ellipsis overflow-hidden">Here's another sample blog post with a longer description that might wrap. Click to read more...</p>
                         </article>
                     </div>
                     <div class="slide flex-none snap-center">
@@ -268,9 +278,9 @@
                 </div>
             </div>
         </div>
-        <hr class="my-2 border-gray-700"> <!-- Reduced from my-4 -->
+        <hr class="my-2 border-gray-700">
     </main>
-    <footer class="text-center py-3"> <!-- Reduced from py-4 -->
+    <footer class="text-center py-3">
         <div class="mb-2 fade-in">
             <p class="text-lg text-shadow">ezpnix@proton.me</p>
         </div>
