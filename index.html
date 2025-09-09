@@ -77,6 +77,13 @@
         .slider-wrapper {
             display: flex;
         }
+        .slide {
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .slide-active .article-card {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
         .shining-text {
             animation: shine 3s infinite;
             text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
@@ -163,6 +170,9 @@
             .main-container {
                 padding-left: 0;
                 padding-right: 0;
+            }
+            .slide-active .article-card {
+                transform: scale(1.03);
             }
         }
         @media (min-width: 641px) and (max-width: 1023px) {
@@ -336,6 +346,19 @@
             const allSlides = wrapper.querySelectorAll('.slide');
             const slideWidth = slides[0].getBoundingClientRect().width;
 
+            // Update active slide
+            const updateActiveSlide = () => {
+                allSlides.forEach((slide, index) => {
+                    slide.classList.remove('slide-active');
+                    if (index === currentIndex % originalSlides.length) {
+                        slide.classList.add('slide-active');
+                    }
+                });
+            };
+
+            // Initial active slide
+            updateActiveSlide();
+
             // Smooth scroll animation
             const smoothScroll = (targetIndex) => {
                 const target = targetIndex * slideWidth;
@@ -356,6 +379,7 @@
                             slider.scrollLeft = 0;
                             currentIndex = 0;
                         }
+                        updateActiveSlide();
                     }
                 };
                 requestAnimationFrame(animate);
@@ -442,7 +466,7 @@
                 const currentScroll = slider.scrollLeft;
                 currentIndex = Math.round(currentScroll / slideWidth) % originalSlides.length;
                 smoothScroll(currentIndex);
-                setTimeout(startAutoScroll, 3000);
+                setTimeout(startAutoScroll, 5000);
             });
 
             slider.addEventListener('mouseleave', () => {
