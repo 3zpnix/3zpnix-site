@@ -51,7 +51,7 @@
             transition: transform 0.5s ease, box-shadow 0.5s ease;
             position: relative;
             padding: 1.5rem;
-            height: 180px; /* Fixed height */
+            height: 180px;
             max-width: 280px;
             margin: 0 auto;
             background: linear-gradient(135deg, rgba(55, 65, 81, 0.9), rgba(31, 41, 55, 0.9));
@@ -110,7 +110,7 @@
             z-index: 10;
         }
         .article-card h2 {
-            margin-top: 1.5rem; /* Reduced from 1.75rem */
+            margin-top: 1.5rem;
             font-size: 1.25rem;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -123,7 +123,7 @@
             overflow: hidden;
             text-overflow: ellipsis;
             display: -webkit-box;
-            -webkit-line-clamp: 3; /* Limit to 3 lines */
+            -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
         }
         .header-divider {
@@ -131,6 +131,9 @@
             margin: 0.5rem auto;
             width: 100%;
             max-width: 5xl;
+        }
+        .footer-email, .footer-socials {
+            margin-bottom: 0.5rem; /* Default for desktop */
         }
         @media (max-width: 640px) {
             .slider-container {
@@ -149,10 +152,10 @@
             .article-card {
                 padding: 1rem;
                 max-width: 200px;
-                height: 160px; /* Fixed height for mobile */
+                height: 160px;
             }
             .article-card h2 {
-                margin-top: 1.25rem; /* Reduced from 1.5rem */
+                margin-top: 1.25rem;
                 font-size: 1.125rem;
             }
             .main-container {
@@ -162,6 +165,14 @@
             .slide-active .article-card {
                 transform: scale(1.03) translateY(-3px);
                 box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3), 0 0 10px rgba(250, 204, 21, 0.5);
+            }
+            .footer-email, .footer-socials {
+                margin-bottom: 0.25rem; /* Tighter spacing for mobile */
+            }
+        }
+        @media (min-width: 641px) {
+            .footer-email, .footer-socials {
+                margin-bottom: 1rem; /* Increased spacing for desktop */
             }
         }
         @media (min-width: 641px) and (max-width: 1023px) {
@@ -281,10 +292,10 @@
         <hr class="my-2 border-gray-700">
     </main>
     <footer class="text-center py-3">
-        <div class="mb-2 fade-in">
+        <div class="footer-email fade-in">
             <p class="text-lg text-shadow">ezpnix@proton.me</p>
         </div>
-        <div class="flex justify-center space-x-6 mb-2 fade-in">
+        <div class="footer-socials flex justify-center space-x-6 fade-in">
             <a href="https://www.youtube.com/@3zpnix" class="social-icon"><i class="fab fa-youtube text-2xl"></i></a>
             <a href="https://www.twitter.com/@3zpnix" class="social-icon"><i class="fab fa-twitter text-2xl"></i></a>
             <a href="https://www.facebook.com/@3zpnix" class="social-icon"><i class="fab fa-facebook text-2xl"></i></a>
