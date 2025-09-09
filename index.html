@@ -47,8 +47,8 @@
         .article-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
-            padding-top: 2.5rem; /* Increased padding for label */
-            min-height: 120px; /* Ensure enough height for content */
+            padding-top: 2.5rem;
+            min-height: 120px;
         }
         .article-card:hover {
             transform: scale(1.05);
@@ -75,7 +75,7 @@
             top: 0.5rem;
             left: 0.5rem;
             background-color: #facc15;
-            color: #1f2937; /* Consistent dark color for better contrast */
+            color: #1f2937;
             font-size: 0.75rem;
             font-weight: bold;
             padding: 0.25rem 0.5rem;
@@ -83,7 +83,7 @@
             z-index: 10;
         }
         .article-card h2 {
-            margin-top: 1.5rem; /* Space below announcement label */
+            margin-top: 1.5rem;
         }
         .slider-nav {
             position: absolute;
@@ -97,23 +97,25 @@
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: transform 0.3s ease, background-color 0.3s ease;
             cursor: pointer;
             z-index: 20;
         }
-        .slider-container:hover .slider-nav {
-            opacity: 1;
-        }
-        .slider-nav-left {
-            left: -1rem;
-        }
-        .slider-nav-right {
-            right: -1rem;
-        }
-        .slider-nav:hover {
+        .slider-nav:hover, .slider-nav:active {
             background-color: #facc15;
             color: #1f2937;
+            transform: translateY(-50%) scale(1.1);
+        }
+        .slider-nav-left {
+            left: 0.5rem;
+        }
+        .slider-nav-right {
+            right: 0.5rem;
+        }
+        @media (hover: none) {
+            .slider-nav {
+                opacity: 1;
+            }
         }
     </style>
 </head>
@@ -247,8 +249,16 @@
 
             // Slider navigation
             window.scrollSlider = (direction) => {
-                const slideWidth = slider.querySelector('.slide').offsetWidth;
-                slider.scrollBy({ left: direction * slideWidth, behavior: 'smooth' });
+                const slides = slider.querySelectorAll('.slide');
+                const slideWidth = slides[0].getBoundingClientRect().width;
+                const currentScroll = slider.scrollLeft;
+                const targetScroll = currentScroll + direction * slideWidth;
+                
+                // Snap to the nearest slide
+                slider.scrollTo({
+                    left: Math.round(targetScroll / slideWidth) * slideWidth,
+                    behavior: 'smooth'
+                });
             };
         });
     </script>
