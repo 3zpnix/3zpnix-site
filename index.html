@@ -76,7 +76,6 @@
         }
         .slider-wrapper {
             display: flex;
-            transition: transform 0.5s ease;
         }
         .shining-text {
             animation: shine 3s infinite;
@@ -340,28 +339,25 @@
             // Smooth scroll animation
             const smoothScroll = (targetIndex) => {
                 const target = targetIndex * slideWidth;
-                const start = wrapper.scrollLeft || 0;
+                const start = slider.scrollLeft;
                 const startTime = performance.now();
-                const duration = 500;
+                const duration = 800; // Slower animation (800ms)
 
                 const animate = (currentTime) => {
                     const elapsed = currentTime - startTime;
                     const progress = Math.min(elapsed / duration, 1);
-                    const ease = 0.5 - Math.cos(progress * Math.PI) / 2;
+                    const ease = 0.5 - Math.cos(progress * Math.PI) / 2; // Smooth easing
                     slider.scrollLeft = start + (target - start) * ease;
                     if (progress < 1) {
                         requestAnimationFrame(animate);
                     } else {
                         // Handle looping
                         if (targetIndex >= originalSlides.length) {
-                            wrapper.style.transition = 'none';
-                            slider.scrollLeft = targetIndex % originalSlides.length * slideWidth;
-                            wrapper.style.transform = `translateX(0)`;
+                            slider.scrollLeft = 0;
+                            currentIndex = 0;
                         }
                     }
                 };
-                wrapper.style.transition = 'transform 0.5s ease';
-                wrapper.style.transform = `translateX(-${target * slider.scrollWidth / slider.clientWidth}px)`;
                 requestAnimationFrame(animate);
             };
 
@@ -370,14 +366,7 @@
                 autoScrollInterval = setInterval(() => {
                     currentIndex = (currentIndex + 1) % originalSlides.length;
                     smoothScroll(currentIndex);
-                    if (currentIndex === 0) {
-                        setTimeout(() => {
-                            wrapper.style.transition = 'none';
-                            slider.scrollLeft = 0;
-                            wrapper.style.transform = `translateX(0)`;
-                        }, 500);
-                    }
-                }, 3000);
+                }, 5000); // Scroll every 5 seconds
             };
 
             // Stop auto-scroll on interaction
@@ -420,7 +409,7 @@
                 if (!isDragging) return;
                 isDragging = false;
                 const currentScroll = slider.scrollLeft;
-                currentIndex = Math.round((currentScroll + velocity * 5) / slideWidth) % originalSlides.length;
+                currentIndex = Math.round(currentScroll / slideWidth) % originalSlides.length;
                 smoothScroll(currentIndex);
                 setTimeout(startAutoScroll, 5000);
             });
@@ -451,9 +440,9 @@
                 isDragging = false;
                 slider.style.cursor = 'grab';
                 const currentScroll = slider.scrollLeft;
-                currentIndex = Math.round((currentScroll + velocity * 5) / slideWidth) % originalSlides.length;
+                currentIndex = Math.round(currentScroll / slideWidth) % originalSlides.length;
                 smoothScroll(currentIndex);
-                setTimeout(startAutoScroll, 5000);
+                setTimeout(startAutoScroll, 3000);
             });
 
             slider.addEventListener('mouseleave', () => {
@@ -461,7 +450,7 @@
                     isDragging = false;
                     slider.style.cursor = 'grab';
                     const currentScroll = slider.scrollLeft;
-                    currentIndex = Math.round((currentScroll + velocity * 5) / slideWidth) % originalSlides.length;
+                    currentIndex = Math.round(currentScroll / slideWidth) % originalSlides.length;
                     smoothScroll(currentIndex);
                     setTimeout(startAutoScroll, 5000);
                 }
