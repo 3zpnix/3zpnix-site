@@ -52,7 +52,7 @@
             position: relative;
             padding: 1.5rem;
             min-height: 140px;
-            max-width: 280px; /* Reduced from 300px */
+            max-width: 280px;
             margin: 0 auto;
             background: linear-gradient(135deg, rgba(55, 65, 81, 0.9), rgba(31, 41, 55, 0.9));
             border-radius: 0.5rem;
@@ -66,25 +66,25 @@
             scrollbar-width: none;
             position: relative;
             width: 100%;
-            max-width: 1000px; /* Increased from 960px for extra space */
+            max-width: 1000px;
             margin: 0 auto;
             overflow-x: hidden;
             touch-action: pan-y;
-            padding: 0 1rem; /* Added padding to prevent clipping */
+            padding: 1.5rem 1rem; /* Increased top padding to prevent cropping */
         }
         .slider-container::-webkit-scrollbar {
             display: none;
         }
         .slider-wrapper {
             display: flex;
-            padding: 0 0.5rem; /* Added padding for spacing */
+            padding: 0 0.5rem;
         }
         .slide {
             transition: transform 0.5s ease, box-shadow 0.5s ease;
-            margin: 0 0.5rem; /* Added margin between slides */
+            margin: 0 0.5rem;
         }
         .slide-active .article-card {
-            transform: scale(1.08) translateY(-10px); /* Reduced scale from 1.1 */
+            transform: scale(1.08) translateY(-5px); /* Reduced lift from -10px */
             box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4), 0 0 15px rgba(250, 204, 21, 0.7);
         }
         .shining-text {
@@ -139,10 +139,10 @@
             transform: translateY(-50%) scale(1.1);
         }
         .slider-nav-left {
-            left: -0.5rem; /* Adjusted for padding */
+            left: -0.5rem;
         }
         .slider-nav-right {
-            right: -0.5rem; /* Adjusted for padding */
+            right: -0.5rem;
         }
         @media (max-width: 640px) {
             .slider-nav-left {
@@ -153,13 +153,13 @@
             }
             .slide {
                 width: 100% !important;
-                max-width: 200px; /* Reduced from 220px */
+                max-width: 200px;
                 padding: 0.25rem;
                 margin: 0 0.25rem;
             }
             .article-card {
                 padding: 1rem;
-                max-width: 200px; /* Reduced from 220px */
+                max-width: 200px;
                 min-height: 120px;
             }
             .article-card h2 {
@@ -167,7 +167,7 @@
                 font-size: 1.125rem;
             }
             .slider-container {
-                padding: 0 0.5rem;
+                padding: 1.25rem 0.5rem; /* Adjusted padding for mobile */
                 width: 100%;
                 max-width: 240px;
             }
@@ -176,30 +176,30 @@
                 padding-right: 0;
             }
             .slide-active .article-card {
-                transform: scale(1.03) translateY(-5px); /* Reduced scale */
+                transform: scale(1.03) translateY(-3px); /* Reduced lift from -5px */
                 box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3), 0 0 10px rgba(250, 204, 21, 0.5);
             }
         }
         @media (min-width: 641px) and (max-width: 1023px) {
             .slide {
                 width: 50% !important;
-                max-width: 260px; /* Reduced from 280px */
+                max-width: 260px;
                 padding: 0.5rem;
                 margin: 0 0.5rem;
             }
             .article-card {
-                max-width: 260px; /* Reduced from 280px */
+                max-width: 260px;
             }
         }
         @media (min-width: 1024px) {
             .slide {
                 width: 33.33% !important;
-                max-width: 280px; /* Reduced from 300px */
+                max-width: 280px;
                 padding: 0.75rem;
                 margin: 0 0.5rem;
             }
             .article-card {
-                max-width: 280px; /* Reduced from 300px */
+                max-width: 280px;
             }
         }
         @media (hover: none) {
