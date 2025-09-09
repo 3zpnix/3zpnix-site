@@ -47,8 +47,10 @@
         .article-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
-            padding-top: 2.5rem;
+            padding: 1rem;
             min-height: 120px;
+            max-width: 240px;
+            margin: 0 auto;
         }
         .article-card:hover {
             transform: scale(1.05);
@@ -59,6 +61,10 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
             position: relative;
+            width: 100%;
+            max-width: 260px;
+            margin: 0 auto;
+            overflow-x: hidden;
         }
         .slider-container::-webkit-scrollbar {
             display: none;
@@ -83,16 +89,20 @@
             z-index: 10;
         }
         .article-card h2 {
-            margin-top: 1.5rem;
+            margin-top: 1.25rem;
+            font-size: 1.125rem;
+        }
+        .article-card p {
+            font-size: 0.875rem;
         }
         .slider-nav {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background-color: rgba(31, 41, 55, 0.7);
+            background-color: rgba(31, 41, 55, 0.8);
             color: white;
-            width: 3rem;
-            height: 3rem;
+            width: 1.75rem;
+            height: 1.75rem;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -107,17 +117,49 @@
             transform: translateY(-50%) scale(1.1);
         }
         .slider-nav-left {
-            left: -4rem;
+            left: -1.25rem;
         }
         .slider-nav-right {
-            right: -4rem;
+            right: -1.25rem;
         }
-        @media (max-width: 768px) {
+        @media (max-width: 640px) {
             .slider-nav-left {
-                left: -2.5rem;
+                left: 0;
             }
             .slider-nav-right {
-                right: -2.5rem;
+                right: 0;
+            }
+            .slide {
+                width: 100% !important;
+                max-width: 220px;
+                padding: 0.25rem;
+            }
+            .article-card {
+                padding: 0.5rem;
+                max-width: 220px;
+            }
+            .slider-container {
+                padding: 0;
+                width: 100%;
+                max-width: 240px;
+            }
+            .main-container {
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+        @media (min-width: 641px) and (max-width: 1023px) {
+            .slide {
+                width: 50% !important;
+                max-width: 240px;
+                padding: 0.5rem;
+            }
+        }
+        @media (min-width: 1024px) {
+            .slide {
+                width: 33.33% !important;
+                max-width: 240px;
+                padding: 0.5rem;
             }
         }
         @media (hover: none) {
@@ -146,7 +188,7 @@
             <a href="contact.html" class="nav-link text-lg">Contact</a>
         </nav>
     </header>
-    <main class="container mx-auto px-4 py-8 max-w-5xl">
+    <main class="container mx-auto px-4 py-8 max-w-5xl main-container">
         <div class="relative">
             <div class="slider-nav slider-nav-left" onclick="scrollSlider(-1)">
                 <i class="fas fa-chevron-left"></i>
@@ -155,64 +197,64 @@
                 <i class="fas fa-chevron-right"></i>
             </div>
             <div class="slider-container flex overflow-x-auto snap-x snap-mandatory fade-in">
-                <div class="slide flex-none snap-center w-full sm:w-1/2 lg:w-1/3 p-2">
-                    <article class="article-card bg-gray-800 rounded-lg p-4 cursor-pointer" onclick="window.location.href='section/a1.html'">
+                <div class="slide flex-none snap-center">
+                    <article class="article-card bg-gray-800 rounded-lg cursor-pointer" onclick="window.location.href='section/a1.html'">
                         <span class="announcement-label">Announcement</span>
                         <h2 class="text-xl font-semibold">Eromanga Sensei Review</h2>
                         <p class="text-ellipsis overflow-hidden">Finally finished reading the manga and here's my review</p>
                     </article>
                 </div>
-                <div class="slide flex-none snap-center w-full sm:w-1/2 lg:w-1/3 p-2">
-                    <article class="article-card bg-gray-800 rounded-lg p-4 cursor-pointer" onclick="window.location.href='article2.html'">
+                <div class="slide flex-none snap-center">
+                    <article class="article-card bg-gray-800 rounded-lg cursor-pointer" onclick="window.location.href='article2.html'">
                         <span class="announcement-label">Announcement</span>
                         <h2 class="text-xl font-semibold">Blog Post Title 2</h2>
                         <p class="text-ellipsis overflow-hidden">Here's another sample blog post. Click to read more...</p>
                     </article>
                 </div>
-                <div class="slide flex-none snap-center w-full sm:w-1/2 lg:w-1/3 p-2">
-                    <article class="article-card bg-gray-800 rounded-lg p-4 cursor-pointer" onclick="window.location.href='article3.html'">
+                <div class="slide flex-none snap-center">
+                    <article class="article-card bg-gray-800 rounded-lg cursor-pointer" onclick="window.location.href='article3.html'">
                         <span class="announcement-label">Announcement</span>
                         <h2 class="text-xl font-semibold">Blog Post Title 3</h2>
                         <p class="text-ellipsis overflow-hidden">Here's another sample blog post. Click to read more...</p>
                     </article>
                 </div>
-                <div class="slide flex-none snap-center w-full sm:w-1/2 lg:w-1/3 p-2">
-                    <article class="article-card bg-gray-800 rounded-lg p-4 cursor-pointer" onclick="window.location.href='article4.html'">
+                <div class="slide flex-none snap-center">
+                    <article class="article-card bg-gray-800 rounded-lg cursor-pointer" onclick="window.location.href='article4.html'">
                         <span class="announcement-label">Announcement</span>
                         <h2 class="text-xl font-semibold">Blog Post Title 4</h2>
                         <p class="text-ellipsis overflow-hidden">This is a sample blog post. Click to read more...</p>
                     </article>
                 </div>
-                <div class="slide flex-none snap-center w-full sm:w-1/2 lg:w-1/3 p-2">
-                    <article class="article-card bg-gray-800 rounded-lg p-4 cursor-pointer" onclick="window.location.href='article5.html'">
+                <div class="slide flex-none snap-center">
+                    <article class="article-card bg-gray-800 rounded-lg cursor-pointer" onclick="window.location.href='article5.html'">
                         <span class="announcement-label">Announcement</span>
                         <h2 class="text-xl font-semibold">Blog Post Title 5</h2>
                         <p class="text-ellipsis overflow-hidden">Here's another sample blog post. Click to read more...</p>
                     </article>
                 </div>
-                <div class="slide flex-none snap-center w-full sm:w-1/2 lg:w-1/3 p-2">
-                    <article class="article-card bg-gray-800 rounded-lg p-4 cursor-pointer" onclick="window.location.href='article6.html'">
+                <div class="slide flex-none snap-center">
+                    <article class="article-card bg-gray-800 rounded-lg cursor-pointer" onclick="window.location.href='article6.html'">
                         <span class="announcement-label">Announcement</span>
                         <h2 class="text-xl font-semibold">Blog Post Title 6</h2>
                         <p class="text-ellipsis overflow-hidden">Here's another sample blog post. Click to read more...</p>
                     </article>
                 </div>
-                <div class="slide flex-none snap-center w-full sm:w-1/2 lg:w-1/3 p-2">
-                    <article class="article-card bg-gray-800 rounded-lg p-4 cursor-pointer" onclick="window.location.href='article7.html'">
+                <div class="slide flex-none snap-center">
+                    <article class="article-card bg-gray-800 rounded-lg cursor-pointer" onclick="window.location.href='article7.html'">
                         <span class="announcement-label">Announcement</span>
                         <h2 class="text-xl font-semibold">Blog Post Title 7</h2>
                         <p class="text-ellipsis overflow-hidden">This is a sample blog post. Click to read more...</p>
                     </article>
                 </div>
-                <div class="slide flex-none snap-center w-full sm:w-1/2 lg:w-1/3 p-2">
-                    <article class="article-card bg-gray-800 rounded-lg p-4 cursor-pointer" onclick="window.location.href='article8.html'">
+                <div class="slide flex-none snap-center">
+                    <article class="article-card bg-gray-800 rounded-lg cursor-pointer" onclick="window.location.href='article8.html'">
                         <span class="announcement-label">Announcement</span>
                         <h2 class="text-xl font-semibold">Blog Post Title 8</h2>
                         <p class="text-ellipsis overflow-hidden">Here's another sample blog post. Click to read more...</p>
                     </article>
                 </div>
-                <div class="slide flex-none snap-center w-full sm:w-1/2 lg:w-1/3 p-2">
-                    <article class="article-card bg-gray-800 rounded-lg p-4 cursor-pointer" onclick="window.location.href='article9.html'">
+                <div class="slide flex-none snap-center">
+                    <article class="article-card bg-gray-800 rounded-lg cursor-pointer" onclick="window.location.href='article9.html'">
                         <span class="announcement-label">Announcement</span>
                         <h2 class="text-xl font-semibold">Blog Post Title 9</h2>
                         <p class="text-ellipsis overflow-hidden">Here's another sample blog post. Click to read more...</p>
