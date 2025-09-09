@@ -48,7 +48,7 @@
             transform: scale(1.1);
         }
         .article-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
             position: relative;
             padding: 1.5rem;
             min-height: 140px;
@@ -58,7 +58,7 @@
             border-radius: 0.5rem;
         }
         .article-card:hover {
-            transform: scale(1.05);
+            transform: scale(1.05) translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
         .slider-container {
@@ -78,11 +78,11 @@
             display: flex;
         }
         .slide {
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
         }
         .slide-active .article-card {
-            transform: scale(1.05);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+            transform: scale(1.1) translateY(-10px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4), 0 0 15px rgba(250, 204, 21, 0.7);
         }
         .shining-text {
             animation: shine 3s infinite;
@@ -172,7 +172,8 @@
                 padding-right: 0;
             }
             .slide-active .article-card {
-                transform: scale(1.03);
+                transform: scale(1.05) translateY(-5px);
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3), 0 0 10px rgba(250, 204, 21, 0.5);
             }
         }
         @media (min-width: 641px) and (max-width: 1023px) {
