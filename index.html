@@ -6,18 +6,33 @@
     <title>EZPNIX - Official Website</title>
     <link rel="icon" type="image/png" href="images/ezpnix.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
-            background-image: url("images/bg1.jpg");
+            font-family: 'Inter', sans-serif;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("images/bg1.jpg");
             background-size: cover;
             background-attachment: fixed;
             color: white;
+            min-height: 100vh;
+        }
+        .light-theme {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url("images/bg1.jpg");
+            color: #1f2937;
+        }
+        .light-theme .article-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 240, 240, 0.9));
+        }
+        .light-theme .announcement-label {
+            background-color: #1f2937;
+            color: #facc15;
         }
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+            transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
         }
         .fade-in.active {
             opacity: 1;
@@ -40,46 +55,56 @@
             transform: scale(1.05);
         }
         .social-icon {
-            transition: color 0.3s ease, transform 0.3s ease;
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease-in-out;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
         }
         .social-icon:hover {
-            color: #facc15;
-            transform: scale(1.1);
+            background-color: #facc15;
+            color: #1f2937;
+            transform: scale(1.2);
         }
         .article-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
+            background: linear-gradient(135deg, rgba(31, 41, 55, 0.9), rgba(50, 60, 80, 0.9));
+            border-radius: 0.5rem;
             padding: 1.5rem;
-            min-height: 140px;
+            position: relative;
+            min-height: 200px;
             max-width: 300px;
             margin: 0 auto;
-            background-color: rgba(31, 41, 55, 0.9);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border 0.3s ease-in-out;
+            border: 1px solid transparent;
+            cursor: pointer;
         }
         .article-card:hover {
-            transform: scale(1.05);
+            transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            border-color: #facc15;
         }
-        .slider-container {
-            scroll-behavior: smooth;
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-            position: relative;
+        .article-card img {
             width: 100%;
-            max-width: 960px;
-            margin: 0 auto;
-            overflow-x: hidden;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 0.25rem;
+            margin-bottom: 0.5rem;
         }
-        .slider-container::-webkit-scrollbar {
-            display: none;
+        .article-card p {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 0.875rem;
+            line-height: 1.4;
         }
-        .shining-text {
-            animation: shine 3s infinite;
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-        }
-        @keyframes shine {
-            0%, 100% { text-shadow: 0 0 10px white, 0 0 5px rgba(0, 0, 0, 0.5); }
-            50% { color: #facc15; text-shadow: 0 0 20px #facc15, 0 0 5px rgba(0, 0, 0, 0.5); }
+        .article-card h2 {
+            margin-top: 1.75rem;
+            font-size: 1.25rem;
+            font-weight: 600;
         }
         .announcement-label {
             position: absolute;
@@ -93,50 +118,61 @@
             border-radius: 0.25rem;
             z-index: 10;
         }
-        .article-card h2 {
-            margin-top: 1.75rem;
-            font-size: 1.25rem;
+        .swiper-container {
+            width: 100%;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 1rem;
         }
-        .article-card p {
-            margin-top: 0.5rem;
-            font-size: 0.875rem;
-            line-height: 1.4;
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+            padding: 0.75rem;
         }
-        .slider-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
+        .swiper-button-prev, .swiper-button-next {
             background-color: rgba(31, 41, 55, 0.8);
             color: white;
             width: 1.75rem;
             height: 1.75rem;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 50%;
             transition: transform 0.3s ease, background-color 0.3s ease;
-            cursor: pointer;
-            z-index: 20;
         }
-        .slider-nav:hover, .slider-nav:active {
+        .swiper-button-prev:hover, .swiper-button-next:hover {
             background-color: #facc15;
             color: #1f2937;
-            transform: translateY(-50%) scale(1.1);
+            transform: scale(1.1);
         }
-        .slider-nav-left {
-            left: -1.5rem;
+        .swiper-pagination-bullet {
+            background: #facc15;
         }
-        .slider-nav-right {
-            right: -1.5rem;
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+        .nav-menu {
+            transition: max-height 0.3s ease-in-out;
         }
         @media (max-width: 640px) {
-            .slider-nav-left {
-                left: 0;
+            .hamburger {
+                display: block;
             }
-            .slider-nav-right {
-                right: 0;
+            .nav-menu {
+                display: none;
+                max-height: 0;
+                overflow: hidden;
+                width: 100%;
             }
-            .slide {
+            .nav-menu.active {
+                display: flex;
+                flex-direction: column;
+                max-height: 300px;
+                padding: 1rem;
+            }
+            .swiper-slide {
                 width: 100% !important;
                 max-width: 220px;
                 padding: 0.25rem;
@@ -144,13 +180,13 @@
             .article-card {
                 padding: 1rem;
                 max-width: 220px;
-                min-height: 120px;
+                min-height: 180px;
             }
             .article-card h2 {
                 margin-top: 1.5rem;
                 font-size: 1.125rem;
             }
-            .slider-container {
+            .swiper-container {
                 padding: 0;
                 width: 100%;
                 max-width: 240px;
@@ -161,7 +197,7 @@
             }
         }
         @media (min-width: 641px) and (max-width: 1023px) {
-            .slide {
+            .swiper-slide {
                 width: 50% !important;
                 max-width: 280px;
                 padding: 0.5rem;
@@ -171,7 +207,7 @@
             }
         }
         @media (min-width: 1024px) {
-            .slide {
+            .swiper-slide {
                 width: 33.33% !important;
                 max-width: 300px;
                 padding: 0.75rem;
@@ -180,127 +216,177 @@
                 max-width: 300px;
             }
         }
-        @media (hover: none) {
-            .slider-nav {
-                opacity: 1;
+        .shining-text {
+            animation: shine 3s infinite;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+        @keyframes shine {
+            0%, 100% {
+                text-shadow: 0 0 10px white, 0 0 5px rgba(0, 0, 0, 0.5);
+            }
+            50% {
+                color: #facc15;
+                text-shadow: 0 0 20px #facc15, 0 0 5px rgba(0, 0, 0, 0.5);
             }
         }
     </style>
 </head>
 <body class="font-sans min-h-screen">
-    <header class="relative py-8">
-        <img src="images/eye.gif" alt="Logo" class="mx-auto w-24 h-24 rounded-full fade-in">
+    <header class="sticky top-0 z-50 bg-gray-900/80 backdrop-blur-md py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <img src="images/eye.gif" alt="Logo" class="w-16 h-16 rounded-full transition-transform duration-500 transform hover:scale-110 fade-in" loading="lazy">
+            <button id="theme-toggle" class="text-lg" aria-label="Toggle theme">
+                <i class="fas fa-moon"></i>
+            </button>
+            <div class="hamburger" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav class="nav-menu flex justify-center space-x-6 py-4 fade-in">
+                <a href="index.html" class="nav-link text-lg">Home</a>
+                <a href="archive.html" class="nav-link text-lg">Archive</a>
+                <a href="about.html" class="nav-link text-lg">About</a>
+                <a href="contact.html" class="nav-link text-lg">Contact</a>
+            </nav>
+        </div>
         <h1 id="animated-title" class="text-5xl font-bold text-center mt-8 fade-in">
-            <span class="letter">E</span>
-            <span class="letter">Z</span>
-            <span class="letter">P</span>
-            <span class="letter">N</span>
-            <span class="letter">I</span>
-            <span class="letter">X</span>
+            <span class="letter">E</span><span class="letter">Z</span><span class="letter">P</span>
+            <span class="letter">N</span><span class="letter">I</span><span class="letter">X</span>
         </h1>
         <p class="shining-text text-lg text-center mt-2 fade-in">❝ embrace uncertainty discover potential ❞</p>
-        <nav class="flex justify-center space-x-6 py-4 fade-in">
-            <a href="index.html" class="nav-link text-lg">Home</a>
-            <a href="archive.html" class="nav-link text-lg">Archive</a>
-            <a href="about.html" class="nav-link text-lg">About</a>
-            <a href="contact.html" class="nav-link text-lg">Contact</a>
-        </nav>
     </header>
     <main class="container mx-auto px-4 py-8 max-w-5xl main-container">
-        <div class="relative">
-            <div class="slider-nav slider-nav-left" onclick="scrollSlider(-1)">
-                <i class="fas fa-chevron-left"></i>
-            </div>
-            <div class="slider-nav slider-nav-right" onclick="scrollSlider(1)">
-                <i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="slider-container flex overflow-x-auto snap-x snap-mandatory fade-in">
-                <div class="slide flex-none snap-center">
-                    <article class="article-card rounded-lg cursor-pointer" onclick="window.location.href='section/a1.html'">
+        <div class="swiper-container fade-in">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide slide">
+                    <article class="article-card rounded-lg" onclick="window.location.href='section/a1.html'">
                         <span class="announcement-label">Announcement</span>
+                        <img src="images/thumbnail1.jpg" alt="Blog Post Thumbnail" loading="lazy">
                         <h2 class="text-xl font-semibold">Blog Post Title 1</h2>
-                        <p class="text-ellipsis overflow-hidden">Finally finished reading the manga and here's my review</p>
+                        <p>Finally finished reading the manga and here's my review</p>
                     </article>
                 </div>
-                <div class="slide flex-none snap-center">
-                    <article class="article-card rounded-lg cursor-pointer" onclick="window.location.href='article2.html'">
+                <div class="swiper-slide slide">
+                    <article class="article-card rounded-lg" onclick="window.location.href='article2.html'">
                         <span class="announcement-label">Announcement</span>
+                        <img src="images/thumbnail2.jpg" alt="Blog Post Thumbnail" loading="lazy">
                         <h2 class="text-xl font-semibold">Blog Post Title 2</h2>
-                        <p class="text-ellipsis overflow-hidden">Here's another sample blog post. Click to read more...</p>
+                        <p>Here's another sample blog post. Click to read more...</p>
                     </article>
                 </div>
-                <div class="slide flex-none snap-center">
-                    <article class="article-card rounded-lg cursor-pointer" onclick="window.location.href='article3.html'">
+                <div class="swiper-slide slide">
+                    <article class="article-card rounded-lg" onclick="window.location.href='article3.html'">
                         <span class="announcement-label">Announcement</span>
+                        <img src="images/thumbnail3.jpg" alt="Blog Post Thumbnail" loading="lazy">
                         <h2 class="text-xl font-semibold">Blog Post Title 3</h2>
-                        <p class="text-ellipsis overflow-hidden">Here's another sample blog post. Click to read more...</p>
+                        <p>Here's another sample blog post. Click to read more...</p>
                     </article>
                 </div>
-                <div class="slide flex-none snap-center">
-                    <article class="article-card rounded-lg cursor-pointer" onclick="window.location.href='article4.html'">
+                <div class="swiper-slide slide">
+                    <article class="article-card rounded-lg" onclick="window.location.href='article4.html'">
                         <span class="announcement-label">Announcement</span>
+                        <img src="images/thumbnail4.jpg" alt="Blog Post Thumbnail" loading="lazy">
                         <h2 class="text-xl font-semibold">Blog Post Title 4</h2>
-                        <p class="text-ellipsis overflow-hidden">This is a sample blog post. Click to read more...</p>
+                        <p>This is a sample blog post. Click to read more...</p>
                     </article>
                 </div>
-                <div class="slide flex-none snap-center">
-                    <article class="article-card rounded-lg cursor-pointer" onclick="window.location.href='article5.html'">
+                <div class="swiper-slide slide">
+                    <article class="article-card rounded-lg" onclick="window.location.href='article5.html'">
                         <span class="announcement-label">Announcement</span>
+                        <img src="images/thumbnail5.jpg" alt="Blog Post Thumbnail" loading="lazy">
                         <h2 class="text-xl font-semibold">Blog Post Title 5</h2>
-                        <p class="text-ellipsis overflow-hidden">Here's another sample blog post. Click to read more...</p>
+                        <p>Here's another sample blog post. Click to read more...</p>
                     </article>
                 </div>
-                <div class="slide flex-none snap-center">
-                    <article class="article-card rounded-lg cursor-pointer" onclick="window.location.href='article6.html'">
+                <div class="swiper-slide slide">
+                    <article class="article-card rounded-lg" onclick="window.location.href='article6.html'">
                         <span class="announcement-label">Announcement</span>
+                        <img src="images/thumbnail6.jpg" alt="Blog Post Thumbnail" loading="lazy">
                         <h2 class="text-xl font-semibold">Blog Post Title 6</h2>
-                        <p class="text-ellipsis overflow-hidden">Here's another sample blog post. Click to read more...</p>
+                        <p>Here's another sample blog post. Click to read more...</p>
                     </article>
                 </div>
-                <div class="slide flex-none snap-center">
-                    <article class="article-card rounded-lg cursor-pointer" onclick="window.location.href='article7.html'">
+                <div class="swiper-slide slide">
+                    <article class="article-card rounded-lg" onclick="window.location.href='article7.html'">
                         <span class="announcement-label">Announcement</span>
+                        <img src="images/thumbnail7.jpg" alt="Blog Post Thumbnail" loading="lazy">
                         <h2 class="text-xl font-semibold">Blog Post Title 7</h2>
-                        <p class="text-ellipsis overflow-hidden">This is a sample blog post. Click to read more...</p>
+                        <p>This is a sample blog post. Click to read more...</p>
                     </article>
                 </div>
-                <div class="slide flex-none snap-center">
-                    <article class="article-card rounded-lg cursor-pointer" onclick="window.location.href='article8.html'">
+                <div class="swiper-slide slide">
+                    <article class="article-card rounded-lg" onclick="window.location.href='article8.html'">
                         <span class="announcement-label">Announcement</span>
+                        <img src="images/thumbnail8.jpg" alt="Blog Post Thumbnail" loading="lazy">
                         <h2 class="text-xl font-semibold">Blog Post Title 8</h2>
-                        <p class="text-ellipsis overflow-hidden">Here's another sample blog post. Click to read more...</p>
+                        <p>Here's another sample blog post. Click to read more...</p>
                     </article>
                 </div>
-                <div class="slide flex-none snap-center">
-                    <article class="article-card rounded-lg cursor-pointer" onclick="window.location.href='article9.html'">
+                <div class="swiper-slide slide">
+                    <article class="article-card rounded-lg" onclick="window.location.href='article9.html'">
                         <span class="announcement-label">Announcement</span>
+                        <img src="images/thumbnail9.jpg" alt="Blog Post Thumbnail" loading="lazy">
                         <h2 class="text-xl font-semibold">Blog Post Title 9</h2>
-                        <p class="text-ellipsis overflow-hidden">Here's another sample blog post. Click to read more...</p>
+                        <p>Here's another sample blog post. Click to read more...</p>
                     </article>
                 </div>
             </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev" role="button" aria-label="Previous slide" tabindex="0" onkeydown="if(event.key === 'Enter') swiper.slidePrev()"></div>
+            <div class="swiper-button-next" role="button" aria-label="Next slide" tabindex="0" onkeydown="if(event.key === 'Enter') swiper.slideNext()"></div>
         </div>
+        <section class="text-center py-12 fade-in">
+            <h2 class="text-3xl font-bold mb-4">Stay Updated with EZPNIX</h2>
+            <p class="text-lg mb-6">Join our newsletter for the latest blog posts and updates.</p>
+            <a href="subscribe.html" class="inline-block bg-yellow-400 text-gray-900 font-semibold py-2 px-6 rounded-lg hover:bg-yellow-500 transition-colors duration-300">Subscribe Now</a>
+        </section>
         <hr class="my-4 border-gray-700">
     </main>
-    <footer class="text-center py-4">
-        <div class="mb-2 fade-in">
-            <p class="text-lg text-shadow">ezpnix@proton.me</p>
-        </div>
-        <div class="flex justify-center space-x-6 mb-2 fade-in">
-            <a href="https://www.youtube.com/@3zpnix" class="social-icon"><i class="fab fa-youtube text-2xl"></i></a>
-            <a href="https://www.twitter.com/@3zpnix" class="social-icon"><i class="fab fa-twitter text-2xl"></i></a>
-            <a href="https://www.facebook.com/@3zpnix" class="social-icon"><i class="fab fa-facebook text-2xl"></i></a>
-        </div>
-        <div class="fade-in">
-            <p class="text-sm text-shadow">&copy; 2025 3ZPNIX. All Rights Reserved.</p>
+    <footer class="text-center py-8 bg-gray-900/80 backdrop-blur-md">
+        <div class="container mx-auto px-4">
+            <div class="mb-4 fade-in">
+                <p class="text-lg text-shadow">ezpnix@proton.me</p>
+            </div>
+            <div class="flex justify-center space-x-6 mb-4 fade-in">
+                <a href="https://www.youtube.com/@3zpnix" class="social-icon"><i class="fab fa-youtube text-2xl"></i></a>
+                <a href="https://www.twitter.com/@3zpnix" class="social-icon"><i class="fab fa-twitter text-2xl"></i></a>
+                <a href="https://www.facebook.com/@3zpnix" class="social-icon"><i class="fab fa-facebook text-2xl"></i></a>
+            </div>
+            <div class="flex justify-center space-x-6 mb-4 fade-in">
+                <a href="index.html" class="text-sm hover:text-yellow-400">Home</a>
+                <a href="archive.html" class="text-sm hover:text-yellow-400">Archive</a>
+                <a href="about.html" class="text-sm hover:text-yellow-400">About</a>
+                <a href="contact.html" class="text-sm hover:text-yellow-400">Contact</a>
+            </div>
+            <div class="fade-in">
+                <p class="text-sm text-shadow">&copy; 2025 3ZPNIX. All Rights Reserved.</p>
+            </div>
         </div>
     </footer>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Initialize Swiper
+            const swiper = new Swiper('.swiper-container', {
+                slidesPerView: 1,
+                spaceBetween: 10,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                breakpoints: {
+                    640: { slidesPerView: 2 },
+                    1024: { slidesPerView: 3 },
+                },
+            });
+
+            // Fade-in and letter animations
             const title = document.getElementById('animated-title');
             const letters = title.querySelectorAll('.letter');
             const elements = document.querySelectorAll('.fade-in');
-            const slider = document.querySelector('.slider-container');
             letters.forEach((letter, index) => {
                 setTimeout(() => {
                     letter.classList.add('active');
@@ -311,15 +397,24 @@
                     el.classList.add('active');
                 }, index * 200);
             });
-            window.scrollSlider = (direction) => {
-                const slides = slider.querySelectorAll('.slide');
-                const slideWidth = slides[0].getBoundingClientRect().width;
-                const currentScroll = slider.scrollLeft;
-                const targetScroll = currentScroll + direction * slideWidth;
-                slider.scrollTo({
-                    left: Math.round(targetScroll / slideWidth) * slideWidth,
-                    behavior: 'smooth'
-                });
+
+            // Theme toggle
+            const themeToggle = document.getElementById('theme-toggle');
+            themeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('light-theme');
+                const isLight = document.body.classList.contains('light-theme');
+                themeToggle.innerHTML = isLight ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+                localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            });
+            if (localStorage.getItem('theme') === 'light') {
+                document.body.classList.add('light-theme');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+
+            // Hamburger menu toggle
+            window.toggleMenu = () => {
+                const menu = document.querySelector('.nav-menu');
+                menu.classList.toggle('active');
             };
         });
     </script>
