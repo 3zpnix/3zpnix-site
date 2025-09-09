@@ -66,11 +66,11 @@
             scrollbar-width: none;
             position: relative;
             width: 100%;
-            max-width: 1000px;
+            max-width: 1040px; /* Increased from 1000px */
             margin: 0 auto;
             overflow-x: hidden;
             touch-action: pan-y;
-            padding: 1.5rem 1rem; /* Increased top padding to prevent cropping */
+            padding: 1.5rem 1rem;
         }
         .slider-container::-webkit-scrollbar {
             display: none;
@@ -84,7 +84,7 @@
             margin: 0 0.5rem;
         }
         .slide-active .article-card {
-            transform: scale(1.08) translateY(-5px); /* Reduced lift from -10px */
+            transform: scale(1.08) translateY(-5px);
             box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4), 0 0 15px rgba(250, 204, 21, 0.7);
         }
         .shining-text {
@@ -116,41 +116,7 @@
             font-size: 0.875rem;
             line-height: 1.4;
         }
-        .slider-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(31, 41, 55, 0.8);
-            color: white;
-            width: 2rem;
-            height: 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: transform 0.3s ease, background-color 0.3s ease;
-            cursor: pointer;
-            z-index: 20;
-            user-select: none;
-        }
-        .slider-nav:hover, .slider-nav:active {
-            background-color: #facc15;
-            color: #1f2937;
-            transform: translateY(-50%) scale(1.1);
-        }
-        .slider-nav-left {
-            left: -0.5rem;
-        }
-        .slider-nav-right {
-            right: -0.5rem;
-        }
         @media (max-width: 640px) {
-            .slider-nav-left {
-                left: 0.5rem;
-            }
-            .slider-nav-right {
-                right: 0.5rem;
-            }
             .slide {
                 width: 100% !important;
                 max-width: 200px;
@@ -167,7 +133,7 @@
                 font-size: 1.125rem;
             }
             .slider-container {
-                padding: 1.25rem 0.5rem; /* Adjusted padding for mobile */
+                padding: 1.25rem 0.5rem;
                 width: 100%;
                 max-width: 240px;
             }
@@ -176,7 +142,7 @@
                 padding-right: 0;
             }
             .slide-active .article-card {
-                transform: scale(1.03) translateY(-3px); /* Reduced lift from -5px */
+                transform: scale(1.03) translateY(-3px);
                 box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3), 0 0 10px rgba(250, 204, 21, 0.5);
             }
         }
@@ -230,12 +196,6 @@
     </header>
     <main class="container mx-auto px-4 py-8 max-w-5xl main-container">
         <div class="relative">
-            <div class="slider-nav slider-nav-left" onclick="scrollSlider(-1)">
-                <i class="fas fa-chevron-left"></i>
-            </div>
-            <div class="slider-nav slider-nav-right" onclick="scrollSlider(1)">
-                <i class="fas fa-chevron-right"></i>
-            </div>
             <div class="slider-container flex overflow-x-hidden snap-x snap-mandatory fade-in">
                 <div class="slider-wrapper flex">
                     <div class="slide flex-none snap-center">
@@ -407,14 +367,6 @@
 
             // Start auto-scrolling
             startAutoScroll();
-
-            // Slider navigation
-            window.scrollSlider = (direction) => {
-                stopAutoScroll();
-                currentIndex = (currentIndex + direction + originalSlides.length) % originalSlides.length;
-                smoothScroll(currentIndex);
-                setTimeout(startAutoScroll, 5000); // Resume auto-scroll after 5s
-            };
 
             // Touch and drag support
             slider.addEventListener('touchstart', (e) => {
