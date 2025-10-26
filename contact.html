@@ -2,160 +2,82 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EZPNIX - Contact Me</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
-            background-color: #333;
-            color: #fff;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            perspective: 1000px;
             background-image: url("images/bg1.jpg");
+            background-size: cover;
+            background-attachment: fixed;
         }
-        header {
-            background: linear-gradient(to bottom, #3f3e3e, #131313);
-            padding: 10px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        nav {
-            background-color: #333;
-            text-align: center;
-            padding: 10px 0;
-            border-radius: 15px;
-            transform-style: preserve-3d;
-            transition: transform 1s ease-in-out;
-        }
-        nav.flip-left {
-            transform: rotateY(90deg);
-        }
-        nav.flip-left.active {
-            transform: rotateY(0deg);
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 0 15px;
-            font-size: 16px;
-            transition: transform 0.3s, color 0.3s, font-size 0.3s;
-        }
-        nav a:hover {
-            transform: scale(1.05);
-            color: #ffcc00;
-            font-size: 18px;
-        }
-        h1 {
-            margin: 0;
-            padding: 20px 0;
+        .fade-in {
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
         }
-        h1.active {
+        .fade-in.active {
             opacity: 1;
             transform: translateY(0);
         }
-        .container {
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 20px;
-            text-align: center;
-            opacity: 0;
-            transition: opacity 1s ease-in;
+        .nav-link {
+            transition: color 0.3s ease, transform 0.3s ease;
         }
-        .container.active {
-            opacity: 1;
-        }
-        p {
-            line-height: 1.6;
-            text-align: center;
-        }
-        .justified {
-            text-align: justify;
-        }
-        .centered {
-            text-align: center;
-        }
-        img {
-            display: block;
-            margin: 0 auto;
-            border-radius: 15px;
-            max-width: 100%;
-            height: auto;
-        }
-        .footer-info {
-            text-align: center;
-            margin-top: 20px;
-            .social-icons {
-                margin-top: 20px;
-            }
-        }
-        .social-icons a {
-            color: white;
-            text-decoration: none;
-            font-size: 24px;
-            margin: 0 10px;
-            transition: transform 0.3s, color 0.3s, font-size 0.3s;
-        }
-        .social-icons a:hover {
+        .nav-link:hover {
+            color: #facc15;
             transform: scale(1.05);
-            color: #ffcc00;
-            font-size: 26px;
         }
-        .email {
-            font-size: 18px;
-            margin-top: 20px;
+        .social-icon {
+            transition: color 0.3s ease, transform 0.3s ease;
         }
-        .copyright {
-            font-size: 14px;
-            margin-top: 20px;
+        .social-icon:hover {
+            color: #facc15;
+            transform: scale(1.1);
         }
     </style>
 </head>
-<body>
-    <header>
-        <h1>Contact Me</h1>
-        <nav class="flip-left">
-            <a href="index.html">Home</a>
-            <a href="archive.html">Archive</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
+<body class="bg-gray-900 text-white font-sans min-h-screen">
+    <header class="bg-gradient-to-b from-gray-800 to-gray-900 py-6">
+        <h1 class="text-4xl font-bold text-center fade-in">Contact Me</h1>
+        <nav class="flex justify-center space-x-6 py-4 fade-in">
+            <a href="index.html" class="nav-link text-lg">Home</a>
+            <a href="archive.html" class="nav-link text-lg">Archive</a>
+            <a href="about.html" class="nav-link text-lg">About</a>
+            <a href="contact.html" class="nav-link text-lg">Contact</a>
         </nav>
     </header>
-    <div class="container">
-        </ul>
-        <img src="images/sma.gif" alt="sma gif" style="width: 400px; height: auto;">
-        <h2>For Business Inquiries:</h2>
-        <p class="justified">If you have any business inquiries or collaboration opportunities, feel free to reach out to us. We are open to partnerships, sponsorships, and other business-related discussions. Please contact us at ezpnix@proton.me for any inquiries. We look forward to hearing from you and exploring potential collaborations.</p> 
-        <hr>
-    </div>
-    <div class="footer-info">
-        <div class="email">
-            <p>ezpnix@proton.me</p>
+    <main class="container mx-auto px-4 py-8 max-w-4xl">
+        <img src="images/sma.gif" alt="SMA GIF" class="w-full max-w-md mx-auto rounded-xl mb-6 fade-in">
+        <h2 class="text-2xl font-semibold text-center mb-4 fade-in">For Business Inquiries</h2>
+        <p class="text-lg text-justify leading-relaxed fade-in">
+            If you have any business inquiries or collaboration opportunities, feel free to reach out to us. We are open to partnerships, sponsorships, and other business-related discussions. Please contact us at <a href="mailto:ezpnix@proton.me" class="underline hover:text-yellow-400">ezpnix@proton.me</a> for any inquiries. We look forward to hearing from you and exploring potential collaborations.
+        </p>
+        <hr class="my-8 border-gray-700">
+    </main>
+    <footer class="text-center py-6">
+        <div class="mb-4 fade-in">
+            <p class="text-lg">ezpnix@proton.me</p>
         </div>
-        <div class="social-icons">
-            <a href="https://www.youtube.com/@3zpnix"><i class="fab fa-youtube"></i></a>
-            <a href="https://www.twitter.com/@3zpnix"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.facebook.com/@3zpnix"><i class="fab fa-facebook"></i></a>
+        <div class="flex justify-center space-x-6 mb-4 fade-in">
+            <a href="https://www.youtube.com/@3zpnix" class="social-icon"><i class="fab fa-youtube text-2xl"></i></a>
+            <a href="https://www.twitter.com/@3zpnix" class="social-icon"><i class="fab fa-twitter text-2xl"></i></a>
+            <a href="https://www.facebook.com/@3zpnix" class="social-icon"><i class="fab fa-facebook text-2xl"></i></a>
         </div>
-        <div class="copyright">
-            <p>&copy; 2024 3ZPNIX. All Rights Reserved.</p>
+        <div class="fade-in">
+            <p class="text-sm">&copy; 2025 3ZPNIX. All Rights Reserved.</p>
         </div>
-    </div>
+    </footer>
 
     <script>
-        window.onload = function() {
-            setTimeout(function() {
-                document.querySelector('nav').classList.add('active');
-                document.querySelector('h1').classList.add('active');
-                document.querySelector('.container').classList.add('active');
-            }, 100); 
-        };
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('active');
+                }, index * 200);
+            });
+        });
     </script>
 </body>
 </html>
