@@ -1,206 +1,109 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EZPNIX - Archive Section</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
-            background-color: #333;
-            color: #fff;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            perspective: 1000px; /* Add perspective for 3D effect */
             background-image: url("images/bg1.jpg");
+            background-size: cover;
+            background-attachment: fixed;
         }
-
-        header {
-            background: linear-gradient(to bottom, #3f3e3e, #131313); /* Adjust the colors as needed */
-            padding: 10px;
-            text-align: center;
-            position: relative; /* Position header for animation */
-            overflow: hidden; /* Hide content that overflows */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
         }
-
-        h1 {
-            margin: 0;
-            padding: 20px 0;
-            opacity: 0; /* Initially hide the heading */
-            transform: translateY(20px); /* Move heading up by 20px */
-            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Add transition for smooth animation */
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
         }
-
-        h1.active {
-            opacity: 1; /* Show the heading on animation */
-            transform: translateY(0); /* Move heading back to its original position */
+        .nav-link {
+            transition: color 0.3s ease, transform 0.3s ease;
         }
-        h2 {
-            text-align: center; /* Center the paragraph text */
-            margin-left: -10px;
-            margin-top: -20px;
-        }
-        .container {
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 20px;
-            opacity: 0; /* Initially hide the container */
-            transition: opacity 1s ease-in; /* Add transition for fade-in effect */
-        }
-        .container.active {
-            opacity: 1; /* Show the container on animation */
-
-        }
-
-        nav {
-            background-color: #333;
-            text-align: center;
-            padding: 10px 0;
-            border-radius: 15px;
-            transform-style: preserve-3d; /* Enable 3D transformations */
-            transition: transform 1s ease-in-out; /* Add transition for smooth animation */
-        }
-
-        nav.flip-left {
-            transform: rotateY(90deg); /* Initially rotate the title 90 degrees */
-        }
-
-        nav.flip-left.active {
-            transform: rotateY(0deg); /* Rotate back to 0 degrees on animation */
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 0 15px;
-            font-size: 16px; /* Set initial font size */
-            transition: transform 0.3s, color 0.3s, font-size 0.3s;
-        }
-
-        nav a:hover {
+        .nav-link:hover {
+            color: #facc15;
             transform: scale(1.05);
-            color: #ffcc00; /* Change text color on hover */
-            font-size: 18px; /* Change font size on hover */
         }
-
-        p {
-            line-height: 1.6;
+        .social-icon {
+            transition: color 0.3s ease, transform 0.3s ease;
         }
-
-        a {
-            color: #fff;
-            text-decoration: underline;
+        .social-icon:hover {
+            color: #facc15;
+            transform: scale(1.1);
         }
-
-        .article-section-list {
-            margin-top: 20px;
-            margin-left: -35px;
-        }
-
-        .article-section-list li {
-            list-style: none;
-            margin-bottom: 10px;
-        }
-
         .article-section-list a {
             display: block;
             padding: 10px;
-            background-color: #444;
+            background-color: rgba(255, 255, 255, 0.1);
             border-radius: 5px;
             color: #fff;
             text-decoration: none;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
-
         .article-section-list a:hover {
-            background-color: #555;
-        }
-        .footer-info {
-            text-align: center;
-            margin-top: 20px;
-            .social-icons {
-            margin-top: 20px;
-            }
-        }
-        .social-icons a {
-            color: white;
-            text-decoration: none;
-            font-size: 24px;
-            margin: 0 10px;
-            transition: transform 0.3s, color 0.3s, font-size 0.3s; /* Add transition */
-        }
-        .social-icons a:hover {
-            transform: scale(1.05); /* Add scale on hover */
-            color: #ffcc00; /* Change color on hover */
-            font-size: 26px; /* Increase font size on hover */
-        }
-        .email {
-            font-size: 18px;
-            margin-top: 20px;
-        }
-        .copyright {
-            font-size: 14px;
-            margin-top: 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: scale(1.02);
         }
     </style>
 </head>
-<body>
-    <header>
-        <h1>Archive Section</h1> 
-        <nav class="flip-left">
-            <a href="index.html">Home</a>
-            <a href="archive.html">Archive</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
+<body class="bg-gray-900 text-white font-sans min-h-screen">
+    <header class="bg-gradient-to-b from-gray-800 to-gray-900 py-6">
+        <h1 class="text-4xl font-bold text-center fade-in">Archive Section</h1>
+        <nav class="flex justify-center space-x-6 py-4 fade-in">
+            <a href="index.html" class="nav-link text-lg">Home</a>
+            <a href="archive.html" class="nav-link text-lg">Archive</a>
+            <a href="about.html" class="nav-link text-lg">About</a>
+            <a href="contact.html" class="nav-link text-lg">Contact</a>
         </nav>
     </header>
-    <div class="container">
-        <ul class="article-section-list">
-            <h2
-            >Last Updated: 07/29/2024</h2>
-            <li><a href="#">Article Section 1</a></li>
-            <li><a href="#">Article Section 2</a></li>
-            <li><a href="#">Article Section 3</a></li>
-            <li><a href="#">Article Section 4</a></li>
-            <li><a href="#">Article Section 5</a></li>
-            <li><a href="#">Article Section 6</a></li>
-            <li><a href="#">Article Section 7</a></li>
-            <li><a href="#">Article Section 8</a></li>
-            <li><a href="#">Article Section 9</a></li>
-            <li><a href="#">Article Section 10</a></li>
-            <li><a href="#">Article Section 11</a></li>
-            <li><a href="#">Article Section 12</a></li>
-            <li><a href="#">Article Section 13</a></li>
-            <li><a href="#">Article Section 14</a></li>
-            <li><a href="#">Article Section 15</a></li>
+    <main class="container mx-auto px-4 py-8 max-w-4xl">
+        <h2 class="text-2xl font-semibold text-center mb-4 fade-in">Last Updated: 07/29/2024</h2>
+        <ul class="article-section-list space-y-4 fade-in">
+            <li><a href="#" class="fade-in">Article Section 1</a></li>
+            <li><a href="#" class="fade-in">Article Section 2</a></li>
+            <li><a href="#" class="fade-in">Article Section 3</a></li>
+            <li><a href="#" class="fade-in">Article Section 4</a></li>
+            <li><a href="#" class="fade-in">Article Section 5</a></li>
+            <li><a href="#" class="fade-in">Article Section 6</a></li>
+            <li><a href="#" class="fade-in">Article Section 7</a></li>
+            <li><a href="#" class="fade-in">Article Section 8</a></li>
+            <li><a href="#" class="fade-in">Article Section 9</a></li>
+            <li><a href="#" class="fade-in">Article Section 10</a></li>
+            <li><a href="#" class="fade-in">Article Section 11</a></li>
+            <li><a href="#" class="fade-in">Article Section 12</a></li>
+            <li><a href="#" class="fade-in">Article Section 13</a></li>
+            <li><a href="#" class="fade-in">Article Section 14</a></li>
+            <li><a href="#" class="fade-in">Article Section 15</a></li>
         </ul>
-    <hr>
-    </div>
-    <div class="footer-info">
-        <div class="email">
-            <p>ezpnix@proton.me</p>
+        <hr class="my-8 border-gray-700">
+    </main>
+    <footer class="text-center py-6">
+        <div class="mb-4 fade-in">
+            <p class="text-lg">ezpnix@proton.me</p>
         </div>
-        <div class="social-icons">
-            <a href="https://www.youtube.com/@3zpnix"><i class="fab fa-youtube"></i></a>
-            <a href="https://www.twitter.com/@3zpnix"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.facebook.com/@3zpnix"><i class="fab fa-facebook"></i></a>
+        <div class="flex justify-center space-x-6 mb-4 fade-in">
+            <a href="https://www.youtube.com/@3zpnix" class="social-icon"><i class="fab fa-youtube text-2xl"></i></a>
+            <a href="https://www.twitter.com/@3zpnix" class="social-icon"><i class="fab fa-twitter text-2xl"></i></a>
+            <a href="https://www.facebook.com/@3zpnix" class="social-icon"><i class="fab fa-facebook text-2xl"></i></a>
         </div>
-        <div class="copyright">
-            <p>&copy; 2024 3ZPNIX. All Rights Reserved.</p>
+        <div class="fade-in">
+            <p class="text-sm">&copy; 2025 3ZPNIX. All Rights Reserved.</p>
         </div>
-    </div>
+    </footer>
 
     <script>
-        // Add class 'active' to the h1 and container elements after a short delay
-        window.onload = function() {
-            setTimeout(function() {
-                document.querySelector('nav').classList.add('active');
-                document.querySelector('h1').classList.add('active');
-                document.querySelector('.container').classList.add('active');
-            }, 100); 
-        };
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('active');
+                }, index * 200);
+            });
+        });
     </script>
 </body>
 </html>
