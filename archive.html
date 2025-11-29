@@ -1,96 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>3ZPNIX - Archive</title>
-<link rel="icon" type="image/png" href="images/3zpnix.png">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<script src="https://cdn.tailwindcss.com"></script>
-<style>
-body {background-image:url("images/bg1.jpg"); background-size:cover; background-attachment:fixed; color:white; font-family:sans-serif;}
-.fade-in {opacity:0; transform:translateY(20px); transition:opacity 0.5s ease-out, transform 0.5s ease-out;}
-.fade-in.active {opacity:1; transform:translateY(0);}
-.nav-link {transition:color 0.3s ease, transform 0.3s ease;}
-.nav-link:hover {color:#facc15; transform:scale(1.05);}
-.reaction-btn {padding:4px 8px; background:rgba(255,255,255,0.1); border-radius:6px; display:flex; align-items:center;}
-.accordion-title {cursor:pointer; display:flex; justify-content:space-between; align-items:center;}
-.accordion-title-left {display:flex; align-items:center; gap:10px;}
-.accordion-content {max-height:0; overflow:hidden; transition:max-height 0.3s ease; margin-top:10px;}
-.accordion-content.show {max-height:500px;}
-.arrow {transition:transform 0.3s ease;}
-.arrow.rotate {transform:rotate(180deg);}
-.card {background:rgba(31,41,55,0.9); padding:1.25rem; border-radius:0.75rem; border:1px solid #374151;}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3ZPNIX - Archive</title>
+    <link rel="icon" type="image/png" href="images/3zpnix.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-image: url("images/bg1.jpg");
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .nav-link {
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #facc15;
+            transform: scale(1.05);
+        }
+        .reaction-btn {
+            padding: 4px 8px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+        }
+        .accordion-title {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .accordion-title-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            margin-top: 10px;
+        }
+        .accordion-content.show {
+            max-height: 500px; /* adjust depending on content */
+        }
+        .arrow {
+            transition: transform 0.3s ease;
+        }
+        .arrow.rotate {
+            transform: rotate(180deg);
+        }
+    </style>
 </head>
-<body>
-<header class="bg-gradient-to-b from-gray-800 to-gray-900 py-6">
-    <h1 class="text-4xl font-bold text-center fade-in">Archived Posts</h1>
-    <nav class="flex justify-center space-x-6 py-4 fade-in">
-        <a href="index.html" class="nav-link text-lg">Home</a>
-        <a href="archive.html" class="nav-link text-lg">Archive</a>
-        <a href="about.html" class="nav-link text-lg">About</a>
-        <a href="contact.html" class="nav-link text-lg">Contact</a>
-    </nav>
-</header>
+<body class="bg-gray-900 text-white font-sans min-h-screen">
+    <header class="bg-gradient-to-b from-gray-800 to-gray-900 py-6">
+        <h1 class="text-4xl font-bold text-center fade-in">Archived Posts</h1>
+        <nav class="flex justify-center space-x-6 py-4 fade-in">
+            <a href="index.html" class="nav-link text-lg">Home</a>
+            <a href="archive.html" class="nav-link text-lg">Archive</a>
+            <a href="about.html" class="nav-link text-lg">About</a>
+            <a href="contact.html" class="nav-link text-lg">Contact</a>
+        </nav>
+    </header>
 
-<main class="container mx-auto px-4 py-8 max-w-4xl">
-    <h2 class="text-2xl font-semibold text-center mb-6 fade-in">Last Updated: 07/29/2024</h2>
-    <div id="articles" class="space-y-6 fade-in"></div>
-</main>
+    <main class="container mx-auto px-4 py-8 max-w-4xl">
+        <h2 class="text-2xl font-semibold text-center mb-6 fade-in">Last Updated: 07/29/2024</h2>
+        <div id="articles" class="space-y-6 fade-in"></div>
+    </main>
 
-<footer class="text-center py-6">
-    <div class="mb-4 fade-in"><p class="text-lg">3zpnix@proton.me</p></div>
-    <div class="flex justify-center space-x-6 mb-4 fade-in">
-        <a href="https://www.youtube.com/@3zpnix" class="social-icon"><i class="fab fa-youtube text-2xl"></i></a>
-        <a href="https://www.twitter.com/@3zpnix" class="social-icon"><i class="fab fa-twitter text-2xl"></i></a>
-        <a href="https://www.facebook.com/@3zpnix" class="social-icon"><i class="fab fa-facebook text-2xl"></i></a>
-    </div>
-    <div class="fade-in"><p class="text-sm">&copy; 2025 3ZPNIX. All Rights Reserved.</p></div>
-</footer>
+    <footer class="text-center py-6">
+        <div class="mb-4 fade-in">
+            <p class="text-lg">3zpnix@proton.me</p>
+        </div>
+        <div class="flex justify-center space-x-6 mb-4 fade-in">
+            <a href="https://www.youtube.com/@3zpnix" class="social-icon"><i class="fab fa-youtube text-2xl"></i></a>
+            <a href="https://www.twitter.com/@3zpnix" class="social-icon"><i class="fab fa-twitter text-2xl"></i></a>
+            <a href="https://www.facebook.com/@3zpnix" class="social-icon"><i class="fab fa-facebook text-2xl"></i></a>
+        </div>
+        <div class="fade-in">
+            <p class="text-sm">&copy; 2025 3ZPNIX. All Rights Reserved.</p>
+        </div>
+    </footer>
 
-<script type="module">
-import { posts } from './js/posts.js';
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('active');
+                }, index * 200);
+            });
 
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.fade-in').forEach((el,i)=>setTimeout(()=>el.classList.add('active'),i*200));
+            const articles = [
+                {
+                    title: "Why I Forked Easynotes: The Story Behind WriteOn",
+                    desc: "A detailed explanation of my decision to fork Easynotes and create WriteOn, focusing on freedom and customization."
+                },
+                {
+                    title: "Casual Coding: Finding Joy in Small Projects",
+                    desc: "Discussing how small coding projects bring joy without the stress of deadlines or large teams."
+                },
+                {
+                    title: "Designing a Minimal Notepad That Actually Feels Good",
+                    desc: "My approach to creating a minimal, user-friendly notepad app that focuses on simplicity and aesthetics."
+                },
+                {
+                    title: "Open Source Isn’t About Fame — It’s About Freedom",
+                    desc: "Why contributing to open source should be about learning and freedom, not recognition."
+                },
+                {
+                    title: "Lessons Learned from Publishing on F-Droid",
+                    desc: "Practical tips and insights from releasing apps on F-Droid, the open-source Android marketplace."
+                }
+            ];
 
-    const container = document.getElementById('articles');
+            const articlesDiv = document.getElementById('articles');
 
-    function createReaction(emoji) {
-        const btn = document.createElement('div');
-        btn.className = 'reaction-btn';
-        btn.textContent = `${emoji} ${Math.floor(Math.random()*500)+10}`;
-        return btn;
-    }
+            function createReaction(emoji) {
+                const btn = document.createElement('div');
+                btn.className = 'reaction-btn';
+                const count = Math.floor(Math.random() * 500) + 10;
+                btn.textContent = `${emoji} ${count}`;
+                return btn;
+            }
 
-    posts.forEach(post => {
-        const card = document.createElement('div'); card.className='card';
+            articles.forEach((article) => {
+                const card = document.createElement('div');
+                card.className = 'bg-gray-800 p-5 rounded-xl shadow-lg border border-gray-700';
 
-        const titleDiv = document.createElement('div'); titleDiv.className='accordion-title mb-2';
-        const titleLeft = document.createElement('div'); titleLeft.className='accordion-title-left';
-        const titleText = document.createElement('span'); titleText.textContent = post.title;
+                // Accordion Title with arrow and reactions
+                const titleDiv = document.createElement('div');
+                titleDiv.className = 'accordion-title mb-2';
 
-        const reactions = document.createElement('div'); reactions.className='flex gap-2';
-        reactions.appendChild(createReaction('👍'));
-        reactions.appendChild(createReaction('❤️'));
-        reactions.appendChild(createReaction('😮'));
+                const titleLeft = document.createElement('div');
+                titleLeft.className = 'accordion-title-left';
 
-        titleLeft.appendChild(titleText);
-        titleLeft.appendChild(reactions);
+                const titleText = document.createElement('span');
+                titleText.textContent = article.title;
 
-        const arrow = document.createElement('i'); arrow.className='fas fa-chevron-down arrow';
-        titleDiv.appendChild(titleLeft); titleDiv.appendChild(arrow);
+                // Reactions visible outside
+                const reactionContainer = document.createElement('div');
+                reactionContainer.className = 'flex gap-2';
+                reactionContainer.appendChild(createReaction('👍'));
+                reactionContainer.appendChild(createReaction('❤️'));
+                reactionContainer.appendChild(createReaction('😮'));
 
-        const contentDiv = document.createElement('div'); contentDiv.className='accordion-content';
-        contentDiv.innerHTML = `<p>${post.desc}</p>`;
+                titleLeft.appendChild(titleText);
+                titleLeft.appendChild(reactionContainer);
 
-        titleDiv.addEventListener('click', ()=>{contentDiv.classList.toggle('show'); arrow.classList.toggle('rotate');});
+                const arrow = document.createElement('i');
+                arrow.className = 'fas fa-chevron-down arrow';
 
-        card.appendChild(titleDiv); card.appendChild(contentDiv);
-        container.appendChild(card);
-    });
-});
-</script>
+                titleDiv.appendChild(titleLeft);
+                titleDiv.appendChild(arrow);
+
+                // Accordion Content
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'accordion-content text-gray-200';
+                contentDiv.innerHTML = `<p>${article.desc}</p>`;
+
+                // Toggle accordion
+                titleDiv.addEventListener('click', () => {
+                    contentDiv.classList.toggle('show');
+                    arrow.classList.toggle('rotate');
+                });
+
+                card.appendChild(titleDiv);
+                card.appendChild(contentDiv);
+                articlesDiv.appendChild(card);
+            });
+        });
+    </script>
 </body>
 </html>
