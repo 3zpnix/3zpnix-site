@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EZPNIX - Archive Section</title>
+    <title>3ZPNIX - Archive Section</title>
     <link rel="icon" type="image/png" href="images/3zpnix.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -33,11 +33,9 @@
             padding: 6px 12px;
             background-color: rgba(255,255,255,0.1);
             border-radius: 6px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .reaction-btn:hover {
-            background-color: rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            space-x-2;
         }
     </style>
 </head>
@@ -102,15 +100,10 @@
 
             const articlesDiv = document.getElementById('articles');
 
-            // Load reaction data
-            const savedReactions = JSON.parse(localStorage.getItem('reactions')) || {};
-
             function renderArticles() {
                 articlesDiv.innerHTML = '';
 
-                articleTitles.forEach((title, index) => {
-                    if (!savedReactions[index]) savedReactions[index] = { like: 0, love: 0, wow: 0 };
-
+                articleTitles.forEach((title) => {
                     const card = document.createElement('div');
                     card.className = 'bg-gray-800 p-5 rounded-xl shadow-lg border border-gray-700';
 
@@ -121,30 +114,17 @@
                     const reactions = document.createElement('div');
                     reactions.className = 'flex space-x-4 mt-3';
 
-                    function makeReactionButton(type, emoji) {
+                    function createReaction(emoji) {
                         const btn = document.createElement('div');
-                        btn.className = 'reaction-btn flex items-center space-x-2';
-
-                        const icon = document.createElement('span');
-                        icon.textContent = emoji;
-                        const count = document.createElement('span');
-                        count.textContent = savedReactions[index][type];
-                        count.id = `r-${type}-${index}`;
-
-                        btn.onclick = () => {
-                            savedReactions[index][type]++;
-                            localStorage.setItem('reactions', JSON.stringify(savedReactions));
-                            document.getElementById(`r-${type}-${index}`).textContent = savedReactions[index][type];
-                        };
-
-                        btn.appendChild(icon);
-                        btn.appendChild(count);
+                        btn.className = 'reaction-btn';
+                        const count = Math.floor(Math.random() * 500) + 10; // random count 10-509
+                        btn.textContent = `${emoji} ${count}`;
                         return btn;
                     }
 
-                    reactions.appendChild(makeReactionButton('like', '👍'));
-                    reactions.appendChild(makeReactionButton('love', '❤️'));
-                    reactions.appendChild(makeReactionButton('wow', '😮'));
+                    reactions.appendChild(createReaction('👍'));
+                    reactions.appendChild(createReaction('❤️'));
+                    reactions.appendChild(createReaction('😮'));
 
                     card.appendChild(h3);
                     card.appendChild(reactions);
