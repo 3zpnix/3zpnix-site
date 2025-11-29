@@ -36,12 +36,35 @@
             transform: scale(1.1);
             background-color: rgba(255,255,255,0.2);
         }
+
+        /* Shining text CSS */
+        .shining-text {
+            animation: shine 3s infinite;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            font-size: 1.5rem; /* adjust size as needed */
+            font-weight: bold;
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+
+        @keyframes shine {
+            0%, 100% {
+                color: white;
+                text-shadow: 0 0 10px white, 0 0 5px rgba(0,0,0,0.5);
+            }
+            50% {
+                color: #facc15;
+                text-shadow: 0 0 20px #facc15, 0 0 5px rgba(0,0,0,0.5);
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-white font-sans min-h-screen flex flex-col">
 
     <header class="bg-gradient-to-b from-gray-800 to-gray-900 py-6">
         <h1 class="text-4xl font-bold text-center fade-in">About Us</h1>
+        <!-- Shining subtitle under the header -->
+        <p class="shining-text fade-in">❝ embrace uncertainty discover potential ❞</p>
         <nav class="flex justify-center space-x-6 py-4 fade-in">
             <a href="index.html" class="text-lg nav-link">Home</a>
             <a href="archive.html" class="nav-link text-lg">Archive</a>
