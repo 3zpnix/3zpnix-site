@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>3ZPNIX - Official Website</title>
-<link rel="icon" type="image/png" href="images/3zpnix.png">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<script src="https://cdn.tailwindcss.com"></script>
-<style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3ZPNIX - Official Website</title>
+    <link rel="icon" type="image/png" href="images/3zpnix.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
     body {
         background-image: url("images/bg1.jpg");
         background-size: cover;
@@ -193,71 +193,286 @@
 </style>
 </head>
 <body class="font-sans min-h-screen">
-<header class="relative py-6">
-    <img src="images/Featured.gif" alt="Logo" class="mx-auto w-24 h-24 rounded-full fade-in" loading="lazy">
-    <h1 id="animated-title" class="text-5xl font-bold text-center mt-8 fade-in">
-        <span class="letter">3</span>
-        <span class="letter">Z</span>
-        <span class="letter">P</span>
-        <span class="letter">N</span>
-        <span class="letter">I</span>
-        <span class="letter">X</span>
-    </h1>
-    <p class="shining-text text-lg text-center mt-2 fade-in">❝ embrace uncertainty discover potential ❞</p>
-    <nav class="flex justify-center space-x-6 py-4 fade-in">
-        <a href="index.html" class="nav-link text-lg">Home</a>
-        <a href="archive.html" class="nav-link text-lg">Archive</a>
-        <a href="about.html" class="nav-link text-lg">About</a>
-        <a href="contact.html" class="nav-link text-lg">Contact</a>
-    </nav>
-    <hr class="header-divider">
-</header>
-<main class="container mx-auto px-4 py-6 max-w-5xl main-container">
-    <div class="slider-container flex overflow-x-hidden snap-x snap-mandatory fade-in">
-        <div class="slider-wrapper flex" id="slider-wrapper">
-            <!-- Slides will be inserted here via JS -->
+    <header class="relative py-6">
+        <img src="images/Featured.gif" alt="Logo" class="mx-auto w-24 h-24 rounded-full fade-in" loading="lazy">
+        <h1 id="animated-title" class="text-5xl font-bold text-center mt-8 fade-in">
+            <span class="letter">3</span>
+            <span class="letter">Z</span>
+            <span class="letter">P</span>
+            <span class="letter">N</span>
+            <span class="letter">I</span>
+            <span class="letter">X</span>
+        </h1>
+        <p class="shining-text text-lg text-center mt-2 fade-in">❝ embrace uncertainty discover potential ❞</p>
+        <nav class="flex justify-center space-x-6 py-4 fade-in">
+            <a href="index.html" class="nav-link text-lg">Home</a>
+            <a href="archive.html" class="nav-link text-lg">Archive</a>
+            <a href="about.html" class="nav-link text-lg">About</a>
+            <a href="contact.html" class="nav-link text-lg">Contact</a>
+        </nav>
+        <hr class="header-divider">
+    </header>
+    <main class="container mx-auto px-4 py-6 max-w-5xl main-container">
+        <div class="relative">
+            <div class="slider-container flex overflow-x-hidden snap-x snap-mandatory fade-in">
+                <div class="slider-wrapper flex">
+                    <div class="slide flex-none snap-center">
+    <article class="article-card rounded-lg cursor-pointer" onclick="window.location.href='section/writeon-story.html'">
+        <span class="announcement-label">Update</span>
+        <h2 class="text-xl font-semibold">Why I Forked Easynotes: The Story Behind WriteOn</h2>
+        <p class="text-ellipsis overflow-hidden">A breakdown of how WriteOn started, evolved, and why open-source freedom matters to me.</p>
+    </article>
+</div>
+
+<div class="slide flex-none snap-center">
+    <article class="article-card rounded-lg cursor-pointer" onclick="window.location.href='casual-coding.html'">
+        <span class="announcement-label">Blog</span>
+        <h2 class="text-xl font-semibold">Casual Coding: Finding Joy in Small Projects</h2>
+        <p class="text-ellipsis overflow-hidden">Why I prefer building simple things that work, instead of chasing hype or frameworks.</p>
+    </article>
+</div>
+
+            <div class="slide flex-none snap-center">
+                <article class="article-card rounded-lg cursor-pointer" onclick="window.location.href='design-minimal-notepad.html'">
+                    <span class="announcement-label">Dev Log</span>
+                    <h2 class="text-xl font-semibold">Designing a Minimal Notepad That Actually Feels Good</h2>
+                    <p class="text-ellipsis overflow-hidden">Thoughts on simplicity, UI comfort, and what makes a note app feel “right.”</p>
+                </article>
+            </div>
+            
+            <div class="slide flex-none snap-center">
+                <article class="article-card rounded-lg cursor-pointer" onclick="window.location.href='open-source-freedom.html'">
+                    <span class="announcement-label">Reflection</span>
+                    <h2 class="text-xl font-semibold">Open Source Isn’t About Fame — It’s About Freedom</h2>
+                    <p class="text-ellipsis overflow-hidden">A reminder of why sharing code still matters in a world obsessed with profit.</p>
+                </article>
+            </div>
+            
+            <div class="slide flex-none snap-center">
+                <article class="article-card rounded-lg cursor-pointer" onclick="window.location.href='f-droid-lessons.html'">
+                    <span class="announcement-label">Dev Note</span>
+                    <h2 class="text-xl font-semibold">Lessons Learned from Publishing on F-Droid</h2>
+                    <p class="text-ellipsis overflow-hidden">From signing keys to metadata headaches — what I learned as a new F-Droid publisher.</p>
+                </article>
+            </div>
+            
+            <div class="slide flex-none snap-center">
+                <article class="article-card rounded-lg cursor-pointer" onclick="window.location.href='privacy-vs-analytics.html'">
+                    <span class="announcement-label">Opinion</span>
+                    <h2 class="text-xl font-semibold">Why I Prefer Privacy Over Analytics</h2>
+                    <p class="text-ellipsis overflow-hidden">No trackers, no ads, no data mining — just respect for users and their notes.</p>
+                </article>
+            </div>
+            
+            <div class="slide flex-none snap-center">
+                <article class="article-card rounded-lg cursor-pointer" onclick="window.location.href='user-feedback.html'">
+                    <span class="announcement-label">Update</span>
+                    <h2 class="text-xl font-semibold">How Feedback from Users Shapes Every Update</h2>
+                    <p class="text-ellipsis overflow-hidden">Every version of WriteOn includes ideas from real users — here’s how that process works.</p>
+                </article>
+            </div>
+            
+            <div class="slide flex-none snap-center">
+                <article class="article-card rounded-lg cursor-pointer" onclick="window.location.href='balancing-uni-life.html'">
+                    <span class="announcement-label">Life</span>
+                    <h2 class="text-xl font-semibold">Balancing University Life and Side Coding Projects</h2>
+                    <p class="text-ellipsis overflow-hidden">How I manage deadlines, classes, and still find time to build things for fun.</p>
+                </article>
+            </div>
+            
+            <div class="slide flex-none snap-center">
+                <article class="article-card rounded-lg cursor-pointer" onclick="window.location.href='minimalism-in-code.html'">
+                    <span class="announcement-label">Dev Talk</span>
+                    <h2 class="text-xl font-semibold">Simple Apps, Real Impact: The Beauty of Minimalism in Code</h2>
+                    <p class="text-ellipsis overflow-hidden">Why I believe less is more — especially when it comes to open-source design.</p>
+                </article>
+            </div>
+            
+            <div class="slide flex-none snap-center">
+                <article class="article-card rounded-lg cursor-pointer" onclick="window.location.href='coding-just-for-fun.html'">
+                    <span class="announcement-label">Philosophy</span>
+                    <h2 class="text-xl font-semibold">The Philosophy of “Coding Just for Fun”</h2>
+                    <p class="text-ellipsis overflow-hidden">No pressure, no deadlines — just pure enjoyment in learning and creating.</p>
+                </article>
+            </div>
+
+                </div>
+            </div>
         </div>
-    </div>
-</main>
-<footer class="text-center py-3">
-    <div class="mb-2 fade-in">
-        <p class="text-lg text-shadow">3zpnix@proton.me</p>
-    </div>
-    <div class="flex justify-center space-x-6 mb-2 fade-in">
-        <a href="https://www.youtube.com/@3zpnix" class="social-icon"><i class="fab fa-youtube text-2xl"></i></a>
-        <a href="https://www.twitter.com/@3zpnix" class="social-icon"><i class="fab fa-twitter text-2xl"></i></a>
-        <a href="https://www.facebook.com/@3zpnix" class="social-icon"><i class="fab fa-facebook text-2xl"></i></a>
-    </div>
-    <div class="fade-in">
-        <p class="text-sm text-shadow">&copy; 2025 3ZPNIX. All Rights Reserved.</p>
-    </div>
-</footer>
-<script src="js/posts.js"></script>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const title = document.getElementById('animated-title');
-    const letters = title.querySelectorAll('.letter');
-    const elements = document.querySelectorAll('.fade-in');
-    const wrapper = document.getElementById('slider-wrapper');
+    </main>
+    <footer class="text-center py-3">
+        <div class="mb-2 fade-in">
+            <p class="text-lg text-shadow">3zpnix@proton.me</p>
+        </div>
+        <div class="flex justify-center space-x-6 mb-2 fade-in">
+            <a href="https://www.youtube.com/@3zpnix" class="social-icon"><i class="fab fa-youtube text-2xl"></i></a>
+            <a href="https://www.twitter.com/@3zpnix" class="social-icon"><i class="fab fa-twitter text-2xl"></i></a>
+            <a href="https://www.facebook.com/@3zpnix" class="social-icon"><i class="fab fa-facebook text-2xl"></i></a>
+        </div>
+        <div class="fade-in">
+            <p class="text-sm text-shadow">&copy; 2025 3ZPNIX. All Rights Reserved.</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const title = document.getElementById('animated-title');
+            const letters = title.querySelectorAll('.letter');
+            const elements = document.querySelectorAll('.fade-in');
+            const slider = document.querySelector('.slider-container');
+            const wrapper = document.querySelector('.slider-wrapper');
+            const slides = wrapper.querySelectorAll('.slide');
+            let isDragging = false;
+            let startX, scrollLeft, velocity = 0, lastX;
+            let currentIndex = 0;
+            let autoScrollInterval;
 
-    // Animate letters
-    letters.forEach((letter, i) => setTimeout(() => letter.classList.add('active'), i*100));
-    elements.forEach((el, i) => setTimeout(() => el.classList.add('active'), i*200));
+            // Animation for title and fade-in elements
+            letters.forEach((letter, index) => {
+                setTimeout(() => {
+                    letter.classList.add('active');
+                }, index * 100);
+            });
+            elements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('active');
+                }, index * 200);
+            });
 
-    // Render slides from posts.js
-    posts.forEach(post => {
-        const slide = document.createElement('div');
-        slide.className = 'slide flex-none snap-center';
-        slide.innerHTML = `
-            <article class="article-card rounded-lg cursor-pointer" onclick="window.location.href='${post.link}'">
-                <span class="announcement-label">${post.label}</span>
-                <h2 class="text-xl font-semibold">${post.title}</h2>
-                <p class="text-ellipsis overflow-hidden">${post.desc}</p>
-            </article>
-        `;
-        wrapper.appendChild(slide);
-    });
-});
-</script>
+            // Clone slides for infinite looping
+            const originalSlides = Array.from(slides);
+            originalSlides.forEach(slide => {
+                const clone = slide.cloneNode(true);
+                wrapper.appendChild(clone);
+            });
+            const allSlides = wrapper.querySelectorAll('.slide');
+            const slideWidth = slides[0].getBoundingClientRect().width;
+
+            // Update active slide
+            const updateActiveSlide = () => {
+                allSlides.forEach((slide, index) => {
+                    slide.classList.remove('slide-active');
+                    if (index === currentIndex % originalSlides.length) {
+                        slide.classList.add('slide-active');
+                    }
+                });
+            };
+
+            // Initial active slide
+            updateActiveSlide();
+
+            // Smooth scroll animation
+            const smoothScroll = (targetIndex) => {
+                const target = targetIndex * slideWidth;
+                const start = slider.scrollLeft;
+                const startTime = performance.now();
+                const duration = 800; // Slower animation (800ms)
+
+                const animate = (currentTime) => {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const ease = 0.5 - Math.cos(progress * Math.PI) / 2; // Smooth easing
+                    slider.scrollLeft = start + (target - start) * ease;
+                    if (progress < 1) {
+                        requestAnimationFrame(animate);
+                    } else {
+                        // Handle looping
+                        if (targetIndex >= originalSlides.length) {
+                            slider.scrollLeft = 0;
+                            currentIndex = 0;
+                        }
+                        updateActiveSlide();
+                    }
+                };
+                requestAnimationFrame(animate);
+            };
+
+            // Auto-scrolling
+            const startAutoScroll = () => {
+                autoScrollInterval = setInterval(() => {
+                    currentIndex = (currentIndex + 1) % originalSlides.length;
+                    smoothScroll(currentIndex);
+                }, 3000); // Scroll every (x) seconds
+            };
+
+            // Stop auto-scroll on interaction
+            const stopAutoScroll = () => {
+                clearInterval(autoScrollInterval);
+            };
+
+            // Start auto-scrolling
+            startAutoScroll();
+
+            // Touch and drag support
+            slider.addEventListener('touchstart', (e) => {
+                stopAutoScroll();
+                isDragging = true;
+                startX = e.touches[0].pageX;
+                scrollLeft = slider.scrollLeft;
+                velocity = 0;
+                lastX = startX;
+            });
+
+            slider.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                const x = e.touches[0].pageX;
+                const delta = x - lastX;
+                velocity = delta;
+                slider.scrollLeft = scrollLeft - (x - startX);
+                lastX = x;
+                e.preventDefault();
+            });
+
+            slider.addEventListener('touchend', () => {
+                if (!isDragging) return;
+                isDragging = false;
+                const currentScroll = slider.scrollLeft;
+                currentIndex = Math.round(currentScroll / slideWidth) % originalSlides.length;
+                smoothScroll(currentIndex);
+                setTimeout(startAutoScroll, 5000);
+            });
+
+            // Mouse drag support
+            slider.addEventListener('mousedown', (e) => {
+                stopAutoScroll();
+                isDragging = true;
+                startX = e.pageX;
+                scrollLeft = slider.scrollLeft;
+                velocity = 0;
+                lastX = startX;
+                slider.style.cursor = 'grabbing';
+            });
+
+            slider.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                const x = e.pageX;
+                const delta = x - lastX;
+                velocity = delta;
+                slider.scrollLeft = scrollLeft - (x - startX);
+                lastX = x;
+                e.preventDefault();
+            });
+
+            slider.addEventListener('mouseup', () => {
+                if (!isDragging) return;
+                isDragging = false;
+                slider.style.cursor = 'grab';
+                const currentScroll = slider.scrollLeft;
+                currentIndex = Math.round(currentScroll / slideWidth) % originalSlides.length;
+                smoothScroll(currentIndex);
+                setTimeout(startAutoScroll, 5000);
+            });
+
+            slider.addEventListener('mouseleave', () => {
+                if (isDragging) {
+                    isDragging = false;
+                    slider.style.cursor = 'grab';
+                    const currentScroll = slider.scrollLeft;
+                    currentIndex = Math.round(currentScroll / slideWidth) % originalSlides.length;
+                    smoothScroll(currentIndex);
+                    setTimeout(startAutoScroll, 5000);
+                }
+            });
+        });
+    </script>
 </body>
 </html>
