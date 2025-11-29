@@ -29,25 +29,15 @@
             color: #facc15;
             transform: scale(1.05);
         }
-        .social-icon {
-            transition: color 0.3s ease, transform 0.3s ease;
+        .reaction-btn {
+            padding: 6px 12px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
         }
-        .social-icon:hover {
-            color: #facc15;
-            transform: scale(1.1);
-        }
-        .article-section-list a {
-            display: block;
-            padding: 10px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
-            color: #fff;
-            text-decoration: none;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-        .article-section-list a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            transform: scale(1.02);
+        .reaction-btn:hover {
+            background-color: rgba(255,255,255,0.2);
         }
     </style>
 </head>
@@ -61,27 +51,14 @@
             <a href="contact.html" class="nav-link text-lg">Contact</a>
         </nav>
     </header>
+
     <main class="container mx-auto px-4 py-8 max-w-4xl">
-        <h2 class="text-2xl font-semibold text-center mb-4 fade-in">Last Updated: 07/29/2024</h2>
-    <ul class="article-section-list space-y-4 fade-in">
-        <li><a href="#" class="fade-in">Why I Forked Easynotes: The Story Behind WriteOn</a></li>
-        <li><a href="#" class="fade-in">Casual Coding: Finding Joy in Small Projects</a></li>
-        <li><a href="#" class="fade-in">Designing a Minimal Notepad That Actually Feels Good</a></li>
-        <li><a href="#" class="fade-in">Open Source Isn’t About Fame — It’s About Freedom</a></li>
-        <li><a href="#" class="fade-in">Lessons Learned from Publishing on F-Droid</a></li>
-        <li><a href="#" class="fade-in">Why I Prefer Privacy Over Analytics</a></li>
-        <li><a href="#" class="fade-in">How Feedback from Users Shapes Every Update</a></li>
-        <li><a href="#" class="fade-in">Balancing University Life and Side Coding Projects</a></li>
-        <li><a href="#" class="fade-in">Simple Apps, Real Impact: The Beauty of Minimalism in Code</a></li>
-        <li><a href="#" class="fade-in">The Philosophy of “Coding Just for Fun”</a></li>
-        <li><a href="#" class="fade-in">Exploring Planet Minecraft and the Joy of Creating Worlds</a></li>
-        <li><a href="#" class="fade-in">Why GNU GPL Still Matters in 2025</a></li>
-        <li><a href="#" class="fade-in">Building for Yourself: Not Every App Needs to Scale</a></li>
-        <li><a href="#" class="fade-in">When Coding Feels Like Writing — Thoughts from WriteOn</a></li>
-        <li><a href="#" class="fade-in">The Quiet Satisfaction of Seeing Someone Use Your Code</a></li>
-    </ul>
-        <hr class="my-8 border-gray-700">
+        <h2 class="text-2xl font-semibold text-center mb-6 fade-in">Last Updated: 07/29/2024</h2>
+
+        <!-- Article Post Template -->
+        <div id="articles" class="space-y-6 fade-in"></div>
     </main>
+
     <footer class="text-center py-6">
         <div class="mb-4 fade-in">
             <p class="text-lg">3zpnix@proton.me</p>
@@ -104,6 +81,78 @@
                     el.classList.add('active');
                 }, index * 200);
             });
+
+            const articleTitles = [
+                "Why I Forked Easynotes: The Story Behind WriteOn",
+                "Casual Coding: Finding Joy in Small Projects",
+                "Designing a Minimal Notepad That Actually Feels Good",
+                "Open Source Isn’t About Fame — It’s About Freedom",
+                "Lessons Learned from Publishing on F-Droid",
+                "Why I Prefer Privacy Over Analytics",
+                "How Feedback from Users Shapes Every Update",
+                "Balancing University Life and Side Coding Projects",
+                "Simple Apps, Real Impact: The Beauty of Minimalism in Code",
+                "The Philosophy of ‘Coding Just for Fun’",
+                "Exploring Planet Minecraft and the Joy of Creating Worlds",
+                "Why GNU GPL Still Matters in 2025",
+                "Building for Yourself: Not Every App Needs to Scale",
+                "When Coding Feels Like Writing — Thoughts from WriteOn",
+                "The Quiet Satisfaction of Seeing Someone Use Your Code"
+            ];
+
+            const articlesDiv = document.getElementById('articles');
+
+            // Load reaction data
+            const savedReactions = JSON.parse(localStorage.getItem('reactions')) || {};
+
+            function renderArticles() {
+                articlesDiv.innerHTML = '';
+
+                articleTitles.forEach((title, index) => {
+                    if (!savedReactions[index]) savedReactions[index] = { like: 0, love: 0, wow: 0 };
+
+                    const card = document.createElement('div');
+                    card.className = 'bg-gray-800 p-5 rounded-xl shadow-lg border border-gray-700';
+
+                    const h3 = document.createElement('h3');
+                    h3.className = 'text-xl font-semibold mb-3';
+                    h3.textContent = title;
+
+                    const reactions = document.createElement('div');
+                    reactions.className = 'flex space-x-4 mt-3';
+
+                    function makeReactionButton(type, emoji) {
+                        const btn = document.createElement('div');
+                        btn.className = 'reaction-btn flex items-center space-x-2';
+
+                        const icon = document.createElement('span');
+                        icon.textContent = emoji;
+                        const count = document.createElement('span');
+                        count.textContent = savedReactions[index][type];
+                        count.id = `r-${type}-${index}`;
+
+                        btn.onclick = () => {
+                            savedReactions[index][type]++;
+                            localStorage.setItem('reactions', JSON.stringify(savedReactions));
+                            document.getElementById(`r-${type}-${index}`).textContent = savedReactions[index][type];
+                        };
+
+                        btn.appendChild(icon);
+                        btn.appendChild(count);
+                        return btn;
+                    }
+
+                    reactions.appendChild(makeReactionButton('like', '👍'));
+                    reactions.appendChild(makeReactionButton('love', '❤️'));
+                    reactions.appendChild(makeReactionButton('wow', '😮'));
+
+                    card.appendChild(h3);
+                    card.appendChild(reactions);
+                    articlesDiv.appendChild(card);
+                });
+            }
+
+            renderArticles();
         });
     </script>
 </body>
