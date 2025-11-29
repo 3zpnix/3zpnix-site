@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3ZPNIX - Archive Section</title>
+    <title>EZPNIX - Archive Section</title>
     <link rel="icon" type="image/png" href="images/3zpnix.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -35,7 +35,18 @@
             border-radius: 6px;
             display: flex;
             align-items: center;
-            space-x-2;
+        }
+        .accordion-title {
+            cursor: pointer;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            margin-top: 10px;
+        }
+        .accordion-content.show {
+            max-height: 500px; /* adjust depending on content */
         }
     </style>
 </head>
@@ -52,8 +63,6 @@
 
     <main class="container mx-auto px-4 py-8 max-w-4xl">
         <h2 class="text-2xl font-semibold text-center mb-6 fade-in">Last Updated: 07/29/2024</h2>
-
-        <!-- Article Post Template -->
         <div id="articles" class="space-y-6 fade-in"></div>
     </main>
 
@@ -80,59 +89,71 @@
                 }, index * 200);
             });
 
-            const articleTitles = [
-                "Why I Forked Easynotes: The Story Behind WriteOn",
-                "Casual Coding: Finding Joy in Small Projects",
-                "Designing a Minimal Notepad That Actually Feels Good",
-                "Open Source Isn’t About Fame — It’s About Freedom",
-                "Lessons Learned from Publishing on F-Droid",
-                "Why I Prefer Privacy Over Analytics",
-                "How Feedback from Users Shapes Every Update",
-                "Balancing University Life and Side Coding Projects",
-                "Simple Apps, Real Impact: The Beauty of Minimalism in Code",
-                "The Philosophy of ‘Coding Just for Fun’",
-                "Exploring Planet Minecraft and the Joy of Creating Worlds",
-                "Why GNU GPL Still Matters in 2025",
-                "Building for Yourself: Not Every App Needs to Scale",
-                "When Coding Feels Like Writing — Thoughts from WriteOn",
-                "The Quiet Satisfaction of Seeing Someone Use Your Code"
+            const articles = [
+                {
+                    title: "Why I Forked Easynotes: The Story Behind WriteOn",
+                    desc: "A detailed explanation of my decision to fork Easynotes and create WriteOn, focusing on freedom and customization."
+                },
+                {
+                    title: "Casual Coding: Finding Joy in Small Projects",
+                    desc: "Discussing how small coding projects bring joy without the stress of deadlines or large teams."
+                },
+                {
+                    title: "Designing a Minimal Notepad That Actually Feels Good",
+                    desc: "My approach to creating a minimal, user-friendly notepad app that focuses on simplicity and aesthetics."
+                },
+                {
+                    title: "Open Source Isn’t About Fame — It’s About Freedom",
+                    desc: "Why contributing to open source should be about learning and freedom, not recognition."
+                },
+                {
+                    title: "Lessons Learned from Publishing on F-Droid",
+                    desc: "Practical tips and insights from releasing apps on F-Droid, the open-source Android marketplace."
+                },
+                // add more articles if needed
             ];
 
             const articlesDiv = document.getElementById('articles');
 
-            function renderArticles() {
-                articlesDiv.innerHTML = '';
-
-                articleTitles.forEach((title) => {
-                    const card = document.createElement('div');
-                    card.className = 'bg-gray-800 p-5 rounded-xl shadow-lg border border-gray-700';
-
-                    const h3 = document.createElement('h3');
-                    h3.className = 'text-xl font-semibold mb-3';
-                    h3.textContent = title;
-
-                    const reactions = document.createElement('div');
-                    reactions.className = 'flex space-x-4 mt-3';
-
-                    function createReaction(emoji) {
-                        const btn = document.createElement('div');
-                        btn.className = 'reaction-btn';
-                        const count = Math.floor(Math.random() * 500) + 10; // random count 10-509
-                        btn.textContent = `${emoji} ${count}`;
-                        return btn;
-                    }
-
-                    reactions.appendChild(createReaction('👍'));
-                    reactions.appendChild(createReaction('❤️'));
-                    reactions.appendChild(createReaction('😮'));
-
-                    card.appendChild(h3);
-                    card.appendChild(reactions);
-                    articlesDiv.appendChild(card);
-                });
+            function createReaction(emoji) {
+                const btn = document.createElement('div');
+                btn.className = 'reaction-btn';
+                const count = Math.floor(Math.random() * 500) + 10; // random count 10-509
+                btn.textContent = `${emoji} ${count}`;
+                return btn;
             }
 
-            renderArticles();
+            articles.forEach((article) => {
+                const card = document.createElement('div');
+                card.className = 'bg-gray-800 p-5 rounded-xl shadow-lg border border-gray-700';
+
+                // Accordion Title
+                const titleDiv = document.createElement('div');
+                titleDiv.className = 'accordion-title text-xl font-semibold mb-2';
+                titleDiv.textContent = article.title;
+
+                // Accordion Content
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'accordion-content text-gray-200';
+                contentDiv.innerHTML = `<p>${article.desc}</p>`;
+
+                // Reactions
+                const reactions = document.createElement('div');
+                reactions.className = 'flex space-x-4 mt-3';
+                reactions.appendChild(createReaction('👍'));
+                reactions.appendChild(createReaction('❤️'));
+                reactions.appendChild(createReaction('😮'));
+                contentDiv.appendChild(reactions);
+
+                // Toggle accordion
+                titleDiv.addEventListener('click', () => {
+                    contentDiv.classList.toggle('show');
+                });
+
+                card.appendChild(titleDiv);
+                card.appendChild(contentDiv);
+                articlesDiv.appendChild(card);
+            });
         });
     </script>
 </body>
