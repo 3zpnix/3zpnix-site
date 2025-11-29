@@ -23,24 +23,20 @@
     .social-icon { transition: color 0.3s ease, transform 0.3s ease; text-shadow: 0 0 5px rgba(0,0,0,0.5); }
     .social-icon:hover { color: #facc15; transform: scale(1.1); }
     .article-card {
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
-    position: relative;
-    padding: 1.5rem;
-    height: 180px; /* Fixed height */
-    max-width: 280px;
-    margin: 0 auto;
-    background: linear-gradient(135deg, rgba(55,65,81,0.9), rgba(31,41,55,0.9));
-    border-radius: 0.5rem;
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-}
+        transition: transform 0.5s ease, box-shadow 0.5s ease;
+        position: relative;
+        padding: 1.5rem;
+        height: 180px;
+        max-width: 280px;
+        margin: 0 auto;
+        background: linear-gradient(135deg, rgba(55,65,81,0.9), rgba(31,41,55,0.9));
+        border-radius: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+    }
     .article-card:hover { transform: scale(1.05) translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
-    .reaction-container {
-    margin-top: 0.5rem; /* Add some space */
-    display: flex;
-    gap: 0.5rem;
-}
+    .reaction-container { margin-top: auto; display: flex; gap: 0.5rem; }
     .reaction-btn { padding: 2px 6px; background-color: rgba(255,255,255,0.1); border-radius: 6px; display: flex; align-items: center; font-size: 0.85rem; }
     .slider-container { -ms-overflow-style: none; scrollbar-width: none; position: relative; width: 100%; max-width: 1040px; margin: 0 auto; overflow-x: hidden; touch-action: pan-y; padding: 1.5rem 0.5rem; }
     .slider-container::-webkit-scrollbar { display: none; }
@@ -51,17 +47,7 @@
     @keyframes shine { 0%,100% { text-shadow: 0 0 10px white,0 0 5px rgba(0,0,0,0.5); } 50% { color:#facc15; text-shadow:0 0 20px #facc15,0 0 5px rgba(0,0,0,0.5);} }
     .announcement-label { position:absolute; top:0.5rem; left:0.5rem; background-color:#facc15; color:#1f2937; font-size:0.75rem; font-weight:bold; padding:0.25rem 0.5rem; border-radius:0.25rem; z-index:10; }
     .article-card h2 { margin-top:1.5rem; font-size:1.25rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-    .article-card p {
-    margin-top: 0.5rem;
-    font-size: 0.875rem;
-    line-height: 1.4;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 3; /* Limit to 3 lines */
-    -webkit-box-orient: vertical;
-    flex-grow: 1; /* Allow description to push reactions down */
-}
+    .article-card p { margin-top:0.5rem; font-size:0.875rem; line-height:1.4; overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; }
     </style>
 </head>
 <body class="font-sans min-h-screen">
@@ -156,4 +142,3 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 </body>
 </html>
-
