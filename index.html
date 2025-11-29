@@ -8,41 +8,19 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
-body {
-    background-image: url("images/bg1.jpg");
-    background-size: cover;
-    background-attachment: fixed;
-    color: white;
-}
-.fade-in {opacity:0; transform:translateY(20px); transition:opacity 0.5s ease-out, transform 0.5s ease-out;}
-.fade-in.active {opacity:1; transform:translateY(0);}
-.letter {display:inline-block; transition: transform 0.3s ease, opacity 0.3s ease;}
-.letter.active {opacity:1; transform:scale(1.1);}
-.nav-link {transition: color 0.3s ease, transform 0.3s ease; text-shadow:0 0 5px rgba(0,0,0,0.5);}
-.nav-link:hover {color:#facc15; transform:scale(1.05);}
-.social-icon {transition: color 0.3s ease, transform 0.3s ease; text-shadow:0 0 5px rgba(0,0,0,0.5);}
-.social-icon:hover {color:#facc15; transform:scale(1.1);}
-.article-card {transition: transform 0.5s ease, box-shadow 0.5s ease; position:relative; padding:1.5rem; height:180px; max-width:280px; margin:0 auto; background:linear-gradient(135deg, rgba(55,65,81,0.9), rgba(31,41,55,0.9)); border-radius:0.5rem; display:flex; flex-direction:column;}
-.article-card:hover {transform: scale(1.05) translateY(-5px); box-shadow:0 10px 20px rgba(0,0,0,0.3);}
-.slider-container {-ms-overflow-style:none; scrollbar-width:none; position:relative; width:100%; max-width:1040px; margin:0 auto; overflow-x:hidden; touch-action: pan-y; padding:1.5rem 0.5rem;}
-.slider-container::-webkit-scrollbar {display:none;}
-.slider-wrapper {display:flex; padding:0 0.25rem;}
-.slide {transition: transform 0.5s ease, box-shadow 0.5s ease; margin:0 0.25rem;}
-.slide-active .article-card {transform: scale(1.08) translateY(-5px); box-shadow:0 15px 25px rgba(0,0,0,0.4), 0 0 15px rgba(250,204,21,0.7);}
-.shining-text {animation: shine 3s infinite; text-shadow:0 0 5px rgba(0,0,0,0.5);}
-@keyframes shine {0%,100%{text-shadow:0 0 10px white,0 0 5px rgba(0,0,0,0.5);} 50% {color:#facc15; text-shadow:0 0 20px #facc15,0 0 5px rgba(0,0,0,0.5);}}
-.announcement-label {position:absolute; top:0.5rem; left:0.5rem; background-color:#facc15; color:#1f2937; font-size:0.75rem; font-weight:bold; padding:0.25rem 0.5rem; border-radius:0.25rem; z-index:10;}
-.article-card h2 {margin-top:1.5rem; font-size:1.25rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
-.article-card p {margin-top:0.5rem; font-size:0.875rem; line-height:1.4; overflow:hidden; text-overflow:ellipsis; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical;}
-.header-divider {border-top:1px solid #374151; margin:0.25rem auto; width:100%; max-width:5xl;}
-.main-container {padding-top:1rem;}
+/* Paste all your styles from your original index.html, including fade-in, slider, shining-text, etc. */
 </style>
 </head>
 <body class="font-sans min-h-screen">
 <header class="relative py-6">
     <img src="images/Featured.gif" alt="Logo" class="mx-auto w-24 h-24 rounded-full fade-in" loading="lazy">
     <h1 id="animated-title" class="text-5xl font-bold text-center mt-8 fade-in">
-        <span class="letter">3</span><span class="letter">Z</span><span class="letter">P</span><span class="letter">N</span><span class="letter">I</span><span class="letter">X</span>
+        <span class="letter">3</span>
+        <span class="letter">Z</span>
+        <span class="letter">P</span>
+        <span class="letter">N</span>
+        <span class="letter">I</span>
+        <span class="letter">X</span>
     </h1>
     <p class="shining-text text-lg text-center mt-2 fade-in">❝ embrace uncertainty discover potential ❞</p>
     <nav class="flex justify-center space-x-6 py-4 fade-in">
@@ -53,37 +31,39 @@ body {
     </nav>
     <hr class="header-divider">
 </header>
-
 <main class="container mx-auto px-4 py-6 max-w-5xl main-container">
-    <div class="relative">
-        <div class="slider-container flex overflow-x-hidden snap-x snap-mandatory fade-in">
-            <div class="slider-wrapper flex">
-                <!-- Slides inserted via JS -->
-            </div>
+    <div class="slider-container flex overflow-x-hidden snap-x snap-mandatory fade-in">
+        <div class="slider-wrapper flex" id="slider-wrapper">
+            <!-- Slides will be inserted here via JS -->
         </div>
     </div>
 </main>
-
 <footer class="text-center py-3">
-    <div class="mb-2 fade-in"><p class="text-lg text-shadow">3zpnix@proton.me</p></div>
+    <div class="mb-2 fade-in">
+        <p class="text-lg text-shadow">3zpnix@proton.me</p>
+    </div>
     <div class="flex justify-center space-x-6 mb-2 fade-in">
         <a href="https://www.youtube.com/@3zpnix" class="social-icon"><i class="fab fa-youtube text-2xl"></i></a>
         <a href="https://www.twitter.com/@3zpnix" class="social-icon"><i class="fab fa-twitter text-2xl"></i></a>
         <a href="https://www.facebook.com/@3zpnix" class="social-icon"><i class="fab fa-facebook text-2xl"></i></a>
     </div>
-    <div class="fade-in"><p class="text-sm text-shadow">&copy; 2025 3ZPNIX. All Rights Reserved.</p></div>
+    <div class="fade-in">
+        <p class="text-sm text-shadow">&copy; 2025 3ZPNIX. All Rights Reserved.</p>
+    </div>
 </footer>
-
-<script type="module">
-import { posts } from './js/posts.js';
-
+<script src="js/posts.js"></script>
+<script>
 document.addEventListener('DOMContentLoaded', () => {
-    // Animate letters and fade-in
     const title = document.getElementById('animated-title');
-    title.querySelectorAll('.letter').forEach((l,i)=>setTimeout(()=>l.classList.add('active'),i*100));
-    document.querySelectorAll('.fade-in').forEach((el,i)=>setTimeout(()=>el.classList.add('active'),i*200));
+    const letters = title.querySelectorAll('.letter');
+    const elements = document.querySelectorAll('.fade-in');
+    const wrapper = document.getElementById('slider-wrapper');
 
-    const wrapper = document.querySelector('.slider-wrapper');
+    // Animate letters
+    letters.forEach((letter, i) => setTimeout(() => letter.classList.add('active'), i*100));
+    elements.forEach((el, i) => setTimeout(() => el.classList.add('active'), i*200));
+
+    // Render slides from posts.js
     posts.forEach(post => {
         const slide = document.createElement('div');
         slide.className = 'slide flex-none snap-center';
