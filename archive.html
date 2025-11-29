@@ -38,6 +38,9 @@
         }
         .accordion-title {
             cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         .accordion-content {
             max-height: 0;
@@ -47,6 +50,12 @@
         }
         .accordion-content.show {
             max-height: 500px; /* adjust depending on content */
+        }
+        .arrow {
+            transition: transform 0.3s ease;
+        }
+        .arrow.rotate {
+            transform: rotate(180deg);
         }
     </style>
 </head>
@@ -109,8 +118,7 @@
                 {
                     title: "Lessons Learned from Publishing on F-Droid",
                     desc: "Practical tips and insights from releasing apps on F-Droid, the open-source Android marketplace."
-                },
-                // add more articles if needed
+                }
             ];
 
             const articlesDiv = document.getElementById('articles');
@@ -118,7 +126,7 @@
             function createReaction(emoji) {
                 const btn = document.createElement('div');
                 btn.className = 'reaction-btn';
-                const count = Math.floor(Math.random() * 500) + 10; // random count 10-509
+                const count = Math.floor(Math.random() * 500) + 10;
                 btn.textContent = `${emoji} ${count}`;
                 return btn;
             }
@@ -127,10 +135,18 @@
                 const card = document.createElement('div');
                 card.className = 'bg-gray-800 p-5 rounded-xl shadow-lg border border-gray-700';
 
-                // Accordion Title
+                // Accordion Title with arrow
                 const titleDiv = document.createElement('div');
                 titleDiv.className = 'accordion-title text-xl font-semibold mb-2';
-                titleDiv.textContent = article.title;
+
+                const titleText = document.createElement('span');
+                titleText.textContent = article.title;
+
+                const arrow = document.createElement('i');
+                arrow.className = 'fas fa-chevron-down arrow';
+
+                titleDiv.appendChild(titleText);
+                titleDiv.appendChild(arrow);
 
                 // Accordion Content
                 const contentDiv = document.createElement('div');
@@ -148,6 +164,7 @@
                 // Toggle accordion
                 titleDiv.addEventListener('click', () => {
                     contentDiv.classList.toggle('show');
+                    arrow.classList.toggle('rotate');
                 });
 
                 card.appendChild(titleDiv);
