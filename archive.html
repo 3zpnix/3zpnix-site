@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EZPNIX - Archive Section</title>
-    <link rel="icon" type="image/png" href="images/3zpnix.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3ZPNIX - Archive Section</title>
+
+    <link rel="icon" type="image/png" href="images/3zpnix.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <script src="https://cdn.tailwindcss.com"></script>
+
     <style>
         body {
             background-image: url("images/bg1.jpg");
@@ -31,13 +33,13 @@
         }
         .reaction-btn {
             padding: 6px 12px;
-            background-color: rgba(255,255,255,0.1);
+            background-color: rgba(255, 255, 255, 0.1);
             border-radius: 6px;
             cursor: pointer;
             transition: 0.3s;
         }
         .reaction-btn:hover {
-            background-color: rgba(255,255,255,0.2);
+            background-color: rgba(255, 255, 255, 0.2);
         }
     </style>
 </head>
@@ -54,8 +56,6 @@
 
     <main class="container mx-auto px-4 py-8 max-w-4xl">
         <h2 class="text-2xl font-semibold text-center mb-6 fade-in">Last Updated: 07/29/2024</h2>
-
-        <!-- Article Post Template -->
         <div id="articles" class="space-y-6 fade-in"></div>
     </main>
 
@@ -73,86 +73,130 @@
         </div>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const elements = document.querySelectorAll('.fade-in');
-            elements.forEach((el, index) => {
-                setTimeout(() => {
-                    el.classList.add('active');
-                }, index * 200);
-            });
+    <!-- Firebase SDKs -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getFirestore, doc, getDoc, setDoc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-            const articleTitles = [
-                "Why I Forked Easynotes: The Story Behind WriteOn",
-                "Casual Coding: Finding Joy in Small Projects",
-                "Designing a Minimal Notepad That Actually Feels Good",
-                "Open Source Isn’t About Fame — It’s About Freedom",
-                "Lessons Learned from Publishing on F-Droid",
-                "Why I Prefer Privacy Over Analytics",
-                "How Feedback from Users Shapes Every Update",
-                "Balancing University Life and Side Coding Projects",
-                "Simple Apps, Real Impact: The Beauty of Minimalism in Code",
-                "The Philosophy of ‘Coding Just for Fun’",
-                "Exploring Planet Minecraft and the Joy of Creating Worlds",
-                "Why GNU GPL Still Matters in 2025",
-                "Building for Yourself: Not Every App Needs to Scale",
-                "When Coding Feels Like Writing — Thoughts from WriteOn",
-                "The Quiet Satisfaction of Seeing Someone Use Your Code"
-            ];
+        const firebaseConfig = {
+            apiKey: "AIzaSyCZ2MoVBAoXdqCJlQp1u1UGlqfn6cRhd10",
+            authDomain: "ezpnix-7450.firebaseapp.com",
+            projectId: "ezpnix-7450",
+            storageBucket: "ezpnix-7450.firebasestorage.app",
+            messagingSenderId: "327370490096",
+            appId: "1:327370490096:web:aff9e42aa7679aa965c235",
+            measurementId: "G-X82SF07W71"
+        };
 
-            const articlesDiv = document.getElementById('articles');
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
 
-            // Load reaction data
-            const savedReactions = JSON.parse(localStorage.getItem('reactions')) || {};
+        // ARTICLE LIST
+        const articleTitles = [
+            "Why I Forked Easynotes: The Story Behind WriteOn",
+            "Casual Coding: Finding Joy in Small Projects",
+            "Designing a Minimal Notepad That Actually Feels Good",
+            "Open Source Isn’t About Fame — It’s About Freedom",
+            "Lessons Learned from Publishing on F-Droid",
+            "Why I Prefer Privacy Over Analytics",
+            "How Feedback from Users Shapes Every Update",
+            "Balancing University Life and Side Coding Projects",
+            "Simple Apps, Real Impact: The Beauty of Minimalism in Code",
+            "The Philosophy of ‘Coding Just for Fun’",
+            "Exploring Planet Minecraft and the Joy of Creating Worlds",
+            "Why GNU GPL Still Matters in 2025",
+            "Building for Yourself: Not Every App Needs to Scale",
+            "When Coding Feels Like Writing — Thoughts from WriteOn",
+            "The Quiet Satisfaction of Seeing Someone Use Your Code"
+        ];
 
-            function renderArticles() {
-                articlesDiv.innerHTML = '';
+        const articlesDiv = document.getElementById("articles");
 
-                articleTitles.forEach((title, index) => {
-                    if (!savedReactions[index]) savedReactions[index] = { like: 0, love: 0, wow: 0 };
+        // Save reaction
+        async function react(articleId, type) {
+            const ref = doc(db, "reactions", String(articleId));
+            const snap = await getDoc(ref);
 
-                    const card = document.createElement('div');
-                    card.className = 'bg-gray-800 p-5 rounded-xl shadow-lg border border-gray-700';
-
-                    const h3 = document.createElement('h3');
-                    h3.className = 'text-xl font-semibold mb-3';
-                    h3.textContent = title;
-
-                    const reactions = document.createElement('div');
-                    reactions.className = 'flex space-x-4 mt-3';
-
-                    function makeReactionButton(type, emoji) {
-                        const btn = document.createElement('div');
-                        btn.className = 'reaction-btn flex items-center space-x-2';
-
-                        const icon = document.createElement('span');
-                        icon.textContent = emoji;
-                        const count = document.createElement('span');
-                        count.textContent = savedReactions[index][type];
-                        count.id = `r-${type}-${index}`;
-
-                        btn.onclick = () => {
-                            savedReactions[index][type]++;
-                            localStorage.setItem('reactions', JSON.stringify(savedReactions));
-                            document.getElementById(`r-${type}-${index}`).textContent = savedReactions[index][type];
-                        };
-
-                        btn.appendChild(icon);
-                        btn.appendChild(count);
-                        return btn;
-                    }
-
-                    reactions.appendChild(makeReactionButton('like', '👍'));
-                    reactions.appendChild(makeReactionButton('love', '❤️'));
-                    reactions.appendChild(makeReactionButton('wow', '😮'));
-
-                    card.appendChild(h3);
-                    card.appendChild(reactions);
-                    articlesDiv.appendChild(card);
+            if (snap.exists()) {
+                await updateDoc(ref, {
+                    [type]: increment(1)
+                });
+            } else {
+                await setDoc(ref, {
+                    like: 0,
+                    love: 0,
+                    wow: 0,
+                });
+                await updateDoc(ref, {
+                    [type]: increment(1)
                 });
             }
 
-            renderArticles();
+            // Update UI instantly
+            document.getElementById(`r-${type}-${articleId}`).textContent = Number(document.getElementById(`r-${type}-${articleId}`).textContent) + 1;
+        }
+
+        // Load reactions from Firestore
+        async function loadReactions(articleId) {
+            const ref = doc(db, "reactions", String(articleId));
+            const snap = await getDoc(ref);
+            if (snap.exists()) return snap.data();
+            return { like: 0, love: 0, wow: 0 };
+        }
+
+        // Render all articles
+        async function renderArticles() {
+            articlesDiv.innerHTML = "";
+
+            for (let i = 0; i < articleTitles.length; i++) {
+                const reactions = await loadReactions(i);
+
+                const card = document.createElement("div");
+                card.className = "bg-gray-800 p-5 rounded-xl shadow-lg border border-gray-700";
+
+                const title = document.createElement("h3");
+                title.className = "text-xl font-semibold mb-3";
+                title.textContent = articleTitles[i];
+
+                const buttons = document.createElement("div");
+                buttons.className = "flex space-x-4 mt-3";
+
+                function makeBtn(type, emoji) {
+                    const btn = document.createElement("div");
+                    btn.className = "reaction-btn flex items-center space-x-2";
+                    btn.onclick = () => react(i, type);
+
+                    const icon = document.createElement("span");
+                    icon.textContent = emoji;
+
+                    const count = document.createElement("span");
+                    count.id = `r-${type}-${i}`;
+                    count.textContent = reactions[type];
+
+                    btn.appendChild(icon);
+                    btn.appendChild(count);
+                    return btn;
+                }
+
+                buttons.appendChild(makeBtn("like", "👍"));
+                buttons.appendChild(makeBtn("love", "❤️"));
+                buttons.appendChild(makeBtn("wow", "😮"));
+
+                card.appendChild(title);
+                card.appendChild(buttons);
+                articlesDiv.appendChild(card);
+            }
+        }
+
+        renderArticles();
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const elements = document.querySelectorAll(".fade-in");
+            elements.forEach((el, i) => {
+                setTimeout(() => el.classList.add("active"), i * 200);
+            });
         });
     </script>
 </body>
